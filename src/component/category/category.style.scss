@@ -1,0 +1,10 @@
+.category-list {
+  margin: 2vh 4vw;
+  width: 70vw;
+  justify-content: center;
+  display: grid;
+  row-gap: 2vh;
+  column-gap: 1vw;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: start;
+}

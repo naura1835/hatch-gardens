@@ -1,0 +1,11 @@
+.collection-preview {
+  width: 80vw;
+  display: grid;
+  grid-template-columns: repeat(3, 20vw);
+  grid-auto-flow: dense;
+  justify-content: center;
+  column-gap: 50px;
+  row-gap: 40px;
+
+  margin-bottom: 44px;
+}
