@@ -4,7 +4,7 @@ import "./form-input.style.scss";
 
 const FormInput = ({ handleChange, label, ...otherProps }) => {
   return (
-    <div className="wrapper">
+    <div className="input-wrapper">
       <input className="form-input" onChange={handleChange} {...otherProps} />
       {label ? (
         <label

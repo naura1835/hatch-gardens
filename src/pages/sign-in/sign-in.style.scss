@@ -1,0 +1,31 @@
+.sign-in {
+  padding: 2vh 0 2vh 128px;
+  width: 80vw;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 70vh;
+  column-gap: 14px;
+}
+.plant {
+  align-self: center;
+}
+
+.wrapper {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: flex-start;
+  width: 80%;
+}
+h3 {
+  font-weight: bold;
+  font-size: 24px;
+  color: black;
+}
+.button-group {
+  width: 38vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

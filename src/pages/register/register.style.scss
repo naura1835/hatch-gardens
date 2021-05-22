@@ -1,0 +1,28 @@
+.sign-up {
+  // margin: 2vh 5vw;
+  padding: 2vh 0 2vh 128px;
+  width: 80vw;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 80vh;
+  column-gap: 14px;
+}
+.plant {
+  align-self: end;
+}
+
+.wrapper {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: flex-start;
+  width: 90%;
+}
+.option-grp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+}

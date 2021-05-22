@@ -1,0 +1,84 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+import CustomButton from "../../component/custom-buttom/custom-button.component";
+import FormInput from "../../component/form-input/form-input.component";
+
+import { ReactComponent as Plant } from "../../assets/plant.svg";
+
+import { SignInWithGoogle } from "../../firebase/firebase.utils";
+
+import "./sign-in.style.scss";
+
+class SignIn extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+      password: "",
+    };
+  }
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.setState({ email: "", password: "" });
+  };
+  handleChange = (event) => {
+    const { value, name } = event.target;
+
+    this.setState({ [name]: value });
+  };
+  render() {
+    return (
+      <div className="sign-in">
+        <Plant className="plant"></Plant>
+        <div className="wrapper">
+          <>
+            <h3>Login</h3>
+            <span>
+              Don't have an account?&nbsp;
+              <Link
+                to="/register"
+                style={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "0.41em",
+                }}
+              >
+                Create Account
+              </Link>
+            </span>
+          </>
+
+          <form onSubmit={this.handleSubmit}>
+            <FormInput
+              name="email"
+              type="email"
+              value={this.state.email}
+              handleChange={this.handleChange}
+              label="Email"
+              required
+            />
+            <FormInput
+              name="password"
+              type="password"
+              value={this.state.password}
+              handleChange={this.handleChange}
+              label="Password"
+              required
+            />
+            <div className="button-group">
+              <CustomButton type="submit">Sign In</CustomButton>
+              <CustomButton onClick={SignInWithGoogle} isGoogleSignIn>
+                Sign In With Google
+              </CustomButton>
+            </div>
+
+            {/* <input type="submit" value="Sign In" />    */}
+          </form>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default SignIn;
