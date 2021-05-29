@@ -1,0 +1,31 @@
+.icon {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  .cart-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .circle {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #c4d6b0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .item-count {
+    font-size: 15px;
+    font-weight: bold;
+    color: #44633f;
+  }
+}

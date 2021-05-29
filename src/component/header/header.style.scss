@@ -27,7 +27,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+
+  .icon-group {
+    z-index: 5;
+  }
 }
+
 .item {
   padding: 10px 15px;
 }

@@ -35,6 +35,16 @@ class Register extends React.Component {
         email,
         password
       );
+
+      //   await user.sendEmailVerification();
+      //   probably something like:
+      //   if(user.sendEmailVerification()){
+      //       return;
+      //   }
+      //   the line of code above sends a verification link to the email address
+      //   i still have to tweak this part to not sign in and save the person under users db until after verification is successful
+      //   then redirect the person to i think maybe the cart page
+
       await createUserProfileDocument(user, { displayName });
 
       this.setState({
@@ -52,8 +62,10 @@ class Register extends React.Component {
 
     this.setState({ [name]: value });
   };
+
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
+
     return (
       <div className="sign-up">
         <Plant className="plant"></Plant>

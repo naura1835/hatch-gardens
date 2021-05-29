@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+// import { Icon, InlineIcon } from "@iconify/react";
+// import accountIcon from "@iconify/icons-line-md/account";
 
 import { auth } from "../../firebase/firebase.utils";
+import CartIcon from "../cart-icon/cart-icon.component";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 
 import "./header.style.scss";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 const Header = ({ currentUser }) => {
+  const [isDropdown, setIsDropdown] = useState(false);
+
+  const handleDropdown = () => {
+    if (!isDropdown) {
+      setIsDropdown(true);
+    } else {
+      setIsDropdown(false);
+    }
+  };
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -32,9 +46,17 @@ const Header = ({ currentUser }) => {
             Sign In
           </Link>
         )}
+        {/* <Icon icon={accountIcon} /> */}
+        <div className="icon-group" onClick={handleDropdown}>
+          <CartIcon />
+        </div>
       </div>
+      {isDropdown ? <CartDropdown /> : null}
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
 
-export default Header;
+export default connect(mapStateToProps)(Header);

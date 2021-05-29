@@ -4,7 +4,6 @@ import "./tabbar.style.scss";
 
 const Tabbar = function ({ collections }) {
   const [activeButton, setActiveButton] = useState("Shop All");
-  const [toggleState, setToggleState] = useState("Cactus plant");
   const [menu, setMenu] = useState([{ title: "Shop All", id: 0 }]);
 
   const toggleTab = (index) => {
