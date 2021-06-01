@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./cart-items.style.scss";
+import "./cart-item.style.scss";
 
-class CartItems extends React.Component {
+class CartItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,4 +19,4 @@ class CartItems extends React.Component {
   }
 }
 
-export default CartItems;
+export default CartItem;
