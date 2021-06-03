@@ -37,8 +37,24 @@ class App extends React.Component {
     this.unsubscribeFromAuth();
   }
   render() {
+    console.log(this.props.hidden);
+    const documentWidth = document.documentElement.clientWidth;
+    const windowWidth = window.innerWidth;
+    const scrollBarWidth = windowWidth - documentWidth;
+
     return (
-      <div>
+      <div
+        render={
+          this.props.hidden
+            ? document.body.classList.add("hide")
+            : document.body.classList.remove("hide")
+        }
+        style={
+          this.props.hidden
+            ? { paddingRight: scrollBarWidth }
+            : { paddingRight: 0 }
+        }
+      >
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -66,8 +82,9 @@ class App extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, cart }) => ({
   currentUser: user.currentUser,
+  hidden: cart.hidden,
 });
 
 const mapDispatchToProps = (dispatch) => ({

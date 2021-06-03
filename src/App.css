@@ -136,3 +136,7 @@ a {
   text-decoration: none;
   color: #000;
 }
+.hide {
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
