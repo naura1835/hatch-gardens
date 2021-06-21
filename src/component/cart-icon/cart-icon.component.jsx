@@ -1,12 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { Icon, InlineIcon } from "@iconify/react";
 import bxCart from "@iconify/icons-bx/bx-cart";
 import lineOutlined from "@iconify/icons-ant-design/line-outlined";
 
 import "./cart-icon.style.scss";
 import { toggleCartHidden } from "../../redux/cart/cart.actions";
-import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
+import {
+  selectCartItemsCount,
+  selectCartHidden,
+} from "../../redux/cart/cart.selectors";
 
 const CartIcon = ({ toggleCartHidden, hidden, itemCount }) => {
   return (
@@ -27,9 +31,9 @@ const CartIcon = ({ toggleCartHidden, hidden, itemCount }) => {
     </div>
   );
 };
-const mapStateToProps = ({ cart: { hidden, cartItems } }) => ({
-  hidden,
-  itemCount: selectCartItemsCount(state),
+const mapStateToProps = createStructuredSelector({
+  hidden: selectCartHidden,
+  itemCount: selectCartItemsCount,
 });
 const mapDispatchToProps = (dispatch) => ({
   toggleCartHidden: () => dispatch(toggleCartHidden()),

@@ -1,3 +1,10 @@
+.item-wrapper {
+  position: relative;
+
+  &:hover > .button-container > .cart-btn {
+    transform: translateY(0px);
+  }
+}
 .collection-item {
   position: relative;
   width: 20vw;
@@ -10,9 +17,6 @@
   &:hover > .image-wrapper > .image {
     transform: scale(1);
   }
-  &:hover > .button-container > .cart-btn {
-    transform: translateY(0px);
-  }
 }
 .image-wrapper {
   position: relative;
@@ -20,13 +24,13 @@
   width: 20vw;
   overflow: hidden;
   display: inline-block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .image {
   height: 100%;
   width: 100%;
   background-size: cover;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
   position: relative;
   transform: scale(1.2);
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -59,7 +63,8 @@
   height: 50px;
   width: 16vw;
   position: absolute;
-  top: 56%;
+  top: 55%;
+  right: 10%;
   display: block;
   align-self: center;
   justify-self: center;

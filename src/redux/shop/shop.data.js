@@ -1,5 +1,5 @@
-const shopData = [
-  {
+const shopData = {
+  cactus: {
     id: 1,
     title: "cactus plant",
     routeName: "cactus",
@@ -49,7 +49,7 @@ const shopData = [
       },
     ],
   },
-  {
+  indoor: {
     id: 2,
     title: "Indoor plant",
     routeName: "indoor",
@@ -98,7 +98,7 @@ const shopData = [
       },
     ],
   },
-  {
+  outdoor: {
     id: 3,
     title: "Outdoor plant",
     routeName: "outdoor",
@@ -147,11 +147,11 @@ const shopData = [
       },
     ],
   },
-  {
+  planters: {
     id: 4,
     title: "planters",
     routeName: "cplanters",
     items: [],
   },
-];
+};
 export default shopData;
