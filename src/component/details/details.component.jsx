@@ -4,12 +4,12 @@ import Treatment from "../treatment/treatment.component";
 
 import "./details.style.scss";
 
-const Details = () => {
+const Details = ({ product }) => {
   return (
     <div className="details">
       <div className="price-name">
         <h3 className="price">$25.00</h3>
-        <h1 className="plant-name">Pricklypear Cactus</h1>
+        <h1 className="plant-name">{product.name}</h1>
       </div>
       <div className="description-wrapper">
         <span className="description">

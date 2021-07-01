@@ -12,13 +12,20 @@ const CollectionPage = ({ collection }) => {
     <div className="collection-page">
       <h2 className="collection-title">{title}</h2>
       <div className="items">
-        {items.map((item) => (
-          <CollectionItem
-            key={item.id}
-            item={item}
-            className="collection-item"
-          />
-        ))}
+        {Object.keys(items)
+          .map((key) => items[key])
+          .map((item) => (
+            <CollectionItem
+              key={item.id}
+              item={item}
+              className="collection-item"
+            />
+          ))}
+        {/* ((item) => ( */}
+        {/* //if all of a sudden your code start doing nonsense remove Object.keys(items)
+          .map((key) => items[key]) and replace with just items and also do that in collections previw component
+           and in your store data change the items Object of each category into an array */}
+        {/* )) */}
       </div>
     </div>
   );

@@ -3,11 +3,12 @@ import CollectionItem from "../collection-item/collection-item.component";
 
 import "./collection-preview.style.scss";
 
-const CollectionPreview = function ({ items }) {
+const CollectionPreview = function ({ items, count }) {
   return (
     <div className="collection-preview">
-      {items
-        .filter((item, idx) => idx < 6)
+      {Object.keys(items)
+        .map((key) => items[key])
+        .filter((item, idx) => idx < count)
         .map((item) => (
           <CollectionItem key={item.id} item={item} />
         ))}

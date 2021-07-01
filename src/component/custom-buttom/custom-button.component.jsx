@@ -6,7 +6,6 @@ const CustomButton = ({ children, isGoogleSignIn, ...otherProps }) => {
   return (
     <button
       className={`${isGoogleSignIn ? "google-sign-in" : ""} button`}
-      //   style={{ backgroundColor: `${backgroundColor}` }}
       {...otherProps}
     >
       {children}

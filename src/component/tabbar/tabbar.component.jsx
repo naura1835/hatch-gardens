@@ -5,7 +5,7 @@ import { categoryData } from "../../data/categoryListData";
 
 import "./tabbar.style.scss";
 
-const Tabbar = function ({ match, history }) {
+const Tabbar = function ({ history }) {
   const [menu, setMenu] = useState([
     {
       title: "Shop All",
@@ -13,7 +13,6 @@ const Tabbar = function ({ match, history }) {
       linkUrl: "shop",
     },
   ]);
-  console.log(history.location.pathname.replace("/", ""));
   const [activeButton, setActiveButton] = useState(
     history.location.pathname.replace("/", "")
   );

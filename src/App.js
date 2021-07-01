@@ -13,6 +13,8 @@ import Product from "./pages/product-details/product-detail.component";
 import CheckoutPage from "./pages/checkout/checkout.component";
 
 import Header from "./component/header/header.component";
+import Footer from "./component/footer/footer.component";
+
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
@@ -63,7 +65,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
-          <Route path="/shop/products" component={Product} />
+          <Route path={`/products/:itemId`} component={Product} />
           <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
@@ -80,6 +82,7 @@ class App extends React.Component {
             }
           />
         </Switch>
+        <Footer />
       </div>
     );
   }

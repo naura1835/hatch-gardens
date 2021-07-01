@@ -12,7 +12,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
     <div className="item-wrapper">
       <div
         className="collection-item"
-        onClick={() => history.push(`${match.url}/products`)}
+        onClick={() => history.push(`/products/${name}`)}
       >
         <div className="image-wrapper">
           <img src={imageUrl} className="image" alt="" />

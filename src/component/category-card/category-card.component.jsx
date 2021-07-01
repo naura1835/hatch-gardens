@@ -13,8 +13,8 @@ function CategoryCard({ title, imageUrl, size, linkUrl, history, match }) {
       //i added shop, in the tutorials he didnt
     >
       <div className="category-content">
-        <p>{title}</p>
-        <h3>View More</h3>
+        <p className="p">{title}</p>
+        <h3 style={{ color: "#fff" }}>View More</h3>
       </div>
     </div>
   );
