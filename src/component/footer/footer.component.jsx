@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import {
   Wrapper,
@@ -7,16 +8,20 @@ import {
   SocialMediaGroup,
 } from "./footer.styles";
 
-const Footer = () => (
-  <Wrapper>
-    <FooterLinkGroup>
-      <FooterLink>Plants.com</FooterLink>
-      <FooterLink>Privacy Policy</FooterLink>
-      <FooterLink>Shipping and Return</FooterLink>
-      <FooterLink>FAQs</FooterLink>
-    </FooterLinkGroup>
-    <SocialMediaGroup></SocialMediaGroup>
-  </Wrapper>
-);
+const Footer = () => {
+  return (
+    <Wrapper>
+      <FooterLinkGroup>
+        <FooterLink>Plants.com</FooterLink>
+        <FooterLink>Privacy Policy</FooterLink>
+        <FooterLink>Shipping and Return</FooterLink>
+        <Link to="/faqs">
+          <FooterLink>FAQs</FooterLink>
+        </Link>
+      </FooterLinkGroup>
+      <SocialMediaGroup></SocialMediaGroup>
+    </Wrapper>
+  );
+};
 
 export default Footer;

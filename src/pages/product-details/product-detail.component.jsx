@@ -1,29 +1,35 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
 import Details from "../../component/details/details.component";
 import ProductImages from "../../component/product-images/product-images.component";
+import { selectCollectionsForPreview } from "../../redux/shop/shop.selectors";
 
-import { selectProduct } from "../../redux/shop/shop.selectors";
+import { ProductWrapper, ImageGrid } from "./product-detail.styles";
 
-import "./product-detail.style.scss";
-
-const Product = ({ product }) => {
-  // console.log(match.params);
+const Product = ({ match, products }) => {
   return (
-    <div className="product-container">
-      <div className="image-grid">
-        {/* <p>{price}</p> */}
-        {/* <h2>{price}</h2> */}
-        <ProductImages />
-      </div>
-      <Details name={product} />
-    </div>
+    <>
+      {products.map((product) =>
+        Object.keys(product.items)
+          .map((key) => product.items[key])
+          .filter((item) => item.name === match.params.itemId)
+          .map(({ id, imageUrl, ...otherProps }) => (
+            <ProductWrapper key={id}>
+              <ImageGrid>
+                <ProductImages image={imageUrl} />
+              </ImageGrid>
+              <Details {...otherProps} style={{ alignSelf: "end" }} />
+            </ProductWrapper>
+          ))
+      )}
+    </>
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  product: selectProduct(ownProps.match.params.itemId)(state),
+const mapStateToProps = createStructuredSelector({
+  products: selectCollectionsForPreview,
 });
 
 export default connect(mapStateToProps)(Product);

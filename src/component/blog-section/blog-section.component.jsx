@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import BlogCard from "../blog-card/blog-card.component";
 import FlatButton from "../flat-button/flat-button.component";
@@ -6,18 +7,18 @@ import { blogData } from "../../data/blogData";
 
 import { Wrapper, Title, BlogGroup } from "./blog-section.styles";
 
-const BlogSection = () => {
+const BlogSection = ({ history }) => {
   return (
     <Wrapper>
-      <Title>Our Blog Post</Title>
+      <Title>From The Blog</Title>
       <BlogGroup>
         {blogData.map(({ id, ...otherProps }) => (
           <BlogCard key={id} {...otherProps} />
         ))}
       </BlogGroup>
-      <FlatButton>View More</FlatButton>
+      <FlatButton onClick={() => history.push(`/blog`)}>View More</FlatButton>
     </Wrapper>
   );
 };
 
-export default BlogSection;
+export default withRouter(BlogSection);

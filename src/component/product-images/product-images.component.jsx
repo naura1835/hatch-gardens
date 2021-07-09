@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-import Cactus from "../../images/stephanie-harvey-KdVn1rN4WRI-unsplash.jpg";
-import "./product-images.style.scss";
+import { Wrapper, Image, ImageGroup, ImageItem } from "./product-image.styles";
 
-const ProductImages = () => {
+const ProductImages = ({ image }) => {
+  const [activeImage, setActiveImage] = useState(0);
+
+  const handleTab = (index) => {
+    setActiveImage(index);
+  };
+
   return (
-    <div className="wrapper">
-      <img src={Cactus} className="img"></img>
-      <div className="img-grp">
-        <img src={Cactus} className="img-item"></img>
-        <img src={Cactus} className="img-item"></img>
-        <img src={Cactus} className="img-item"></img>
-        <img src={Cactus} className="img-item"></img>
-      </div>
-    </div>
+    <Wrapper>
+      <Image src={image[activeImage]} />
+      <ImageGroup>
+        {image.map((img, index) => {
+          const currentImg = activeImage === index ? "active" : "";
+          return (
+            <ImageItem
+              key={index}
+              src={img}
+              className={`${currentImg}`}
+              onClick={() => handleTab(index)}
+            />
+          );
+        })}
+      </ImageGroup>
+    </Wrapper>
   );
 };
 

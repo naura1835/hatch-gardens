@@ -15,17 +15,17 @@ export const categoryData = [
     linkUrl: "shop/indoor",
   },
   {
-    title: "Outdoor Plants",
+    title: "Office Plants",
     imageUrl:
       "https://images.pexels.com/photos/4503820/pexels-photo-4503820.jpeg?cs=srgb&dl=pexels-cottonbro-4503820.jpg&fm=jpg",
     id: 3,
-    linkUrl: "shop/outdoor",
+    linkUrl: "shop/office",
   },
   {
-    title: "Potters",
+    title: "Planters",
     imageUrl:
       "https://images.pexels.com/photos/6231758/pexels-photo-6231758.jpeg?cs=srgb&dl=pexels-gary-barnes-6231758.jpg&fm=jpg",
     id: 4,
-    linkUrl: "shop/potters",
+    linkUrl: "shop/planters",
   },
 ];

@@ -21,7 +21,7 @@ const RecentItems = ({ recent }) => {
       <Title>Explore our recent products</Title>
       <ItemList>
         {arr.map((item) => (
-          <CollectionItem id={item.id} item={item} />
+          <CollectionItem key={item.id} item={item} />
         ))}
       </ItemList>
     </Wrapper>

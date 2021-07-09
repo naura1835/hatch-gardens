@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
@@ -35,7 +35,9 @@ const CartDropdown = ({ cartItems, history, toggleCartHidden }) => {
         ) : (
           <div className="empty-cart">
             <h2>OOooops...!Looks like you dont have anything</h2>
-            <a>Go back to Shop</a>
+            <Link to="/shop" onClick={toggleCartHidden}>
+              Go back to Shop
+            </Link>
             <ShoppingCart />
           </div>
         )}

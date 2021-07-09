@@ -2,5 +2,7 @@ import React from "react";
 
 import { ButtonWrapper } from "./flat-button.styles";
 
-const FlatButton = ({ children }) => <ButtonWrapper>{children}</ButtonWrapper>;
+const FlatButton = ({ children, ...otherProps }) => (
+  <ButtonWrapper {...otherProps}>{children}</ButtonWrapper>
+);
 export default FlatButton;

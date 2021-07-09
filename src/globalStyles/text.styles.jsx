@@ -24,7 +24,7 @@ export const H1 = styled.h1`
 `;
 export const H2 = styled.h2`
   font-size: 38px;
-  font-weight: bold;
+  font-weight: 500;
   font-family: "Roboto";
 
   @media (max-width: 414px) {
@@ -59,7 +59,7 @@ export const SmallMediumText = styled.p`
   font-family: Arial, Helvetica, sans-serif;
   line-height: 20px;
 `;
-export const CaptionText = styled.p`
+export const CaptionText = styled.span`
   font-size: 15px;
   line-height: 18px;
   font-family: "Roboto";

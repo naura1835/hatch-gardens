@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { addItem } from "../../redux/cart/cart.actions";
 import "./collection-item.style.scss";
 
-const CollectionItem = ({ item, addItem, history, match }) => {
+const CollectionItem = ({ item, addItem, history }) => {
   const { name, price, imageUrl } = item;
 
   return (
@@ -15,7 +15,7 @@ const CollectionItem = ({ item, addItem, history, match }) => {
         onClick={() => history.push(`/products/${name}`)}
       >
         <div className="image-wrapper">
-          <img src={imageUrl} className="image" alt="" />
+          <img src={imageUrl[0]} className="image" alt="" />
           <div className="backdrop" />
         </div>
 

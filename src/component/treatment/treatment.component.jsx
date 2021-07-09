@@ -1,32 +1,48 @@
 import React from "react";
 
-import { ReactComponent as Sun } from "../../assets/wb_sunny.svg";
-import { ReactComponent as WaterDrop } from "../../assets/water-drop.svg";
+// import "./treatment.style.scss";
+import {
+  TreatmentGroup,
+  TreatmentWrapper,
+  TreatmentOption,
+  TreatmentImage,
+  CaptionWrapper,
+  Caption,
+} from "./treatment.styles";
 
-import "./treatment.style.scss";
-
-const Treatment = () => {
+const Treatment = ({ treatment }) => {
+  const treatmentData = [
+    {
+      img: "/assets/icons/treatment/wb_sunny.svg",
+      caption: treatment.sunglight,
+    },
+    {
+      img: "/assets/icons/treatment/water-drop.svg",
+      caption: treatment.water,
+    },
+    {
+      img: "/assets/icons/treatment/whh_poopalt.svg",
+      caption: treatment.fertilizer,
+    },
+    {
+      img: "/assets/icons/treatment/fluent_temperature-20-regular.svg",
+      caption: treatment.temperature,
+    },
+  ];
   return (
-    <div className="treatment-group">
-      <div className="item-wrapper">
-        <div className="item">
-          <Sun />
-        </div>
+    <TreatmentGroup>
+      {treatmentData.map((item, index) => (
+        <TreatmentWrapper key={index}>
+          <TreatmentOption>
+            <TreatmentImage src={item.img} />
+          </TreatmentOption>
 
-        <div className="caption-wrapper">
-          <span className="caption">Lots of Sunlight</span>
-        </div>
-      </div>
-      <div className="item-wrapper">
-        <div className="item">
-          <WaterDrop />
-        </div>
-
-        <div className="caption-wrapper">
-          <span className="caption">Once Daily</span>
-        </div>
-      </div>
-    </div>
+          <CaptionWrapper>
+            <Caption>{item.caption}</Caption>
+          </CaptionWrapper>
+        </TreatmentWrapper>
+      ))}
+    </TreatmentGroup>
   );
 };
 

@@ -1,15 +1,20 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import { Wrapper, BlogImage, BlogTitle, Description } from "./blog-card.styles";
 
-const BlogCard = ({ title, description, image }) => {
+const BlogCard = ({ title, description, image, history, match }) => {
   return (
     <Wrapper>
       <BlogImage src={image} />
-      <BlogTitle>{title}</BlogTitle>
-      <Description>{description}</Description>
+      <BlogTitle onClick={() => history.push(`${match.url}/${title}`)}>
+        {title}
+      </BlogTitle>
+      <Description>
+        {description.split(" ").splice(0, 50).join(" ").concat("...")}
+      </Description>
     </Wrapper>
   );
 };
 
-export default BlogCard;
+export default withRouter(BlogCard);

@@ -3,7 +3,7 @@ import React from "react";
 import CustomButton from "../../component/custom-buttom/custom-button.component";
 import FormInput from "../../component/form-input/form-input.component";
 
-import { ReactComponent as Plant } from "../../assets/plant.svg";
+import { ReactComponent as Plant } from "../../assets/plants/plant.svg";
 
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 

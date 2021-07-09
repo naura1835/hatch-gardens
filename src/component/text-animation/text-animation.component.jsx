@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap, Expo } from "gsap";
 import { Wrapper, SpanText } from "./text-animation.styles";
 

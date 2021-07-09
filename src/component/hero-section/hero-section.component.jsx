@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import TextAnimation from "../text-animation/text-animation.component";
 
@@ -10,7 +11,7 @@ import {
   CTAButton,
 } from "./hero-section.styles";
 
-const HeroSection = () => {
+const HeroSection = ({ history }) => {
   return (
     <Wrapper>
       <ContentWrapper>
@@ -23,10 +24,10 @@ const HeroSection = () => {
           my name is berry allen and im the fastest man alive, when i was a
           child...
         </Description>
-        <CTAButton>Shop Now</CTAButton>
+        <CTAButton onClick={() => history.push("/shop")}>Shop Now</CTAButton>
       </ContentWrapper>
     </Wrapper>
   );
 };
 
-export default HeroSection;
+export default withRouter(HeroSection);

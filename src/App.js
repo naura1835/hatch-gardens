@@ -11,6 +11,9 @@ import SignIn from "./pages/sign-in/sign-in.component";
 import Register from "./pages/register/register.component";
 import Product from "./pages/product-details/product-detail.component";
 import CheckoutPage from "./pages/checkout/checkout.component";
+import BlogPage from "./pages/blog/blog.component";
+import BlogDetails from "./component/blog-details/blog-details.component";
+import FaqsPage from "./pages/faqs/faqs.component";
 
 import Header from "./component/header/header.component";
 import Footer from "./component/footer/footer.component";
@@ -65,6 +68,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
+          <Route path={`/blog/:blogTitle`} component={BlogDetails} />
+          <Route path="/blog" component={BlogPage} />
           <Route path={`/products/:itemId`} component={Product} />
           <Route exact path="/checkout" component={CheckoutPage} />
           <Route
@@ -81,6 +86,8 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/" /> : <Register />
             }
           />
+
+          <Route exact path="/faqs" component={FaqsPage} />
         </Switch>
         <Footer />
       </div>

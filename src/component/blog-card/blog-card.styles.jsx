@@ -17,5 +17,6 @@ export const BlogImage = styled.img`
 `;
 export const BlogTitle = styled(H3)`
   line-height: 28.13px;
+  cursor: pointer;
 `;
 export const Description = styled(SmallMediumText)``;
