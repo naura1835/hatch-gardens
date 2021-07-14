@@ -3,26 +3,34 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import { ReactComponent as ShoppingCart } from "../../assets/shopping-cart.svg";
-
 import CartItem from "../cart-item/cart-item.component";
 import CustomButton from "../custom-buttom/custom-button.component";
 import { selectCartItems } from "../../redux/cart/cart.selectors";
 import { toggleCartHidden } from "../../redux/cart/cart.actions";
 
-import "./cart-dropdown.style.scss";
+import {
+  DropdownWrapper,
+  Dropdown,
+  CartItemsWrapper,
+  EmptyCart,
+  Content,
+  Title,
+  SubTitle,
+  Logo,
+  ContinueButton,
+} from "./cart-dropdown.styles";
 
 const CartDropdown = ({ cartItems, history, toggleCartHidden }) => {
   return (
-    <div className="dropdown-container">
-      <div className="dropdown">
+    <DropdownWrapper>
+      <Dropdown>
         {cartItems.length ? (
           <>
-            <div className="cart-items">
+            <CartItemsWrapper>
               {cartItems.map((cartItem) => (
                 <CartItem key={cartItem.id} item={cartItem} />
               ))}
-            </div>
+            </CartItemsWrapper>
             <CustomButton
               style={{ justifySelf: "flex-end" }}
               onClick={() => {
@@ -33,16 +41,24 @@ const CartDropdown = ({ cartItems, history, toggleCartHidden }) => {
             </CustomButton>
           </>
         ) : (
-          <div className="empty-cart">
-            <h2>OOooops...!Looks like you dont have anything</h2>
-            <Link to="/shop" onClick={toggleCartHidden}>
+          <EmptyCart>
+            <Logo src="./assets/icons/tabler_plant.svg" />
+            <Content>
+              <Title>Oops looks like your bag is empty</Title>
+              <SubTitle>Head back to continue shopping</SubTitle>
+            </Content>
+            <ContinueButton
+              onClick={() => {
+                history.push("/shop");
+                toggleCartHidden();
+              }}
+            >
               Go back to Shop
-            </Link>
-            <ShoppingCart />
-          </div>
+            </ContinueButton>
+          </EmptyCart>
         )}
-      </div>
-    </div>
+      </Dropdown>
+    </DropdownWrapper>
   );
 };
 const mapStateToProps = createStructuredSelector({

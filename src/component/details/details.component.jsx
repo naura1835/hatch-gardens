@@ -1,6 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import CustomButton from "../custom-buttom/custom-button.component";
 import Treatment from "../treatment/treatment.component";
+
+import { addItem } from "../../redux/cart/cart.actions";
 
 import {
   DetailsWrapper,
@@ -12,7 +16,9 @@ import {
   CareTipWrapper,
 } from "./details.styles";
 
-const Details = ({ name, price, treatment }) => {
+const Details = ({ item, addItem }) => {
+  const { name, price, description, treatment } = item;
+
   return (
     <DetailsWrapper>
       <PriceNameRow>
@@ -20,23 +26,28 @@ const Details = ({ name, price, treatment }) => {
         <Title>{name}</Title>
       </PriceNameRow>
       <DescriptionWrapper>
-        <Description>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque arcu
-          sem, pretium sed ornare quis, bibendum a massa. Duis varius, tellus
-          nec bibendum pulvinar, eros felis pharetra felis, venenatis facilisis
-          leo risus quis felis. Maecenas eu semper felis. Integer sit amet
-          pretium nisl.
-        </Description>
+        <Description>{description}</Description>
       </DescriptionWrapper>
       <CareTipWrapper>
-        <SubTitle>Treatment</SubTitle>
+        <SubTitle>Plant Care</SubTitle>
         <Treatment treatment={treatment} />
       </CareTipWrapper>
-      <CustomButton isGoogleSignIn style={{ width: "300px" }}>
+      <CustomButton
+        isGoogleSignIn
+        style={
+          window.innerWidth <= 478
+            ? { width: "100%", alignSelf: "center" }
+            : { width: "300px" }
+        }
+        onClick={() => addItem(item)}
+      >
         Add to cart
       </CustomButton>
     </DetailsWrapper>
   );
 };
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (item) => dispatch(addItem(item)),
+});
 
-export default Details;
+export default connect(null, mapDispatchToProps)(Details);

@@ -8,17 +8,28 @@ export const TreatmentGroup = styled.div`
   gap: 24px;
   width: 400px;
   height: 120px;
+
+  ${
+    "" /* @media (max-width: ){
+    width: 100%
+  } */
+  }
 `;
 export const TreatmentWrapper = styled.div`
   width: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 70px auto;
+  gap: 1vh;
+
+  ${
+    "" /* @media (max-width: ){
+    width: 20%;
+  } */
+  }
 `;
 export const TreatmentOption = styled.div`
-  width: 5vw;
-  height: 20vh;
+  ${"" /* width: 5vw; */}
+  height: 70px;
   background-color: #c4d6b0;
   border-radius: 10px;
   display: flex;
@@ -32,10 +43,9 @@ export const TreatmentImage = styled.img`
 `;
 export const CaptionWrapper = styled.div`
   width: 70px;
-  height: 100px;
+  height: auto;
   display: flex;
-  align-items: center;
-  margin-top: 1vh;
+  align-items: flex-start;
 `;
 export const Caption = styled(CaptionText)`
   text-align: center;

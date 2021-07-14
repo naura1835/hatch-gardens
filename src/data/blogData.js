@@ -29,7 +29,7 @@ export const blogData = [
     id: 2,
     image:
       "https://images.pexels.com/photos/6231758/pexels-photo-6231758.jpeg?cs=srgb&dl=pexels-gary-barnes-6231758.jpg&fm=jpg",
-    title: "How and when to re-pot your plants",
+    title: "How and prune your plant",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum volutpat risus vitae auctor molestie. Nunc cursus turpis elit, in viverra ante mollis nec. Maecenas congue maximus metus sed porta. Vivamus fermentum nunc non tellus placerat gravida. Fusce ac justo nec nisi ornare pharetra.",
   },

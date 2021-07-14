@@ -4,14 +4,44 @@ import { Wrapper, Image, ImageGroup, ImageItem } from "./product-image.styles";
 
 const ProductImages = ({ image }) => {
   const [activeImage, setActiveImage] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const handleTab = (index) => {
     setActiveImage(index);
   };
+  function handleTouchStart(e) {
+    setTouchStart(e.targetTouches[0].clientX);
+  }
+
+  function handleTouchMove(e) {
+    setTouchEnd(e.targetTouches[0].clientX);
+  }
+
+  function handleTouchEnd() {
+    if (touchStart - touchEnd > 75) {
+      setActiveImage(activeImage + 1);
+      if (activeImage === 3) {
+        setActiveImage(0);
+      }
+    }
+
+    if (touchStart - touchEnd < -75) {
+      setActiveImage(activeImage - 1);
+      if (activeImage === 0) {
+        setActiveImage(3);
+      }
+    }
+  }
 
   return (
     <Wrapper>
-      <Image src={image[activeImage]} />
+      <Image
+        src={image[activeImage]}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      />
       <ImageGroup>
         {image.map((img, index) => {
           const currentImg = activeImage === index ? "active" : "";

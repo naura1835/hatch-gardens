@@ -28,4 +28,16 @@
     font-weight: bold;
     color: #44633f;
   }
+  .span1,
+  .span2 {
+    height: 3px;
+    width: 32px;
+    background-color: #25251f;
+  }
+  .span1 {
+    transform: rotate(40deg) translateY(2px);
+  }
+  .span2 {
+    transform: rotate(-40deg) translateY(-2px);
+  }
 }

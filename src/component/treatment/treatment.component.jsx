@@ -21,12 +21,12 @@ const Treatment = ({ treatment }) => {
       caption: treatment.water,
     },
     {
-      img: "/assets/icons/treatment/whh_poopalt.svg",
-      caption: treatment.fertilizer,
-    },
-    {
       img: "/assets/icons/treatment/fluent_temperature-20-regular.svg",
       caption: treatment.temperature,
+    },
+    {
+      img: "/assets/icons/treatment/whh_flowerpot.svg",
+      caption: treatment.fertilizer,
     },
   ];
   return (

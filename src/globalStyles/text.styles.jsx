@@ -18,6 +18,9 @@ export const H1 = styled.h1`
   font-weight: bold;
   font-family: "Roboto";
 
+  @media (max-width: 480px) {
+    font-size: 40px;
+  }
   @media (max-width: 414px) {
     font-size: 38px;
   }
@@ -29,6 +32,7 @@ export const H2 = styled.h2`
 
   @media (max-width: 414px) {
     font-size: 24px;
+    font-weight: 600;
   }
 `;
 export const H3 = styled.h3`
