@@ -61,6 +61,13 @@ export const CartItemsWrapper = styled.div`
     background: #bfbfbf;
   }
 `;
+export const SubTotalWrapper = styled.div`
+  padding: 1vh 2vw;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 export const EmptyCart = styled.div`
   justify-self: center;
   display: flex;

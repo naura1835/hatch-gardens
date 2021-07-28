@@ -6,7 +6,7 @@ export const ProductWrapper = styled.div`
   grid-template-columns: repeat(2, 40vw);
   column-gap: 4vw;
   justify-items: start;
-  padding: 0 4vw;
+  margin: 2vh 4vw 8vh;
 
   @media (max-width: 820px) {
     display: flex;

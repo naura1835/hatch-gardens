@@ -21,7 +21,7 @@ const CollectionItem = ({ item, addItem, history }) => {
 
         <div className="details-wrapper">
           <span className="name">{name}</span>
-          <span className="price">${price}.00</span>
+          <span className="price">NGN {price}</span>
         </div>
       </div>
       <div className="button-container">

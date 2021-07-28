@@ -1,13 +1,13 @@
 .category-card {
   position: relative;
-  height: 42vh;
-  width: 40vw;
+  height: 30vh;
+  width: 100%;
   background-position: 50% 60%;
   background-size: cover;
   border-radius: 20px;
 
   &.large {
-    height: 128vh;
+    height: 92vh;
     grid-row: span 3;
     justify-self: end;
   }

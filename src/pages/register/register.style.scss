@@ -1,6 +1,5 @@
 .sign-up {
-  // margin: 2vh 5vw;
-  padding: 2vh 0 2vh 128px;
+  margin: 5vh 8vw 0;
   width: 80vw;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -10,19 +9,21 @@
 .plant {
   align-self: end;
 }
-
+// .sign-up-form {
+//   width: 80%;
+// }
 .wrapper {
   align-self: start;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-self: flex-start;
-  width: 90%;
+  width: 80%;
 }
 .option-grp {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  column-gap: 20px;
   align-items: center;
-  width: 85%;
+  width: 100%;
 }

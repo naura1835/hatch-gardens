@@ -105,7 +105,10 @@ class Register extends React.Component {
               required
             />
             <div className="option-grp">
-              <CustomButton type="submit" style={{ justifySelf: "center" }}>
+              <CustomButton
+                type="submit"
+                style={{ justifySelf: "center", width: "400px" }}
+              >
                 Sign Up
               </CustomButton>
               <Link
@@ -113,6 +116,7 @@ class Register extends React.Component {
                 style={{
                   textDecoration: "underline",
                   textUnderlineOffset: "0.41em",
+                  width: "100%",
                 }}
               >
                 Go back to Shop

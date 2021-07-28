@@ -15,7 +15,7 @@ const shopData = {
           "https://images.unsplash.com/photo-1598880940371-c756e015fea1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1400&q=80",
           "https://images.unsplash.com/photo-1625480801685-53583d6c3bc1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80",
         ],
-        price: 15,
+        price: 5000,
         treatment: {
           sunglight: "Indirect light",
           water: "Soil feels dry",
@@ -34,7 +34,7 @@ const shopData = {
           "https://images.pexels.com/photos/1034476/pexels-photo-1034476.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           "https://images.pexels.com/photos/2568458/pexels-photo-2568458.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         ],
-        price: 15,
+        price: 6000,
         treatment: {
           sunglight: "Bright light",
           water: "Soil feels dry",
@@ -53,7 +53,7 @@ const shopData = {
           "https://images.pexels.com/photos/904621/pexels-photo-904621.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           "https://images.pexels.com/photos/4299556/pexels-photo-4299556.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         ],
-        price: 15,
+        price: 4500,
         treatment: {
           sunglight: "Bright light",
           water: "When soil is dry",
@@ -72,7 +72,7 @@ const shopData = {
           "https://images.pexels.com/photos/3234638/pexels-photo-3234638.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           "https://images.pexels.com/photos/1439179/pexels-photo-1439179.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         ],
-        price: 15,
+        price: 9000,
         treatment: {
           sunglight: "bright indirect light",
           water: "very 2-3 weeks",
@@ -91,7 +91,7 @@ const shopData = {
           "https://images.pexels.com/photos/2227127/pexels-photo-2227127.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           "https://images.pexels.com/photos/4507751/pexels-photo-4507751.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         ],
-        price: 15,
+        price: 15000,
         treatment: {
           sunglight: "Bright indirect light",
           water: "Every 2 weeks",
@@ -110,7 +110,7 @@ const shopData = {
           "https://images.pexels.com/photos/1863621/pexels-photo-1863621.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
           "https://images.pexels.com/photos/1863621/pexels-photo-1863621.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         ],
-        price: 15,
+        price: 15000,
         treatment: {
           sunglight: "Few hrs of sunshine/day",
           water: "Soil is dried out",
@@ -136,7 +136,7 @@ const shopData = {
           "https://mk0flooracoi4b2ixi58.kinstacdn.com/wp-content/uploads/2020/06/ZZ-Raven.jpg",
           "https://images.unsplash.com/photo-1598531402973-61a7a963b9e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
         ],
-        price: 25,
+        price: 2500,
         treatment: {
           sunglight: "Indirect light",
           water: "Soil is dried out",
@@ -155,7 +155,7 @@ const shopData = {
           "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
           "https://images.unsplash.com/photo-1598737490942-1754b0a3e131?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=605&q=80",
         ],
-        price: 75,
+        price: 7500,
         treatment: {
           sunglight: "Bright to medium sunlight",
           water: "1-2 weeks",
@@ -174,7 +174,7 @@ const shopData = {
           "https://images.unsplash.com/photo-1600411833708-12c01f911887?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGhpbG9kZW5kcm9uJTIwc2NhbmRlbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
           "https://images.unsplash.com/photo-1594525622124-86be08198f7e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=343&q=80",
         ],
-        price: 55,
+        price: 5500,
         treatment: {
           sunglight: "Bright to medium light",
           water: "2inches of soil is dry",
@@ -193,7 +193,7 @@ const shopData = {
           "https://images.pexels.com/photos/5825382/pexels-photo-5825382.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           "https://images.pexels.com/photos/4505468/pexels-photo-4505468.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         ],
-        price: 25,
+        price: 2500,
         treatment: {
           sunglight: "Most light conditions",
           water: "When soil feels dry",
@@ -212,7 +212,7 @@ const shopData = {
           "https://images.unsplash.com/photo-1588082672429-606d1cb18af3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2hhbWFlZG9yZWElMjBlbGVnYW5zfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
           "https://images.unsplash.com/photo-1588082672352-dd3eda2f8d81?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2hhbWFlZG9yZWElMjBlbGVnYW5zfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         ],
-        price: 25,
+        price: 2500,
         treatment: {
           sunglight: "Bright, filtered sunlight",
           water: "top 1 inch of soil feels dry",
@@ -231,7 +231,7 @@ const shopData = {
           "https://images.unsplash.com/photo-1585738876562-7d008f53022a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8eXVjY2F8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
           "https://images.unsplash.com/photo-1591102527977-3531f6a4f538?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8eXVjY2F8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         ],
-        price: 25,
+        price: 2500,
         treatment: {
           sunglight: "Full sunlight/ indirect",
           water: "dries between waterings",
@@ -257,7 +257,7 @@ const shopData = {
           "https://images.pexels.com/photos/8206433/pexels-photo-8206433.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           "https://images.unsplash.com/photo-1616276595426-81d5a3cfc772?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=368&q=80",
         ],
-        price: 25,
+        price: 2500,
         treatment: {
           sunglight: "bright indirect light",
           water: "1-2 weeks",
@@ -276,7 +276,7 @@ const shopData = {
           "https://images.unsplash.com/photo-1616690248297-1ec539dd910f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=325&q=80",
           "https://images.pexels.com/photos/3698376/pexels-photo-3698376.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         ],
-        price: 45,
+        price: 4500,
         treatment: {
           sunglight: "Indirect light",
           water: "Top inch of soil feels dry.",
@@ -295,7 +295,7 @@ const shopData = {
           "https://images.unsplash.com/photo-1567331711402-509c12c41959?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHVja3klMjBiYW1ib298ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
           "https://images.unsplash.com/photo-1611137884113-d952b439f985?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bHVja3klMjBiYW1ib298ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
         ],
-        price: 35,
+        price: 3500,
         treatment: {
           sunglight: "full sunlight",
           water: "Weekly",
@@ -314,7 +314,7 @@ const shopData = {
           "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHp6JTIwcGxhbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
           "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHp6JTIwcGxhbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         ],
-        price: 45,
+        price: 4500,
         treatment: {
           sunglight: "Indirect light",
           water: "2-3 weeks",
@@ -375,7 +375,7 @@ const shopData = {
           "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
           "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
         ],
-        price: 10,
+        price: 4000,
         treatment: {
           sunglight: "moderate sunlight",
           water: "Once daily",
@@ -393,7 +393,7 @@ const shopData = {
           "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
           "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
         ],
-        price: 10,
+        price: 4000,
         treatment: {
           sunglight: "moderate sunlight",
           water: "Once daily",

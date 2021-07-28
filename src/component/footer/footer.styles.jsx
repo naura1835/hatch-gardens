@@ -2,11 +2,10 @@ import styled from "styled-components";
 import { MediumText } from "../../globalStyles/text.styles";
 
 export const Wrapper = styled.footer`
-  ${
-    "" /* position: absolute;
+  position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
-  right: 0; */
-  }
   width: 100%;
   height: 50px;
   display: flex;

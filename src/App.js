@@ -58,11 +58,13 @@ class App extends React.Component {
             ? document.body.classList.add("hide")
             : document.body.classList.remove("hide")
         }
-        style={
-          this.props.hidden
-            ? { paddingRight: scrollBarWidth }
-            : { paddingRight: 0 }
-        }
+        style={{
+          height: "100%",
+          position: "relative",
+          display: "block",
+          paddingBottom: "50px",
+          paddingRight: this.props.hidden ? scrollBarWidth : 0,
+        }}
       >
         <Header />
         <Switch>

@@ -12,9 +12,9 @@ const CartItem = ({ item, clearItem }) => {
       <div className="item-details">
         <div className="item-header">
           <span className="item-name">{name}</span>
-          <span className="total-price">${price * quantity}.00</span>
+          <span className="total-price">NGN {price * quantity}</span>
         </div>
-        <span className="price">${price}.00</span>
+        <span className="price">NGN {price}</span>
         <span className="quantity">{`Qty: ${quantity}`}</span>
         <div className="remove-item">
           <button className="remove-item-btn" onClick={() => clearItem(item)}>

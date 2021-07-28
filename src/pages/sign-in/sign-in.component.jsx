@@ -39,8 +39,8 @@ class SignIn extends React.Component {
   render() {
     return (
       <div className="sign-in">
-        <Plant className="plant"></Plant>
-        <div className="wrapper">
+        <Plant className="sign-in-plant"></Plant>
+        <div className="signin-wrapper">
           <>
             <h3>Login</h3>
             <span>
@@ -84,8 +84,6 @@ class SignIn extends React.Component {
                 Sign In With Google
               </CustomButton>
             </div>
-
-            {/* <input type="submit" value="Sign In" />    */}
           </form>
         </div>
       </div>
