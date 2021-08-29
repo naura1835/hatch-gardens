@@ -1,6 +1,7 @@
 .cart-item {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 20px;
   width: 100%;
   height: 26vh;
@@ -9,7 +10,7 @@
 
   img {
     border-radius: 10px;
-    height: 150px;
+    height: 80%;
     width: 30%;
   }
 }
@@ -18,7 +19,6 @@
   justify-self: center;
   display: flex;
   flex-direction: column;
-  height: 80%;
   width: 70%;
   gap: 5px;
 }
@@ -42,9 +42,18 @@
   font-family: "Roboto";
 }
 .remove-item {
-  margin-top: 2vh;
-  align-self: flex-end;
-  justify-self: flex-end;
+  margin-top: -1vh;
+  align-self: center;
+}
+.increment {
+  font-size: 15px;
+  outline: none;
+  border: transparent;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: fit-content;
+  height: fit-content;
+  padding: 0 2px;
 }
 .remove-item-btn {
   height: 36px;

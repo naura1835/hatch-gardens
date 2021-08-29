@@ -1,15 +1,26 @@
 .item-wrapper {
   position: relative;
+  width: 15rem;
+  height: 24rem;
 
   &:hover > .button-container > .cart-btn {
     transform: translateY(0px);
   }
+  @media (max-width: 572px) {
+    width: 13rem;
+  }
+  @media (max-width: 480px) {
+    width: 10rem;
+    height: 18rem;
+  }
 }
 .collection-item {
   position: relative;
-  width: 20vw;
+  width: 100%;
+  height: 100%;
   display: grid;
-  grid-template-rows: 44vh 13vh;
+  // grid-template-rows: 54vh 13vh;
+  grid-template-rows: 84% 13%;
   row-gap: 10px;
   &:hover > .image-wrapper > .backdrop {
     background-color: rgba(137, 141, 136, 0.35);
@@ -20,12 +31,10 @@
 }
 .image-wrapper {
   position: relative;
-  height: 44vh;
-  width: 20vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   display: inline-block;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 .image {
   height: 100%;
@@ -38,12 +47,12 @@
 .backdrop {
   position: absolute;
   top: 0;
-  height: 44vh;
-  width: 20vw;
+  height: 100%;
+  width: 100%;
   background-color: transparent;
 }
 .details-wrapper {
-  height: 13vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -61,7 +70,7 @@
 }
 .button-container {
   height: 50px;
-  width: 16vw;
+  width: 80%;
   position: absolute;
   top: 55%;
   right: 10%;
@@ -70,9 +79,16 @@
   justify-self: center;
   z-index: 2;
   overflow: hidden;
+
+  @media (max-width: 480px) {
+    top: 50%;
+    left: 10%;
+    right: 0%;
+    width: 90%;
+  }
 }
 .cart-btn {
-  width: 16vw;
+  width: 100%;
   border: none;
   background-color: #25251f;
   border-radius: 5px;
@@ -88,5 +104,8 @@
     background-color: transparent;
     border: solid 2px #25251f;
     color: #25251f;
+  }
+  @media (max-width: 480px) {
+    width: 90%;
   }
 }

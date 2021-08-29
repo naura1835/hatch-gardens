@@ -25,7 +25,7 @@ const Tabbar = function ({ history }) {
   };
 
   return (
-    <>
+    <div className="tab-view">
       {menu.map(({ id, title, linkUrl }) => {
         const currentRoute = activeButton === linkUrl ? "active" : "";
         return (
@@ -42,7 +42,7 @@ const Tabbar = function ({ history }) {
           </button>
         );
       })}
-    </>
+    </div>
   );
 };
 export default withRouter(Tabbar);

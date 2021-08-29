@@ -1,4 +1,16 @@
+.tab-view {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  overflow-x: auto;
+}
+.tab-view::-webkit-scrollbar {
+  width: 0;
+}
+
 .tabbar-button {
+  width: fit-content;
   display: flex;
   flex-direction: row;
   height: 38px;
@@ -15,6 +27,7 @@
   border: solid 1px rgba(68, 99, 63, 0.4);
   border-radius: 20px;
   outline: none;
+  white-space: nowrap;
 
   &:hover {
     cursor: pointer;

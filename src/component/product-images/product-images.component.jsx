@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Wrapper, Image, ImageGroup, ImageItem } from "./product-image.styles";
+import { Wrapper, Image, ImageGroup, ImageItem } from "./product-images.styles";
 
 const ProductImages = ({ image }) => {
   const [activeImage, setActiveImage] = useState(0);

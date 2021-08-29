@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { H1, MediumText } from "../../globalStyles/text.styles";
 
 export const HeroWrapper = styled.div`
-  background-color: #edece9;
+  background-color: #f8f7f7;
   height: 86vh;
   width: 100%;
   display: flex;

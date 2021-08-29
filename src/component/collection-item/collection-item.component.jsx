@@ -1,15 +1,39 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { gsap, Power4 } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 import { addItem } from "../../redux/cart/cart.actions";
 import "./collection-item.style.scss";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const CollectionItem = ({ item, addItem, history }) => {
   const { name, price, imageUrl } = item;
 
+  let itemRef = useRef(null);
+
+  useEffect(() => {
+    gsap.from(itemRef, {
+      scrollTrigger: {
+        trigger: itemRef,
+      },
+      duration: 0.8,
+      ease: Power4.easeOut,
+      delay: 0.2,
+      y: 25,
+      autoAlpha: 0,
+    });
+  });
+
   return (
-    <div className="item-wrapper">
+    <div
+      className="item-wrapper"
+      ref={(el) => {
+        itemRef = el;
+      }}
+    >
       <div
         className="collection-item"
         onClick={() => history.push(`/products/${name}`)}

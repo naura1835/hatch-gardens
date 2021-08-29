@@ -5,14 +5,13 @@ import { CaptionText } from "../../globalStyles/text.styles";
 export const TreatmentGroup = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: 25px;
   width: 400px;
   height: 120px;
 
-  ${
-    "" /* @media (max-width: ){
-    width: 100%
-  } */
+  @media (max-width: 427px) {
+    width: 100%;
+    gap: 0.5rem;
   }
 `;
 export const TreatmentWrapper = styled.div`
@@ -21,10 +20,8 @@ export const TreatmentWrapper = styled.div`
   grid-template-rows: 70px auto;
   gap: 1vh;
 
-  ${
-    "" /* @media (max-width: ){
-    width: 20%;
-  } */
+  @media (max-width: ) {
+    width: 4rem;
   }
 `;
 export const TreatmentOption = styled.div`

@@ -15,11 +15,16 @@ const CartItem = ({ item, clearItem }) => {
           <span className="total-price">NGN {price * quantity}</span>
         </div>
         <span className="price">NGN {price}</span>
-        <span className="quantity">{`Qty: ${quantity}`}</span>
-        <div className="remove-item">
-          <button className="remove-item-btn" onClick={() => clearItem(item)}>
-            Remove
-          </button>
+        <div className="item-header">
+          <>
+            {/* <button className="increment">+</button> */}
+            <span className="quantity">{`Qty: ${quantity}`}</span>
+          </>
+          <div className="remove-item">
+            <button className="remove-item-btn" onClick={() => clearItem(item)}>
+              Remove
+            </button>
+          </div>
         </div>
       </div>
     </div>

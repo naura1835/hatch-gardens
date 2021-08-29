@@ -25,7 +25,8 @@ const TextAnimation = () => {
           skewY: "10deg",
           rotateZ: "30deg",
           filter: "blur(10px)",
-          delay: 0.5,
+          delay: 0.2,
+          willChange: "transform",
         },
         {
           opacity: 1,
@@ -36,6 +37,7 @@ const TextAnimation = () => {
           filter: "blur(0px)",
           duration: 0.6,
           ease: Expo.easeOut,
+          willChange: "transform",
           //   delay: 0.2,
           stagger: {
             amount: 0.3,
@@ -49,6 +51,8 @@ const TextAnimation = () => {
         skewY: "10deg",
         rotateZ: "30deg",
         filter: "blur(10px)",
+
+        willChange: "transform",
         duration: 0.4,
         delay: 0.2,
         stagger: {

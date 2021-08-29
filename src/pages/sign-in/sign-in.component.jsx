@@ -8,7 +8,8 @@ import { ReactComponent as Plant } from "../../assets/plants/plant.svg";
 
 import { auth, SignInWithGoogle } from "../../firebase/firebase.utils";
 
-import "./sign-in.style.scss";
+// import "./sign-in.style.scss";
+import { Wrapper, SignInWrapper, Title, ButtonGroup } from "./sign-in.styles";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -38,11 +39,11 @@ class SignIn extends React.Component {
   };
   render() {
     return (
-      <div className="sign-in">
-        <Plant className="sign-in-plant"></Plant>
-        <div className="signin-wrapper">
+      <Wrapper>
+        <Plant />
+        <SignInWrapper>
           <>
-            <h3>Login</h3>
+            <Title>Login</Title>
             <span>
               Don't have an account?&nbsp;
               <Link
@@ -74,7 +75,7 @@ class SignIn extends React.Component {
               label="Password"
               required
             />
-            <div className="button-group">
+            <ButtonGroup>
               <CustomButton type="submit">Sign In</CustomButton>
               <CustomButton
                 type="button"
@@ -83,10 +84,10 @@ class SignIn extends React.Component {
               >
                 Sign In With Google
               </CustomButton>
-            </div>
+            </ButtonGroup>
           </form>
-        </div>
-      </div>
+        </SignInWrapper>
+      </Wrapper>
     );
   }
 }

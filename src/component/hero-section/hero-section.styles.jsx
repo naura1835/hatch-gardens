@@ -5,6 +5,7 @@ import { Display, MediumText } from "../../globalStyles/text.styles";
 import heroImg from "../../images/pawel-czerwinski-lWBZ01XRRoI-unsplash.jpg";
 
 export const Wrapper = styled.div`
+  justify-self: start;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,11 +15,11 @@ export const Wrapper = styled.div`
   background-size: cover;
 `;
 export const ContentWrapper = styled.div`
+  width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   row-gap: 20px;
-  padding: 2vh;
   margin-left: 4vw;
   margin-right: 4vw;
 `;

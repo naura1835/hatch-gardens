@@ -2,33 +2,24 @@ import styled from "styled-components";
 
 import { H2, MediumText } from "../../globalStyles/text.styles";
 
-export const DropdownWrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  right: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 3;
-
-  &::before {
-    content: "";
-    position: relative;
-    top: 0;
-    right: 0;
+export const DropdownWrapper = styled.div.attrs((props) => ({
+  className: props.className,
+}))`
+  &.overlayActive {
     width: 100vw;
     height: 100vh;
-    background-color: #313942;
-    opacity: 0.2;
-    z-index: 3 !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 3;
   }
 `;
 export const Dropdown = styled.div`
   height: 100vh;
-  width: 40vw;
+  width: 31.25rem;
   background-color: #edece9;
-  position: absolute;
-  right: 0;
+  position: fixed;
   top: 0;
   z-index: 3;
   display: flex;
@@ -37,16 +28,24 @@ export const Dropdown = styled.div`
   gap: 3vh;
   padding-top: 10vh;
   padding-bottom: 5vh;
-  padding-right: 2vw;
-  position: fixed;
+  padding-right: 1vw;
+  transition: 0.5s ease-out;
+
+  @media (min-width: 551px) {
+    right: 0;
+  }
+  @media (max-width: 550px) {
+    width: 100vw;
+  }
 `;
 export const CartItemsWrapper = styled.div`
   overflow: auto;
   height: 80vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 4vh;
-  padding: 0 2vw;
+  padding: 3rem 1.5rem 2.5rem;
 
   &::-webkit-scrollbar {
     width: 5px;
@@ -75,7 +74,7 @@ export const EmptyCart = styled.div`
   justify-content: center;
   align-items: center;
   height: 500px;
-  width: 414px;
+  width: 100%;
   ${"" /* padding: 2vh 2vw 0 2vw; */}
 `;
 export const Logo = styled.img`
@@ -88,7 +87,8 @@ export const Content = styled.div`
   align-items: center;
   gap: 14px;
   height: 134px;
-  width: 414px;
+  width: 100%;
+  padding: 0 4vw;
 `;
 export const Title = styled(H2)`
   font-family: Arial, Helvetica, sans-serif;

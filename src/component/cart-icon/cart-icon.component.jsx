@@ -16,11 +16,7 @@ const CartIcon = ({ toggleCartHidden, hidden, itemCount }) => {
   return (
     <div className="icon" onClick={toggleCartHidden}>
       {hidden ? (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {/* <Icon icon={lineOutlined} className="cart-icon" /> */}
-          <span className="span1"></span>
-          <span className="span2"></span>
-        </div>
+        <div className="close-btn"></div>
       ) : (
         <>
           <Icon icon={bxCart} className="cart-icon" />

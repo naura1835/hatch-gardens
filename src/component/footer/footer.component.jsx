@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ReactComponent as Instagram } from "../../assets/icons/akar-icons_instagram-fill.svg";
+import { ReactComponent as Email } from "../../assets/icons/carbon_email.svg";
 
 import {
   Wrapper,
@@ -19,7 +21,14 @@ const Footer = () => {
           <FooterLink>FAQs</FooterLink>
         </Link>
       </FooterLinkGroup>
-      <SocialMediaGroup></SocialMediaGroup>
+      <SocialMediaGroup>
+        <Link to="">
+          <Instagram />
+        </Link>
+        <Link to="">
+          <Email />
+        </Link>
+      </SocialMediaGroup>
     </Wrapper>
   );
 };

@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   row-gap: 16px;
 
   @media (max-width: 820px) {
-    height: 70vh;
+    height: 32rem;
   }
 `;
 export const Image = styled.img`
@@ -33,15 +33,11 @@ export const ImageGroup = styled.div`
 
   @media (max-width: 820px) {
     position: absolute;
-    bottom: 20vh;
-    left: 2vw;
+    top: 34rem;
+    left: 6vw;
     width: auto;
-    gap: 5px;
-    width: 192px;
-  }
-
-  @media (max-width: 445px) {
-    bottom: 18vh;
+    gap: 0.31rem;
+    width: 16.31rem;
   }
 `;
 export const ImageItem = styled.img.attrs((props) => ({
@@ -61,10 +57,7 @@ export const ImageItem = styled.img.attrs((props) => ({
   }
   @media (max-width: 820px) {
     border-radius: 0;
-    height: 10vh;
-    width: 25%;
-  }
-  @media (max-width: 820px) {
-    height: 8vh;
+    height: 4rem;
+    width: 4rem;
   }
 `;

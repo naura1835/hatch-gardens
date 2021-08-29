@@ -15,9 +15,9 @@ const ShopPage = ({ match, history, content }) => {
   return (
     <div className="shop">
       <HeroWrapperSection {...content} />
-      <div className="tab-view">
+      <>
         <Tabbar />
-      </div>
+      </>
       <Route exact path={`${match.path}`} component={CollectionsOverview} />
       <Route
         exact

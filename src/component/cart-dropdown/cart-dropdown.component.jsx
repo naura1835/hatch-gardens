@@ -2,11 +2,11 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { PaystackButton } from "react-paystack";
 
 import CartItem from "../cart-item/cart-item.component";
 import CustomButton from "../custom-buttom/custom-button.component";
 import {
+  selectCartHidden,
   selectCartItems,
   selectCartSubtotal,
 } from "../../redux/cart/cart.selectors";
@@ -25,36 +25,18 @@ import {
   ContinueButton,
 } from "./cart-dropdown.styles";
 
-const config = {
-  reference: new Date().getTime(),
-  email: "user@example.com",
-  amount: 20000,
-  publicKey: "pk_test_fd63cd4948fbf49a11f0164e16bd465eaa01b00a",
-};
-
-const CartDropdown = ({ cartItems, history, toggleCartHidden, subtotal }) => {
-  const handlePaystackSuccessAction = (reference) => {
-    // Implementation for whatever you want to do with reference and after success call.
-    console.log(reference);
-  };
-
-  // you can call this function anything
-  const handlePaystackCloseAction = () => {
-    // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log("closed");
-  };
-
-  const componentProps = {
-    ...config,
-    text: "Paystack Button Implementation",
-    amount: subtotal * 100,
-    onSuccess: (reference) => handlePaystackSuccessAction(reference),
-    onClose: handlePaystackCloseAction,
-  };
-
+const CartDropdown = ({
+  cartItems,
+  hidden,
+  history,
+  toggleCartHidden,
+  subtotal,
+  myStyle,
+}) => {
+  const overlay = hidden ? "overlayActive" : "";
   return (
-    <DropdownWrapper>
-      <Dropdown>
+    <DropdownWrapper className={`${overlay}`}>
+      <Dropdown style={myStyle}>
         {cartItems.length ? (
           <>
             <CartItemsWrapper>
@@ -68,8 +50,6 @@ const CartDropdown = ({ cartItems, history, toggleCartHidden, subtotal }) => {
               </SubTitle>
               <SubTitle>NGN {subtotal}</SubTitle>
             </SubTotalWrapper>
-
-            {/* <PaystackButton className="paystack-button" {...componentProps} /> */}
             <CustomButton
               style={{ justifySelf: "flex-end" }}
               onClick={() => {
@@ -104,6 +84,7 @@ const CartDropdown = ({ cartItems, history, toggleCartHidden, subtotal }) => {
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
   subtotal: selectCartSubtotal,
+  hidden: selectCartHidden,
 });
 const mapDispatchToProps = (dispatch) => ({
   toggleCartHidden: () => dispatch(toggleCartHidden()),

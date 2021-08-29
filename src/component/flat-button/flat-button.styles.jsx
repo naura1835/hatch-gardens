@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ButtonWrapper = styled.button`
   width: fit-content;
+  height: fit-content;
   max-width: 180px;
   font-size: 15px;
   font-family: "Roboto";
@@ -12,7 +13,7 @@ export const ButtonWrapper = styled.button`
   flex-direction: column;
   justify-content: center;
   padding: 10px 18px 10px 18px;
-  background-color: #edece9;
+  background-color: #dfdedd;
   border-radius: 30px;
   border: none;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1),

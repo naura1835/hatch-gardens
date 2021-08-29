@@ -9,6 +9,7 @@ export const DetailsWrapper = styled.section`
   gap: 28px;
   @media (max-width: 820px) {
     padding: 4vw;
+    width: 100%;
   }
 `;
 export const PriceNameRow = styled.div`

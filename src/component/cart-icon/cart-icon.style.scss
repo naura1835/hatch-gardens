@@ -11,6 +11,27 @@
     width: 28px;
     height: 28px;
   }
+  .close-btn {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    margin-left: 6vw;
+
+    &::before,
+    &::after {
+      background-color: #000;
+      content: "";
+      height: 2px;
+      width: 20px;
+      position: absolute;
+      left: 0;
+      top: 10px;
+      transform: rotate(45deg);
+    }
+    &::before {
+      transform: rotate(-45deg);
+    }
+  }
   .circle {
     position: absolute;
     top: 5px;

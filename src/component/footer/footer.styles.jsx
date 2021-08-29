@@ -29,6 +29,7 @@ export const SocialMediaGroup = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 export const FooterLink = styled(MediumText)`
   cursor: pointer;
