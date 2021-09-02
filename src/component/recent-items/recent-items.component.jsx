@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { gsap, Power3 } from "gsap";
 
 import CollectionItem from "../collection-item/collection-item.component";
 import { selectRecentForPreview } from "../../redux/shop/shop.selectors";

@@ -6,7 +6,6 @@ import { faqsData } from "../../data/faqsData";
 import { Wrapper, Title } from "./faqs.styles";
 
 const FaqsPage = () => {
-  console.log("georgia");
   return (
     <Wrapper>
       <Title>FAQs</Title>

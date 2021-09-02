@@ -20,18 +20,24 @@ export const MainText = styled(BodyMainText)`
   }
 `;
 export const ItemList = styled.div`
-  justify-self: center;
-  width: 100%;
-  padding: 0 20px;
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(24vw, 1fr));
-  justify-items: center;
-  column-gap: 30px;
-  row-gap: 10px;
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 50px;
+  row-gap: 40px;
+  margin-bottom: 44px;
 
-  @media (max-width: 480px) {
-    ${"" /* column-gap: 10px; */}
-    padding: 0 18px;
+  @media (max-width: 1024px) {
+    width: 90vw;
+  }
+  @media (max-width: 856px) {
+    width: 96vw;
+    column-gap: 20px;
+  }
+  @media (max-width: 572px) {
+    column-gap: 4vw;
+    margin-left: -3vw;
   }
 `;

@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { Icon, InlineIcon } from "@iconify/react";
+import { Icon } from "@iconify/react";
 import bxCart from "@iconify/icons-bx/bx-cart";
-import lineOutlined from "@iconify/icons-ant-design/line-outlined";
 
 import "./cart-icon.style.scss";
 import { toggleCartHidden } from "../../redux/cart/cart.actions";

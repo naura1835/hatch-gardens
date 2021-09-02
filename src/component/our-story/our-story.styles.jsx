@@ -26,6 +26,7 @@ export const StoryWrapper = styled.div`
   display: grid;
   height: fit-content;
   align-self: end;
+  row-gap: 20px;
 `;
 export const PlantImage = styled.img`
   align-self: center;

@@ -6,11 +6,10 @@ import "./category-card.style.scss";
 function CategoryCard({ title, imageUrl, size, linkUrl, history, match }) {
   return (
     <div
-      className={`${size} category-card`}
+      // className={`${size} category-card`}
+      className="category-card"
       style={{ backgroundImage: `url(${imageUrl})` }}
-      // imageUrl={imageUrl}
       onClick={() => history.push(`${match.url}${linkUrl}`)}
-      //i added shop, in the tutorials he didnt
     >
       <div className="category-content">
         <p className="p">{title}</p>

@@ -26,11 +26,18 @@ const Header = ({ currentUser, hidden }) => {
     const secondMenuItem = firstMenuItem.nextSibling;
     const thirdMenuItem = secondMenuItem.nextSibling;
     const fourthMenuItem = thirdMenuItem.nextSibling;
+    const fifthMenuItem = fourthMenuItem.nextSibling;
 
     if (window.innerWidth <= 550) {
       if (menu) {
         gsap.to(
-          [firstMenuItem, secondMenuItem, thirdMenuItem, fourthMenuItem],
+          [
+            firstMenuItem,
+            secondMenuItem,
+            thirdMenuItem,
+            fourthMenuItem,
+            fifthMenuItem,
+          ],
           {
             x: 0,
             autoAlpha: 1,
@@ -44,7 +51,13 @@ const Header = ({ currentUser, hidden }) => {
         );
       } else {
         gsap.to(
-          [fourthMenuItem, thirdMenuItem, secondMenuItem, firstMenuItem],
+          [
+            fourthMenuItem,
+            thirdMenuItem,
+            secondMenuItem,
+            firstMenuItem,
+            fifthMenuItem,
+          ],
           {
             x: -35,
             autoAlpha: 0,
@@ -87,26 +100,57 @@ const Header = ({ currentUser, hidden }) => {
             }}
           ></div>
         </div>
-        <Link className="item" to="/about">
-          About
-        </Link>
-        <Link className="item" to="/shop">
-          Shop
-        </Link>
-        <Link className="item" to="/blog">
-          Blog
-        </Link>
-        <Link className="item" to="/faqs">
-          FAQs
-        </Link>
+        <div
+          onClick={() => {
+            setMenuActive(false);
+          }}
+          className="item"
+        >
+          <Link to="/about">About</Link>
+        </div>
+        <div
+          onClick={() => {
+            setMenuActive(false);
+          }}
+          className="item"
+        >
+          <Link to="/shop">Shop</Link>
+        </div>
+        <div
+          onClick={() => {
+            setMenuActive(false);
+          }}
+          className="item"
+        >
+          <Link to="/blog">Blog</Link>
+        </div>
+        <div
+          onClick={() => {
+            setMenuActive(false);
+          }}
+          className="item"
+        >
+          <Link to="/faqs">FAQs</Link>
+        </div>
         {currentUser ? (
-          <div className="item" onClick={() => auth.signOut()}>
+          <div
+            className="item"
+            onClick={() => {
+              auth.signOut();
+              setMenuActive(false);
+            }}
+          >
             Sign Out
           </div>
         ) : (
-          <Link className="item" to="/signin">
-            Sign In
-          </Link>
+          <div
+            onClick={() => {
+              setMenuActive(false);
+            }}
+            className="item"
+          >
+            <Link to="/signin">Sign In</Link>
+          </div>
         )}
       </div>
       <div className="icon-group">

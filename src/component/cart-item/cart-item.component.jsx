@@ -8,7 +8,7 @@ const CartItem = ({ item, clearItem }) => {
   const { imageUrl, name, price, quantity } = item;
   return (
     <div className="cart-item">
-      <img src={imageUrl[0]} alt={`${name} picture`} />
+      <img src={imageUrl[0]} alt={`${name}`} />
       <div className="item-details">
         <div className="item-header">
           <span className="item-name">{name}</span>
