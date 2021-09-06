@@ -5,15 +5,18 @@ export const Wrapper = styled.div`
   width: 100%;
   display: grid;
   grid-template-rows: repeat(2, auto);
-  padding: 0 5vw;
+  margin: 0 5vw;
   row-gap: 20px;
+  justify-content: center;
 `;
 export const Title = styled(BodyIntroText)`
   text-transform: uppercase;
+  padding-left: 2vw;
 `;
 export const MainText = styled(BodyMainText)`
   width: 75ch;
   font-family: Arial, Helvetica, sans-serif;
+  padding-left: 2vw;
 
   @media (max-width: 800px) {
     width: 100%;

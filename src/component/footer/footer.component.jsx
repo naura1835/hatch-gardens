@@ -8,6 +8,7 @@ import {
   FooterLinkGroup,
   FooterLink,
   SocialMediaGroup,
+  CopyRight,
 } from "./footer.styles";
 
 const Footer = () => {
@@ -29,6 +30,7 @@ const Footer = () => {
           <Email />
         </Link>
       </SocialMediaGroup>
+      <CopyRight>&copy; 2020, Zaytun Foundation, All Rights Reserved</CopyRight>
     </Wrapper>
   );
 };
