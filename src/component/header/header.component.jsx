@@ -92,7 +92,15 @@ const Header = ({ currentUser, hidden }) => {
         }}
       >
         <div className="menu-header">
-          <h2 className="mobile-logo">Logo</h2>
+          <div
+            onClick={() => {
+              setMenuActive(false);
+            }}
+          >
+            <Link to="/" className="mobile-logo">
+              Logo
+            </Link>
+          </div>
           <div
             className="mobile-close-nav-btn"
             onClick={() => {

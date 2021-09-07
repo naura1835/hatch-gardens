@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import HeroWrapperSection from "../../component/hero-wrapper/hero-wrapper.component";
 import BlogCard from "../../component/blog-card/blog-card.component";
@@ -8,6 +8,9 @@ import { blogData } from "../../data/blogData";
 import { Wrapper, BlogWrapper } from "./blog.styles";
 
 const BlogPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <Wrapper>
       <HeroWrapperSection

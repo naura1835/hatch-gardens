@@ -2,10 +2,9 @@ import styled from "styled-components";
 import { BodyIntroText, BodyMainText } from "../../globalStyles/text.styles";
 
 export const Wrapper = styled.div`
-  width: 100%;
   display: grid;
   grid-template-rows: repeat(2, auto);
-  margin: 0 5vw;
+  padding: 4vh 6vw;
   row-gap: 20px;
   justify-content: center;
 `;

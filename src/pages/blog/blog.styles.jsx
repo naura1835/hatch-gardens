@@ -7,7 +7,8 @@ export const Wrapper = styled.div`
 `;
 export const BlogWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
   gap: 20px;
+  row-gap: 50px;
   padding: 4vw;
 `;

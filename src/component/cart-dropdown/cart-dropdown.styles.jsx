@@ -27,7 +27,7 @@ export const Dropdown = styled.div`
   align-items: center;
   gap: 3vh;
   padding-top: 10vh;
-  padding-bottom: 5vh;
+  padding-bottom: 10vh;
   padding-right: 1vw;
   transition: 0.5s ease-out;
 
@@ -98,7 +98,8 @@ export const Title = styled(H2)`
 export const SubTitle = styled(MediumText)``;
 export const ContinueButton = styled.button`
   margin-top: 58px;
-  width: 300px;
+  width: auto;
+  padding: 2vh 4vw;
   height: 62px;
   background-color: #25251f;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);

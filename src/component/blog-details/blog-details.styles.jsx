@@ -9,7 +9,11 @@ export const Wrapper = styled.div`
   row-gap: 46px;
 `;
 export const BlogTitle = styled(H1)`
-  width: 620px;
+  width: 30ch;
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 export const BlogImage = styled.img`
   width: 100%;
@@ -18,7 +22,7 @@ export const BlogImage = styled.img`
   object-position: center;
 `;
 export const DescriptionWrapper = styled.div`
-  width: 888px;
+  width: 80vw;
   align-self: center;
 `;
 export const BlogDescription = styled(MediumText)`

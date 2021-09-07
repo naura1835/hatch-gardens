@@ -7,7 +7,7 @@ const BlogCard = ({ title, description, image, history, match }) => {
   return (
     <Wrapper>
       <BlogImage src={image} />
-      <BlogTitle onClick={() => history.push(`${match.url}/${title}`)}>
+      <BlogTitle onClick={() => history.push(`blog/${title}`)}>
         {title}
       </BlogTitle>
       <Description>

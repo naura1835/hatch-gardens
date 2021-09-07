@@ -4,7 +4,6 @@ import { MediumText } from "../../globalStyles/text.styles";
 export const Wrapper = styled.footer`
   position: absolute;
   width: 100%;
-  ${"" /* height: 50px; */}
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-areas:
@@ -20,6 +19,7 @@ export const Wrapper = styled.footer`
     height: 16rem;
     display: flex;
     flex-direction: column;
+    padding: 2vh 4vw;
   }
 `;
 export const FooterLinkGroup = styled.div`

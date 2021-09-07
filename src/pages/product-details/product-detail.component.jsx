@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
@@ -13,6 +13,9 @@ import {
 } from "./product-detail.styles";
 
 const Product = ({ match, products }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <>
       {products.map((product) =>
