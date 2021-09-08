@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { blogData } from "../../data/blogData";
 
@@ -11,7 +11,9 @@ import {
 } from "./blog-details.styles";
 
 const BlogDetails = ({ match }) => {
-  console.log(match);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <Wrapper>
       {blogData

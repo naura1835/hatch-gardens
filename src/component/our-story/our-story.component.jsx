@@ -18,7 +18,6 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 const OurStory = ({ history }) => {
-  console.log(history);
   let about = useRef(null);
   let button = useRef(null);
 
@@ -28,7 +27,6 @@ const OurStory = ({ history }) => {
         gsap.to(about, {
           scrollTrigger: {
             trigger: about.children[0],
-            // start: "top center+=100",
             toggleActions: "play none none reverse",
           },
           duration: 0.8,

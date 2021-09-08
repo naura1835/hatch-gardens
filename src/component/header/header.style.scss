@@ -14,12 +14,17 @@
   }
 }
 .logo-container {
-  height: 100%;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  .logo {
+    width: 100%;
+    height: 100%;
+  }
 
   @media (max-width: 550px) {
     grid-area: logo;
@@ -68,6 +73,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  overflow-y: hidden;
 
   @media (min-width: 551px) {
     .item {

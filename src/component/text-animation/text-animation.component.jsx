@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap, Expo } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
 import { Wrapper, SpanText } from "./text-animation.styles";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const TextAnimation = () => {
   let arrRefs = useRef([]);
@@ -81,7 +85,16 @@ const TextAnimation = () => {
         //   }
         // }
       });
+    // ScrollTrigger.create({
+    //   trigger: "#text-animation",
+    //   animation: timeline,
+    //   start: "top center",
+    //   end: "bottom 100px",
+    //   markers: true,
+    //   toggleActions: "play pause resume none",
+    // });
   });
+
   const addToRefs = (el) => {
     if (el && !arrRefs.current.includes(el)) {
       arrRefs.current.push(el);
@@ -89,7 +102,7 @@ const TextAnimation = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper id="text-animation">
       {items.map((item, index) => (
         <SpanText key={index} ref={addToRefs}>
           {item}

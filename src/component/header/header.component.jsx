@@ -10,7 +10,7 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 
-// import { ReactComponent as Logo } from "../../assets/logo.svg";
+// import { ReactComponent as Logo } from "/assets/logo.svg";
 
 import "./header.style.scss";
 import HamburgerMenu from "../hamburger-menu/hamburger-menu.component";
@@ -75,8 +75,8 @@ const Header = ({ currentUser, hidden }) => {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
-        {/* <Logo className="logo" /> */}
-        <h2 className="logo">Logo</h2>
+        <img src="/assets/Group 23.svg" className="logo" />
+        {/* <h2 className="logo">Logo</h2> */}
       </Link>
       <HamburgerMenu
         className="menu"
@@ -97,8 +97,8 @@ const Header = ({ currentUser, hidden }) => {
               setMenuActive(false);
             }}
           >
-            <Link to="/" className="mobile-logo">
-              Logo
+            <Link className="logo-container" to="/">
+              <img src="/assets/Group 23.svg" className="logo" />
             </Link>
           </div>
           <div

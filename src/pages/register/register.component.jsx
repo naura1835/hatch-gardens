@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import CustomButton from "../../component/custom-buttom/custom-button.component";
 import FormInput from "../../component/form-input/form-input.component";
@@ -7,8 +8,7 @@ import { ReactComponent as Plant } from "../../assets/plants/plant.svg";
 
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 
-import "./register.style.scss";
-import { Link } from "react-router-dom";
+import { Wrapper, SignUpWrapper, OptionGroup } from "./register.styles";
 
 class Register extends React.Component {
   constructor(props) {
@@ -67,9 +67,9 @@ class Register extends React.Component {
     const { displayName, email, password, confirmPassword } = this.state;
 
     return (
-      <div className="sign-up">
-        <Plant className="plant"></Plant>
-        <div className="wrapper">
+      <Wrapper>
+        <Plant />
+        <SignUpWrapper>
           <h3>Create account</h3>
           <form className="sign-up-form" onSubmit={this.handleSubmit}>
             <FormInput
@@ -104,7 +104,7 @@ class Register extends React.Component {
               label="Confirm Password"
               required
             />
-            <div className="option-grp">
+            <OptionGroup>
               <CustomButton
                 type="submit"
                 style={{ justifySelf: "center", width: "400px" }}
@@ -117,14 +117,15 @@ class Register extends React.Component {
                   textDecoration: "underline",
                   textUnderlineOffset: "0.41em",
                   width: "100%",
+                  fontSize: "17px",
                 }}
               >
                 Go back to Shop
               </Link>
-            </div>
+            </OptionGroup>
           </form>
-        </div>
-      </div>
+        </SignUpWrapper>
+      </Wrapper>
     );
   }
 }
