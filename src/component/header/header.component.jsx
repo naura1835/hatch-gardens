@@ -98,7 +98,11 @@ const Header = ({ currentUser, hidden }) => {
             }}
           >
             <Link className="logo-container" to="/">
-              <img src="/assets/Group 23.svg" className="logo" />
+              <img
+                src="/assets/Group 23.svg"
+                className="logo"
+                alt="hatch garden logo"
+              />
             </Link>
           </div>
           <div
