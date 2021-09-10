@@ -5,7 +5,20 @@ import { CaptionText, MediumText } from "../../globalStyles/text.styles";
 export const CategoryContent = styled.div`
   display: none;
 `;
-export const CategoryCardWrapper = styled.div`
+export const CategoryCardWrapper = styled.div.attrs((props) => ({
+  className: props.className,
+}))`
+  @media (max-width: 1024px) {
+    &.last {
+      display: none;
+    }
+  }
+  @media (max-width: 768px) {
+    &.last {
+      display: block;
+    }
+  }
+
   position: relative;
   height: 20rem;
   width: 100%;

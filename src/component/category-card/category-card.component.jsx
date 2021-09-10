@@ -8,11 +8,12 @@ import {
   ViewMore,
 } from "./category-card.styles";
 
-function CategoryCard({ title, imageUrl, size, linkUrl, history, match }) {
+function CategoryCard({ title, imageUrl, value, linkUrl, history, match }) {
   return (
     <CategoryCardWrapper
       style={{ backgroundImage: `url(${imageUrl})` }}
       onClick={() => history.push(`${match.url}${linkUrl}`)}
+      className={`${value}`}
     >
       <CategoryContent>
         <Title>{title}</Title>
