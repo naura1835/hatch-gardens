@@ -30,7 +30,7 @@ const Footer = () => {
           <Email />
         </Link>
       </SocialMediaGroup>
-      <CopyRight>&copy; 2020, Zaytun Foundation, All Rights Reserved</CopyRight>
+      <CopyRight>&copy; 2021, Hatch Gardens, All Rights Reserved</CopyRight>
     </Wrapper>
   );
 };
