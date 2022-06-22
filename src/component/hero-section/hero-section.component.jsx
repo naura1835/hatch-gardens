@@ -11,23 +11,24 @@ import {
   CTAButton,
 } from "./hero-section.styles";
 
-const HeroSection = ({ history }) => {
+const HeroSection = () => {
+  //{ history }
   return (
     <Wrapper>
       <ContentWrapper>
         <Title>
-          Home for
-          <br />
-          <TextAnimation /> plants.
+          Home for plants
+          {/* <br /> */}
+          {/* <TextAnimation /> plants. */}
         </Title>
         <Description>
           my name is berry allen and im the fastest man alive, when i was a
           child...
         </Description>
-        <CTAButton onClick={() => history.push("/shop")}>Shop Now</CTAButton>
+        {/* <CTAButton onClick={() => history.push("/shop")}>Shop Now</CTAButton> */}
       </ContentWrapper>
     </Wrapper>
   );
 };
 
-export default withRouter(HeroSection);
+export default HeroSection; //withRouter(

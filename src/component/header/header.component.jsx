@@ -14,6 +14,7 @@ import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 import "./header.style.scss";
 import HamburgerMenu from "../hamburger-menu/hamburger-menu.component";
+import { Outlet } from "react-router-dom";
 
 const Header = ({ currentUser, hidden }) => {
   const [menuActive, setMenuActive] = useState(false);
@@ -73,109 +74,111 @@ const Header = ({ currentUser, hidden }) => {
   });
 
   return (
-    <div className="header">
-      <Link className="logo-container" to="/">
-        <img src="/assets/Group 23.svg" className="logo" />
-        {/* <h2 className="logo">Logo</h2> */}
-      </Link>
-      <HamburgerMenu
-        className="menu"
-        handleMenu={() => {
-          setMenuActive(true);
-        }}
-      />
+    <>
+      <div className="header">
+        <Link className="logo-container" to="/">
+          <img src="/assets/Group 23.svg" className="logo" />
+        </Link>
+        <HamburgerMenu
+          className="menu"
+          handleMenu={() => {
+            setMenuActive(true);
+          }}
+        />
 
-      <div
-        className={`menu-items ${menu}`}
-        ref={(el) => {
-          menuItems = el;
-        }}
-      >
-        <div className="menu-header">
-          <div
-            onClick={() => {
-              setMenuActive(false);
-            }}
-          >
-            <Link className="logo-container" to="/">
-              <img
-                src="/assets/Group 23.svg"
-                className="logo"
-                alt="hatch garden logo"
-              />
-            </Link>
+        <div
+          className={`menu-items ${menu}`}
+          ref={(el) => {
+            menuItems = el;
+          }}
+        >
+          <div className="menu-header">
+            <div
+              onClick={() => {
+                setMenuActive(false);
+              }}
+            >
+              <Link className="logo-container" to="/">
+                <img
+                  src="/assets/Group 23.svg"
+                  className="logo"
+                  alt="hatch garden logo"
+                />
+              </Link>
+            </div>
+            <div
+              className="mobile-close-nav-btn"
+              onClick={() => {
+                setMenuActive(false);
+              }}
+            ></div>
           </div>
-          <div
-            className="mobile-close-nav-btn"
-            onClick={() => {
-              setMenuActive(false);
-            }}
-          ></div>
-        </div>
-        <div
-          onClick={() => {
-            setMenuActive(false);
-          }}
-          className="item"
-        >
-          <Link to="/about">About</Link>
-        </div>
-        <div
-          onClick={() => {
-            setMenuActive(false);
-          }}
-          className="item"
-        >
-          <Link to="/shop">Shop</Link>
-        </div>
-        <div
-          onClick={() => {
-            setMenuActive(false);
-          }}
-          className="item"
-        >
-          <Link to="/blog">Blog</Link>
-        </div>
-        <div
-          onClick={() => {
-            setMenuActive(false);
-          }}
-          className="item"
-        >
-          <Link to="/faqs">FAQs</Link>
-        </div>
-        {currentUser ? (
-          <div
-            className="item"
-            onClick={() => {
-              auth.signOut();
-              setMenuActive(false);
-            }}
-          >
-            Sign Out
-          </div>
-        ) : (
           <div
             onClick={() => {
               setMenuActive(false);
             }}
             className="item"
           >
-            <Link to="/signin">Sign In</Link>
+            <Link to="/about">About</Link>
           </div>
-        )}
+          <div
+            onClick={() => {
+              setMenuActive(false);
+            }}
+            className="item"
+          >
+            <Link to="/shop">Shop</Link>
+          </div>
+          <div
+            onClick={() => {
+              setMenuActive(false);
+            }}
+            className="item"
+          >
+            <Link to="/blog">Blog</Link>
+          </div>
+          <div
+            onClick={() => {
+              setMenuActive(false);
+            }}
+            className="item"
+          >
+            <Link to="/faqs">FAQs</Link>
+          </div>
+          {currentUser ? (
+            <div
+              className="item"
+              onClick={() => {
+                auth.signOut();
+                setMenuActive(false);
+              }}
+            >
+              Sign Out
+            </div>
+          ) : (
+            <div
+              onClick={() => {
+                setMenuActive(false);
+              }}
+              className="item"
+            >
+              <Link to="/signin">Sign In</Link>
+            </div>
+          )}
+        </div>
+        <div className="icon-group">
+          <CartIcon />
+        </div>
+        <CartDropdown
+          myStyle={
+            hidden
+              ? { transform: "translateX(0)" }
+              : { transform: "translateX(100%)" }
+          }
+        />
       </div>
-      <div className="icon-group">
-        <CartIcon />
-      </div>
-      <CartDropdown
-        myStyle={
-          hidden
-            ? { transform: "translateX(0)" }
-            : { transform: "translateX(100%)" }
-        }
-      />
-    </div>
+      <Outlet />
+    </>
   );
 };
 const mapStateToProps = createStructuredSelector({

@@ -7,7 +7,8 @@ import { blogData } from "../../data/blogData";
 
 import { Wrapper, Title, BlogGroup } from "./blog-section.styles";
 
-const BlogSection = ({ history }) => {
+const BlogSection = () => {
+  //{ history }
   return (
     <Wrapper>
       <Title>From The Blog</Title>
@@ -16,9 +17,9 @@ const BlogSection = ({ history }) => {
           <BlogCard key={id} {...otherProps} />
         ))}
       </BlogGroup>
-      <FlatButton onClick={() => history.push(`/blog`)}>View More</FlatButton>
+      {/* <FlatButton onClick={() => history.push(`/blog`)}>View More</FlatButton> */}
     </Wrapper>
   );
 };
 
-export default withRouter(BlogSection);
+export default BlogSection; //withRouter(

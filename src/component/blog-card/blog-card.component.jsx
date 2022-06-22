@@ -3,11 +3,13 @@ import { withRouter } from "react-router-dom";
 
 import { Wrapper, BlogImage, BlogTitle, Description } from "./blog-card.styles";
 
-const BlogCard = ({ title, description, image, history, match }) => {
+const BlogCard = ({ title, description, image }) => {
+  //history, match
   return (
     <Wrapper>
       <BlogImage src={image} />
-      <BlogTitle onClick={() => history.push(`blog/${title}`)}>
+      <BlogTitle>
+        {/* onClick={() => history.push(`blog/${title}`)}> */}
         {title}
       </BlogTitle>
       <Description>
@@ -17,4 +19,4 @@ const BlogCard = ({ title, description, image, history, match }) => {
   );
 };
 
-export default withRouter(BlogCard);
+export default BlogCard; //withRouter(

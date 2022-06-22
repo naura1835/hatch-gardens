@@ -9,7 +9,8 @@ import "./collection-item.style.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CollectionItem = ({ item, addItem, history }) => {
+const CollectionItem = ({ item, addItem }) => {
+  //, history
   const { name, price, imageUrl } = item;
 
   let itemRef = useRef(null);
@@ -36,7 +37,7 @@ const CollectionItem = ({ item, addItem, history }) => {
     >
       <div
         className="collection-item"
-        onClick={() => history.push(`/products/${name}`)}
+        // onClick={() => history.push(`/products/${name}`)}
       >
         <div className="image-wrapper">
           <img src={imageUrl[0]} className="image" alt="" />
@@ -61,4 +62,4 @@ const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(CollectionItem));
+export default connect(null, mapDispatchToProps)(CollectionItem); //withRouter(

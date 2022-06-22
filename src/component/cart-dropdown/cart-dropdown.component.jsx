@@ -28,7 +28,7 @@ import {
 const CartDropdown = ({
   cartItems,
   hidden,
-  history,
+  // history,
   toggleCartHidden,
   subtotal,
   myStyle,
@@ -52,10 +52,10 @@ const CartDropdown = ({
             </SubTotalWrapper>
             <CustomButton
               style={{ justifySelf: "flex-end" }}
-              onClick={() => {
-                history.push(`/checkout`);
-                toggleCartHidden();
-              }}
+              // onClick={() => {
+              //   history.push(`/checkout`);
+              //   toggleCartHidden();
+              // }}
             >
               Proceed to Checkout
             </CustomButton>
@@ -68,10 +68,10 @@ const CartDropdown = ({
               <SubTitle>Head back to continue shopping</SubTitle>
             </Content>
             <ContinueButton
-              onClick={() => {
-                history.push("/shop");
-                toggleCartHidden();
-              }}
+            // onClick={() => {
+            //   history.push("/shop");
+            //   toggleCartHidden();
+            // }}
             >
               Go back to Shop
             </ContinueButton>
@@ -89,6 +89,4 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CartDropdown)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(CartDropdown); //withRouter(...)

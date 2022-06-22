@@ -17,7 +17,8 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-const OurStory = ({ history }) => {
+const OurStory = () => {
+  //{ history }
   let about = useRef(null);
   let button = useRef(null);
 
@@ -71,11 +72,11 @@ const OurStory = ({ history }) => {
           button = el;
         }}
       >
-        <FlatButton onClick={() => history.push(`/about`)}>
-          Read Our Story
-        </FlatButton>
+        {/* <FlatButton onClick={() => history.push(`/about`)}> */}
+        Read Our Story
+        {/* </FlatButton> */}
       </ButtonWrapper>
     </Wrapper>
   );
 };
-export default withRouter(OurStory);
+export default OurStory; //withRouter(
