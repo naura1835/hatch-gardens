@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { gsap, Power3 } from "gsap";
 
-import { auth } from "../../firebase/firebase.utils";
+// import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
@@ -148,7 +148,7 @@ const Header = ({ currentUser, hidden }) => {
             <div
               className="item"
               onClick={() => {
-                auth.signOut();
+                // auth.signOut();
                 setMenuActive(false);
               }}
             >

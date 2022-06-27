@@ -14,7 +14,13 @@ import {
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 
-import { Wrapper, SignInWrapper, Title, ButtonGroup } from "./sign-in.styles";
+import {
+  Wrapper,
+  SignInWrapper,
+  Title,
+  SubTitle,
+  ButtonGroup,
+} from "./sign-in.styles";
 
 const SignIn = () => {
   const { formValues, handleChange, resetFormFields } = useInput({
@@ -46,11 +52,10 @@ const SignIn = () => {
   };
   return (
     <Wrapper>
-      <Plant />
       <SignInWrapper>
         <>
           <Title>Login</Title>
-          <span>
+          <SubTitle>
             Don't have an account?&nbsp;
             <Link
               to="/register"
@@ -61,7 +66,7 @@ const SignIn = () => {
             >
               Create Account
             </Link>
-          </span>
+          </SubTitle>
         </>
 
         <form onSubmit={handleSubmit}>
@@ -90,6 +95,7 @@ const SignIn = () => {
           </ButtonGroup>
         </form>
       </SignInWrapper>
+      <Plant />
     </Wrapper>
   );
 };
