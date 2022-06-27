@@ -109,49 +109,4 @@ const Register = () => {
   );
 };
 
-// class Register extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//
-//   }
-//   handleSubmit = async (event) => {
-//     event.preventDefault();
-
-//     const { displayName, email, password, confirmPassword } = this.state;
-
-//     if (password !== confirmPassword) {
-//       alert("Password don't match");
-//       return;
-//     }
-//     try {
-//       const { user } = await auth.createUserWithEmailAndPassword(
-//         email,
-//         password
-//       );
-
-//       //   await user.sendEmailVerification();
-//       //   probably something like:
-//       //   if(user.sendEmailVerification()){
-//       //       return;
-//       //   }
-//       //   the line of code above sends a verification link to the email address
-//       //   i still have to tweak this part to not sign in and save the person under users db until after verification is successful
-//       //   then redirect the person to i think maybe the cart page
-
-//       await createUserProfileDocument(user, { displayName });
-
-//       this.setState({
-//         displayName: "",
-//         email: "",
-//         password: "",
-//         confirmPassword: "",
-//       });
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-
-//
-// }
 export default Register;

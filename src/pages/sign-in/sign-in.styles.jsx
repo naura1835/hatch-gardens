@@ -3,18 +3,21 @@ import styled from "styled-components";
 import { H3 } from "../../globalStyles/text.styles";
 
 export const Wrapper = styled.div`
-  margin: 5vh 8vw 0;
-  width: 84vw;
-  height: 80vh;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  margin: 5vh auto;
+  width: 100%;
+  ${"" /* height: 80vh; */}
+  display: flex;
+  align-items: center;
   column-gap: 14px;
 
   & > * {
     width: 100%;
+    flex: 1;
   }
-  & > svg {
-    align-self: center;
+  ${
+    "" /* & > svg {
+    flex: 1;
+  } */
   }
 
   @media (max-width: 880px) {

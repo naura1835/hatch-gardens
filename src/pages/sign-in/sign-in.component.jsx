@@ -11,17 +11,35 @@ import { ReactComponent as Plant } from "../../assets/plants/plant.svg";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
+  signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 
 import { Wrapper, SignInWrapper, Title, ButtonGroup } from "./sign-in.styles";
 
 const SignIn = () => {
-  const { formValues, handleChange } = useInput({ email: "", password: "" });
+  const { formValues, handleChange, resetFormFields } = useInput({
+    email: "",
+    password: "",
+  });
 
   const logGoogleUser = async () => {
     try {
       const { user } = await signInWithGooglePopup();
       const userDocRef = await createUserDocumentFromAuth(user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = async () => {
+    const { email, password } = formValues;
+    try {
+      const response = await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+      console.log(response);
+      resetFormFields();
     } catch (error) {
       console.log(error);
     }
@@ -46,8 +64,8 @@ const SignIn = () => {
           </span>
         </>
 
-        <form>
-          {/* onSubmit={this.handleSubmit} */}
+        <form onSubmit={handleSubmit}>
+          {/*  */}
           <FormInput
             name="email"
             type="email"
@@ -75,33 +93,5 @@ const SignIn = () => {
     </Wrapper>
   );
 };
-
-// class SignIn extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       email: "",
-//       password: "",
-//     };
-//   }
-//   handleSubmit = async (event) => {
-//     event.preventDefault();
-
-//     const { email, password } = this.state;
-
-//     try {
-//       await auth.signInWithEmailAndPassword(email, password);
-//       this.setState({ email: "", password: "" });
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-//   handleChange = (event) => {
-//     const { value, name } = event.target;
-
-//     this.setState({ [name]: value });
-//   };
-// }
 
 export default SignIn;

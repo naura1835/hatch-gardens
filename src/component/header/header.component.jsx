@@ -14,7 +14,6 @@ import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 import "./header.style.scss";
 import HamburgerMenu from "../hamburger-menu/hamburger-menu.component";
-import { Outlet } from "react-router-dom";
 
 const Header = ({ currentUser, hidden }) => {
   const [menuActive, setMenuActive] = useState(false);
@@ -177,7 +176,6 @@ const Header = ({ currentUser, hidden }) => {
           }
         />
       </div>
-      <Outlet />
     </>
   );
 };

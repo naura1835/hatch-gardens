@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { MediumText } from "../../globalStyles/text.styles";
 
 export const Wrapper = styled.footer`
-  position: absolute;
+  ${
+    "" /* position: absolute;
+  bottom: 0; */
+  }
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr;

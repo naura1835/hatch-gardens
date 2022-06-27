@@ -16,15 +16,16 @@ import BlogDetails from "./component/blog-details/blog-details.component";
 import FaqsPage from "./pages/faqs/faqs.component";
 import CollectionsOverview from "./component/collections-overview/collections-overview.component";
 import CollectionPage from "./pages/collection/collection.component";
+import AboutPage from "./pages/about/about.component";
+import Layout from "./layout/layout.component";
 
-import Header from "./component/header/header.component";
-import Footer from "./component/footer/footer.component";
+// import Header from "./component/header/header.component";
+// import Footer from "./component/footer/footer.component";
 
 // import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import { selectCartHidden } from "./redux/cart/cart.selectors";
-import AboutPage from "./pages/about/about.component";
 
 const App = () => {
   // unsubscribeFromAuth = null;
@@ -55,7 +56,7 @@ const App = () => {
   const scrollBarWidth = windowWidth - documentWidth;
 
   return (
-    <div
+    // <div
     // render={
     //   this.props.hidden
     //     ? document.body.classList.add("hide")
@@ -68,32 +69,30 @@ const App = () => {
     //   paddingBottom: "50px",
     //   paddingRight: this.props.hidden ? scrollBarWidth : 0,
     // }}
-    >
-      {/* <Header /> */}
-      <Routes>
-        <Route path="/" element={<Header />}>
-          <Route index element={<HomePage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="shop" element={<ShopPage />}>
-            <Route index element={<CollectionsOverview />} />
-            <Route path=":collectionId" element={<CollectionPage />} />
-          </Route>
-          <Route path="blog" element={<BlogPage />}>
-            <Route path={`:blogTitle`} element={<BlogDetails />} />
-          </Route>
-          <Route path="products/:itemId" element={<Product />} />
-          <Route path="checkout" element={<CheckoutPage />} />
-          <Route path="faqs" element={<FaqsPage />} />
-          <Route
-            path="signin"
-            element={<SignIn />} //this.props.currentUser ? <Navigate to="/" /> :
-          />
-          <Route path="register" element={<Register />} />
-          {/* this.props.currentUser ? <Navigate to="/" /> :  */}
+    // <>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="shop" element={<ShopPage />}>
+          <Route index element={<CollectionsOverview />} />
+          <Route path=":collectionId" element={<CollectionPage />} />
         </Route>
-      </Routes>
-      <Footer />
-    </div>
+        <Route path="blog" element={<BlogPage />}>
+          <Route path={`:blogTitle`} element={<BlogDetails />} />
+        </Route>
+        <Route path="products/:itemId" element={<Product />} />
+        <Route path="checkout" element={<CheckoutPage />} />
+        <Route path="faqs" element={<FaqsPage />} />
+        <Route
+          path="signin"
+          element={<SignIn />} //this.props.currentUser ? <Navigate to="/" /> :
+        />
+        <Route path="register" element={<Register />} />
+        {/* this.props.currentUser ? <Navigate to="/" /> :  */}
+      </Route>
+    </Routes>
+    // </>
   );
   // }
 };
