@@ -48,9 +48,6 @@ const CheckoutPage = ({ cartItems, subtotal }) => {
   const { handleChange, handleValidation, data, errors, valid } =
     useForm(validation);
 
-  console.log(valid);
-  console.log(data);
-
   const shippingCost = data.shipping === "withinKano" ? 500 : 2000;
 
   const componentProps = {

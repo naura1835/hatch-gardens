@@ -1,22 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+
+import useInput from "../../custom-hooks/useInput";
 
 import CustomButton from "../../component/custom-buttom/custom-button.component";
 import FormInput from "../../component/form-input/form-input.component";
 
 import { ReactComponent as Plant } from "../../assets/plants/plant.svg";
 
-import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
+import {
+  signInWithGooglePopup,
+  createUserDocumentFromAuth,
+} from "../../utils/firebase/firebase.utils";
 
 import { Wrapper, SignInWrapper, Title, ButtonGroup } from "./sign-in.styles";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { formValues, handleChange } = useInput({ email: "", password: "" });
 
   const logGoogleUser = async () => {
-    const response = signInWithGooglePopup();
-    console.log(response);
+    try {
+      const { user } = await signInWithGooglePopup();
+      const userDocRef = await createUserDocumentFromAuth(user);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Wrapper>
@@ -40,22 +48,22 @@ const SignIn = () => {
 
         <form>
           {/* onSubmit={this.handleSubmit} */}
-          {/* <FormInput
+          <FormInput
             name="email"
             type="email"
-            value={email}
-            handleChange={setEmail(email)}
             label="Email"
+            value={formValues.email}
+            handleChange={handleChange}
             required
           />
           <FormInput
             name="password"
             type="password"
-            value={password}
-            handleChange={setPassword(password)}
             label="Password"
+            value={formValues.password}
+            handleChange={handleChange}
             required
-          /> */}
+          />
           <ButtonGroup>
             <CustomButton type="submit">Sign In</CustomButton>
             <CustomButton type="button" onClick={logGoogleUser} isGoogleSignIn>
@@ -94,59 +102,6 @@ const SignIn = () => {
 
 //     this.setState({ [name]: value });
 //   };
-//   render() {
-//     return (
-//       <Wrapper>
-//         <Plant />
-//         <SignInWrapper>
-//           <>
-//             <Title>Login</Title>
-//             <span>
-//               Don't have an account?&nbsp;
-//               <Link
-//                 to="/register"
-//                 style={{
-//                   textDecoration: "underline",
-//                   textUnderlineOffset: "0.41em",
-//                 }}
-//               >
-//                 Create Account
-//               </Link>
-//             </span>
-//           </>
-
-//           <form onSubmit={this.handleSubmit}>
-//             <FormInput
-//               name="email"
-//               type="email"
-//               value={this.state.email}
-//               handleChange={this.handleChange}
-//               label="Email"
-//               required
-//             />
-//             <FormInput
-//               name="password"
-//               type="password"
-//               value={this.state.password}
-//               handleChange={this.handleChange}
-//               label="Password"
-//               required
-//             />
-//             <ButtonGroup>
-//               <CustomButton type="submit">Sign In</CustomButton>
-//               <CustomButton
-//                 type="button"
-//                 onClick={SignInWithGoogle}
-//                 isGoogleSignIn
-//               >
-//                 Sign In With Google
-//               </CustomButton>
-//             </ButtonGroup>
-//           </form>
-//         </SignInWrapper>
-//       </Wrapper>
-//     );
-//   }
 // }
 
 export default SignIn;
