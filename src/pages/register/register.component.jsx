@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import CustomButton from "../../component/custom-buttom/custom-button.component";
-import FormInput from "../../component/form-input/form-input.component";
-
-import { ReactComponent as Plant } from "../../assets/plants/plant.svg";
-
-// import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+import useInput from "../../custom-hooks/useInput";
+import { UserContext } from "../../contexts/user.context";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
-import { Wrapper, SignUpWrapper, OptionGroup } from "./register.styles";
-import useInput from "../../custom-hooks/useInput";
+import CustomButton from "../../component/custom-buttom/custom-button.component";
+import FormInput from "../../component/form-input/form-input.component";
+import { ReactComponent as Plant } from "../../assets/plants/plant.svg";
+
+import { Wrapper, SignUpWrapper, Title, OptionGroup } from "./register.styles";
 
 const Register = () => {
   const { formValues, handleChange, resetFormFields } = useInput({
@@ -23,6 +22,8 @@ const Register = () => {
     confirmPassword: "",
   });
   const { displayName, email, password, confirmPassword } = formValues;
+
+  const { setCurrentUser } = useContext(UserContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,6 +37,7 @@ const Register = () => {
       const userDocRef = await createUserDocumentFromAuth(user, {
         displayName,
       });
+      setCurrentUser(user);
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
@@ -48,9 +50,8 @@ const Register = () => {
 
   return (
     <Wrapper>
-      <Plant />
       <SignUpWrapper>
-        <h3>Create account</h3>
+        <Title>Create account</Title>
         <form className="sign-up-form" onSubmit={handleSubmit}>
           <FormInput
             type="text"
@@ -105,6 +106,7 @@ const Register = () => {
           </OptionGroup>
         </form>
       </SignUpWrapper>
+      <Plant />
     </Wrapper>
   );
 };

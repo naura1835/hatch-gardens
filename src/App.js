@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+// import { connect } from "react-redux";
+// import { createStructuredSelector } from "reselect";
 
-import "./App.css";
+import { UserProvider } from "./contexts/user.context";
 
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
@@ -19,13 +19,9 @@ import CollectionPage from "./pages/collection/collection.component";
 import AboutPage from "./pages/about/about.component";
 import Layout from "./layout/layout.component";
 
-// import Header from "./component/header/header.component";
-// import Footer from "./component/footer/footer.component";
+// import { selectCartHidden } from "./redux/cart/cart.selectors";
 
-// import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import { setCurrentUser } from "./redux/user/user.actions";
-import { selectCurrentUser } from "./redux/user/user.selectors";
-import { selectCartHidden } from "./redux/cart/cart.selectors";
+import "./App.css";
 
 const App = () => {
   // unsubscribeFromAuth = null;
@@ -70,39 +66,35 @@ const App = () => {
     //   paddingRight: this.props.hidden ? scrollBarWidth : 0,
     // }}
     // <>
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="shop" element={<ShopPage />}>
-          <Route index element={<CollectionsOverview />} />
-          <Route path=":collectionId" element={<CollectionPage />} />
+    <UserProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="shop" element={<ShopPage />}>
+            <Route index element={<CollectionsOverview />} />
+            <Route path=":collectionId" element={<CollectionPage />} />
+          </Route>
+          <Route path="blog" element={<BlogPage />}>
+            <Route path={`:blogTitle`} element={<BlogDetails />} />
+          </Route>
+          <Route path="products/:itemId" element={<Product />} />
+          <Route path="checkout" element={<CheckoutPage />} />
+          <Route path="faqs" element={<FaqsPage />} />
+          <Route
+            path="signin"
+            element={<SignIn />} //this.props.currentUser ? <Navigate to="/" /> :
+          />
+          <Route path="register" element={<Register />} />
+          {/* this.props.currentUser ? <Navigate to="/" /> :  */}
         </Route>
-        <Route path="blog" element={<BlogPage />}>
-          <Route path={`:blogTitle`} element={<BlogDetails />} />
-        </Route>
-        <Route path="products/:itemId" element={<Product />} />
-        <Route path="checkout" element={<CheckoutPage />} />
-        <Route path="faqs" element={<FaqsPage />} />
-        <Route
-          path="signin"
-          element={<SignIn />} //this.props.currentUser ? <Navigate to="/" /> :
-        />
-        <Route path="register" element={<Register />} />
-        {/* this.props.currentUser ? <Navigate to="/" /> :  */}
-      </Route>
-    </Routes>
-    // </>
+      </Routes>
+    </UserProvider>
   );
   // }
 };
 // const mapStateToProps = createStructuredSelector({
-//   currentUser: selectCurrentUser,
 //   hidden: selectCartHidden,
-// });
-
-// const mapDispatchToProps = (dispatch) => ({
-//   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 // });
 
 // export default connect(mapStateToProps, mapDispatchToProps)(App);

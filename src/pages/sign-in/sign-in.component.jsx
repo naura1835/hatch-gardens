@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { UserContext } from "../../contexts/user.context";
+import {
+  signInWithGooglePopup,
+  createUserDocumentFromAuth,
+  signInAuthUserWithEmailAndPassword,
+} from "../../utils/firebase/firebase.utils";
 import useInput from "../../custom-hooks/useInput";
 
 import CustomButton from "../../component/custom-buttom/custom-button.component";
 import FormInput from "../../component/form-input/form-input.component";
 
 import { ReactComponent as Plant } from "../../assets/plants/plant.svg";
-
-import {
-  signInWithGooglePopup,
-  createUserDocumentFromAuth,
-  signInAuthUserWithEmailAndPassword,
-} from "../../utils/firebase/firebase.utils";
 
 import {
   Wrapper,
@@ -28,10 +28,13 @@ const SignIn = () => {
     password: "",
   });
 
+  const { setCurrentUser } = useContext(UserContext);
+
   const logGoogleUser = async () => {
     try {
       const { user } = await signInWithGooglePopup();
       const userDocRef = await createUserDocumentFromAuth(user);
+      setCurrentUser(user);
     } catch (error) {
       console.log(error);
     }
@@ -40,11 +43,11 @@ const SignIn = () => {
   const handleSubmit = async () => {
     const { email, password } = formValues;
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
+      setCurrentUser(user);
       resetFormFields();
     } catch (error) {
       console.log(error);
