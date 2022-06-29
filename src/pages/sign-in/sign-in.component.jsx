@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-import { UserContext } from "../../contexts/user.context";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -28,26 +27,25 @@ const SignIn = () => {
     password: "",
   });
 
-  const { setCurrentUser } = useContext(UserContext);
-
   const logGoogleUser = async () => {
     try {
       const { user } = await signInWithGooglePopup();
       const userDocRef = await createUserDocumentFromAuth(user);
-      setCurrentUser(user);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     const { email, password } = formValues;
     try {
       const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      setCurrentUser(user);
+      console.log(user);
       resetFormFields();
     } catch (error) {
       console.log(error);
@@ -73,7 +71,6 @@ const SignIn = () => {
         </>
 
         <form onSubmit={handleSubmit}>
-          {/*  */}
           <FormInput
             name="email"
             type="email"

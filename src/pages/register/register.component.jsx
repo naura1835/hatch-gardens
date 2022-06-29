@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import useInput from "../../custom-hooks/useInput";
-import { UserContext } from "../../contexts/user.context";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -23,8 +22,6 @@ const Register = () => {
   });
   const { displayName, email, password, confirmPassword } = formValues;
 
-  const { setCurrentUser } = useContext(UserContext);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -37,7 +34,6 @@ const Register = () => {
       const userDocRef = await createUserDocumentFromAuth(user, {
         displayName,
       });
-      setCurrentUser(user);
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {

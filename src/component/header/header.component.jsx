@@ -1,196 +1,82 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import { connect } from "react-redux";
-// import { createStructuredSelector } from "reselect";
-import { gsap, Power3 } from "gsap";
 
 import { UserContext } from "../../contexts/user.context";
+import { signOutUser } from "../../utils/firebase/firebase.utils";
 
-// import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import HamburgerMenu from "../hamburger-menu/hamburger-menu.component";
 
-// import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import { Wrapper, Logo, MenuWrapper, CartIconWrapper } from "./header.styles";
 
-// import { ReactComponent as Logo } from "/assets/logo.svg";
+const menuData = [
+  { name: "About", url: "/about" },
+  { name: "Shop", url: "/shop" },
+  { name: "Blog", url: "/blog" },
+  { name: "FAQs", url: "/faqs" },
+  { name: "Sign In", url: "/signin" },
+];
 
-import "./header.style.scss";
-import { signOutUser } from "../../utils/firebase/firebase.utils";
-
-const Header = ({ hidden }) => {
+const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
-  const menu = menuActive ? "active" : "";
 
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-
-  const signOutHandler = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  };
-
-  let menuItems = useRef(null);
+  const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
-    const firstMenuItem = menuItems.children[1];
-    const secondMenuItem = firstMenuItem.nextSibling;
-    const thirdMenuItem = secondMenuItem.nextSibling;
-    const fourthMenuItem = thirdMenuItem.nextSibling;
-    const fifthMenuItem = fourthMenuItem.nextSibling;
+    menuActive && (document.body.style.overflow = "hidden");
 
-    if (window.innerWidth <= 550) {
-      if (menu) {
-        gsap.to(
-          [
-            firstMenuItem,
-            secondMenuItem,
-            thirdMenuItem,
-            fourthMenuItem,
-            fifthMenuItem,
-          ],
-          {
-            x: 0,
-            autoAlpha: 1,
-            ease: Power3.easeOut,
-            duration: 0.8,
-            delay: 0.8,
-            stagger: {
-              amount: 0.2,
-            },
-          }
-        );
-      } else {
-        gsap.to(
-          [
-            fourthMenuItem,
-            thirdMenuItem,
-            secondMenuItem,
-            firstMenuItem,
-            fifthMenuItem,
-          ],
-          {
-            x: -35,
-            autoAlpha: 0,
-            ease: Power3.easeOut,
-            delay: 0.3,
-            stagger: {
-              amount: 0.1,
-            },
-          }
-        );
-      }
-    }
-  });
+    !menuActive && (document.body.style.overflow = "");
+  }, [menuActive]);
 
   return (
-    <>
-      <div className="header">
-        <Link className="logo-container" to="/">
-          <img src="/assets/Group 23.svg" className="logo" />
-        </Link>
-        <HamburgerMenu
-          className="menu"
-          handleMenu={() => {
-            setMenuActive(true);
-          }}
-        />
-
-        <div
-          className={`menu-items ${menu}`}
-          ref={(el) => {
-            menuItems = el;
-          }}
-        >
-          <div className="menu-header">
-            <div
-              onClick={() => {
-                setMenuActive(false);
-              }}
-            >
-              <Link className="logo-container" to="/">
-                <img
-                  src="/assets/Group 23.svg"
-                  className="logo"
-                  alt="hatch garden logo"
-                />
+    <Wrapper className={menuActive ? "active" : ""}>
+      <Logo>
+        <Link className="logo-container" to="/" />
+      </Logo>
+      <HamburgerMenu
+        className="menu"
+        handleMenu={() => {
+          setMenuActive(!menuActive);
+        }}
+      />
+      <MenuWrapper className={menuActive ? "active" : ""}>
+        {menuData.map(({ name, url }) => {
+          if (name == "Sign In" && currentUser) {
+            return (
+              <span
+                onClick={() => {
+                  setMenuActive(false);
+                  signOutUser();
+                }}
+              >
+                Sign Out
+              </span>
+            );
+          } else {
+            return (
+              <Link
+                to={url}
+                onClick={() => {
+                  setMenuActive(false);
+                }}
+              >
+                {name}
               </Link>
-            </div>
-            <div
-              className="mobile-close-nav-btn"
-              onClick={() => {
-                setMenuActive(false);
-              }}
-            ></div>
-          </div>
-          <div
-            onClick={() => {
-              setMenuActive(false);
-            }}
-            className="item"
-          >
-            <Link to="/about">About</Link>
-          </div>
-          <div
-            onClick={() => {
-              setMenuActive(false);
-            }}
-            className="item"
-          >
-            <Link to="/shop">Shop</Link>
-          </div>
-          <div
-            onClick={() => {
-              setMenuActive(false);
-            }}
-            className="item"
-          >
-            <Link to="/blog">Blog</Link>
-          </div>
-          <div
-            onClick={() => {
-              setMenuActive(false);
-            }}
-            className="item"
-          >
-            <Link to="/faqs">FAQs</Link>
-          </div>
-          {currentUser ? (
-            <div
-              className="item"
-              onClick={() => {
-                signOutHandler();
-                setMenuActive(false);
-              }}
-            >
-              Sign Out
-            </div>
-          ) : (
-            <div
-              onClick={() => {
-                setMenuActive(false);
-              }}
-              className="item"
-            >
-              <Link to="/signin">Sign In</Link>
-            </div>
-          )}
-        </div>
-        <div className="icon-group">
-          <CartIcon />
-        </div>
-        <CartDropdown
-          myStyle={
-            hidden
-              ? { transform: "translateX(0)" }
-              : { transform: "translateX(100%)" }
+            );
           }
-        />
-      </div>
-    </>
+        })}
+      </MenuWrapper>
+      <CartIconWrapper>
+        <CartIcon />
+      </CartIconWrapper>
+      <CartDropdown
+        myStyle={{
+          transform: "translateX(100%)",
+        }}
+      />
+    </Wrapper>
   );
 };
-// const mapStateToProps = createStructuredSelector({
-//   hidden: selectCartHidden,
-// });
 
-export default Header; //connect(mapStateToProps)()
+export default Header;
