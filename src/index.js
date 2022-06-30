@@ -10,6 +10,8 @@ import "./index.css";
 import App from "./App";
 
 import { store, persistor } from "./redux/store";
+import { UserProvider } from "./contexts/user.context";
+import { ProductsProvider } from "./contexts/products.context";
 
 // const client = Client.buildClient({
 //   storefrontAccessToken: "c711b549ea37a11dee5560bfd95ddbda",
@@ -19,9 +21,13 @@ import { store, persistor } from "./redux/store";
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
+      <UserProvider>
+        <ProductsProvider>
+          <PersistGate persistor={persistor}>
+            <App />
+          </PersistGate>
+        </ProductsProvider>
+      </UserProvider>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

@@ -1,20 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { connect } from "react-redux";
 
-import HeroWrapperSection from "../../component/hero-wrapper/hero-wrapper.component";
 import Tabbar from "../../component/tabbar/tabbar.component";
 
-import { selectContentDetails } from "../../redux/hero-content/hero-content.selectors";
+import { Wrapper } from "./shop.styles";
 
-import "./shop.style.scss";
-
-const ShopPage = ({ content }) => {
-  // { content, match, history}
-
+const ShopPage = () => {
   return (
-    <div className="shop">
-      <HeroWrapperSection {...content} />
+    <Wrapper>
       <>
         <Tabbar />
         <Outlet />
@@ -24,12 +17,8 @@ const ShopPage = ({ content }) => {
         path={`${match.path}/:collectionId`}
         component={CollectionPage}
       /> */}
-    </div>
+    </Wrapper>
   );
 };
 
-const mapStateToProps = (state, history) => ({
-  content: selectContentDetails(history.pathname)(state),
-});
-
-export default connect(mapStateToProps)(ShopPage); //)
+export default ShopPage;

@@ -41,10 +41,11 @@ const Header = () => {
         }}
       />
       <MenuWrapper className={menuActive ? "active" : ""}>
-        {menuData.map(({ name, url }) => {
+        {menuData.map(({ name, url }, index) => {
           if (name == "Sign In" && currentUser) {
             return (
               <span
+                key={index}
                 onClick={() => {
                   setMenuActive(false);
                   signOutUser();
@@ -56,6 +57,7 @@ const Header = () => {
           } else {
             return (
               <Link
+                key={index}
                 to={url}
                 onClick={() => {
                   setMenuActive(false);

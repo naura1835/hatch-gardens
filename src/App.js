@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 // import { connect } from "react-redux";
 // import { createStructuredSelector } from "reselect";
 
-import { UserProvider } from "./contexts/user.context";
+import { UserContext } from "./contexts/user.context";
 
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
@@ -24,6 +24,8 @@ import Layout from "./layout/layout.component";
 import "./App.css";
 
 const App = () => {
+  const { currentUser } = useContext(UserContext);
+
   // unsubscribeFromAuth = null;
 
   // componentDidMount() {
@@ -66,30 +68,28 @@ const App = () => {
     //   paddingRight: this.props.hidden ? scrollBarWidth : 0,
     // }}
     // <>
-    <UserProvider>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="shop" element={<ShopPage />}>
-            <Route index element={<CollectionsOverview />} />
-            <Route path=":collectionId" element={<CollectionPage />} />
-          </Route>
-          <Route path="blog" element={<BlogPage />}>
-            <Route path={`:blogTitle`} element={<BlogDetails />} />
-          </Route>
-          <Route path="products/:itemId" element={<Product />} />
-          <Route path="checkout" element={<CheckoutPage />} />
-          <Route path="faqs" element={<FaqsPage />} />
-          <Route
-            path="signin"
-            element={<SignIn />} //this.props.currentUser ? <Navigate to="/" /> :
-          />
-          <Route path="register" element={<Register />} />
-          {/* this.props.currentUser ? <Navigate to="/" /> :  */}
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="shop" element={<ShopPage />}>
+          <Route index element={<CollectionsOverview />} />
+          <Route path=":collectionId" element={<CollectionPage />} />
         </Route>
-      </Routes>
-    </UserProvider>
+        <Route path="blog" element={<BlogPage />}>
+          <Route path={`:blogTitle`} element={<BlogDetails />} />
+        </Route>
+        <Route path="products/:itemId" element={<Product />} />
+        <Route path="checkout" element={<CheckoutPage />} />
+        <Route path="faqs" element={<FaqsPage />} />
+        <Route
+          path="signin"
+          element={currentUser ? <Navigate to="/" /> : <SignIn />} // if user is already signed in navigate back to home
+        />
+        <Route path="register" element={<Register />} />
+        {/* this.props.currentUser ? <Navigate to="/" /> :  */}
+      </Route>
+    </Routes>
   );
   // }
 };

@@ -1,22 +1,30 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React, { useContext, useState } from "react";
 
+import { ProductsContext } from "../../contexts/products.context";
+
+import CollectionItem from "../collection-item/collection-item.component";
 import CollectionPreview from "../collection-preview/collection-preview.component";
-import { selectCollectionsForPreview } from "../../redux/shop/shop.selectors";
 
-import "./collections-overview.style.scss";
+import { Wrapper } from "./collections-overview.styles";
 
-const CollectionsOverview = ({ collections }) => (
-  <div className="collections-overview">
-    {collections.map(({ id, ...otherCollectionProps }) => (
-      <CollectionPreview key={id} {...otherCollectionProps} count={6} />
-    ))}
-  </div>
-);
+const CollectionsOverview = () => {
+  const collections = useContext(ProductsContext);
+  const products = Object.keys(collections).map((key) => collections[key]); //turn the onject into an array
 
-const mapStateToProps = createStructuredSelector({
-  collections: selectCollectionsForPreview,
-});
+  const productsOverview = products.reduce((previous, { items }) => {
+    const val = Object.keys(items)
+      .map((key) => items[key])
+      .filter((item, id) => id < 3);
+    return previous.concat(val);
+  }, []);
 
-export default connect(mapStateToProps)(CollectionsOverview);
+  return (
+    <Wrapper>
+      {productsOverview.map((item, index) => (
+        <CollectionItem key={index} item={item} />
+      ))}
+    </Wrapper>
+  );
+};
+
+export default CollectionsOverview;

@@ -33,7 +33,7 @@ const CartDropdown = ({
   subtotal,
   myStyle,
 }) => {
-  const overlay = hidden ? "overlayActive" : "";
+  const overlay = hidden ? "" : ""; //overlayActive
   return (
     <DropdownWrapper className={`${overlay}`}>
       <Dropdown style={myStyle}>
