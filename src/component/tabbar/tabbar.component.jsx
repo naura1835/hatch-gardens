@@ -12,7 +12,7 @@ const Tabbar = function () {
     {
       title: "Shop All",
       id: 0,
-      linkUrl: "shop",
+      linkUrl: "",
     },
   ]);
   const [activeButton, setActiveButton] = useState(

@@ -1,20 +1,17 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+// import { connect } from "react-redux";
+
+import { CartContext } from "../../contexts/cart.context";
+// import { createStructuredSelector } from "reselect";
 
 import CartItem from "../cart-item/cart-item.component";
 import CustomButton from "../custom-buttom/custom-button.component";
-import {
-  selectCartHidden,
-  selectCartItems,
-  selectCartSubtotal,
-} from "../../redux/cart/cart.selectors";
-import { toggleCartHidden } from "../../redux/cart/cart.actions";
+// import { selectCartSubtotal } from "../../redux/cart/cart.selectors";
 
 import {
-  DropdownWrapper,
-  Dropdown,
+  Wrapper,
+  OverlayWrapper,
   CartItemsWrapper,
   EmptyCart,
   Content,
@@ -25,18 +22,16 @@ import {
   ContinueButton,
 } from "./cart-dropdown.styles";
 
-const CartDropdown = ({
-  cartItems,
-  hidden,
-  // history,
-  toggleCartHidden,
-  subtotal,
-  myStyle,
-}) => {
-  const overlay = hidden ? "" : ""; //overlayActive
+const CartDropdown = () => {
+  const { isOpen, setIsOpen, cartItems, cartSubtotal } =
+    useContext(CartContext);
+
+  const navigate = useNavigate();
+
   return (
-    <DropdownWrapper className={`${overlay}`}>
-      <Dropdown style={myStyle}>
+    <>
+      <OverlayWrapper onClick={() => setIsOpen(!isOpen)} />
+      <Wrapper active={isOpen}>
         {cartItems.length ? (
           <>
             <CartItemsWrapper>
@@ -48,14 +43,13 @@ const CartDropdown = ({
               <SubTitle style={{ textTransform: "uppercase" }}>
                 SubTotal
               </SubTitle>
-              <SubTitle>NGN {subtotal}</SubTitle>
+              <SubTitle>NGN {cartSubtotal}</SubTitle>
             </SubTotalWrapper>
             <CustomButton
-              style={{ justifySelf: "flex-end" }}
-              // onClick={() => {
-              //   history.push(`/checkout`);
-              //   toggleCartHidden();
-              // }}
+              onClick={() => {
+                setIsOpen(!isOpen);
+                navigate("/checkout");
+              }}
             >
               Proceed to Checkout
             </CustomButton>
@@ -68,25 +62,20 @@ const CartDropdown = ({
               <SubTitle>Head back to continue shopping</SubTitle>
             </Content>
             <ContinueButton
-            // onClick={() => {
-            //   history.push("/shop");
-            //   toggleCartHidden();
-            // }}
+              onClick={() => {
+                setIsOpen(!isOpen);
+                navigate("/shop");
+              }}
             >
               Go back to Shop
             </ContinueButton>
           </EmptyCart>
         )}
-      </Dropdown>
-    </DropdownWrapper>
+      </Wrapper>
+    </>
   );
 };
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  subtotal: selectCartSubtotal,
-  hidden: selectCartHidden,
-});
-const mapDispatchToProps = (dispatch) => ({
-  toggleCartHidden: () => dispatch(toggleCartHidden()),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(CartDropdown); //withRouter(...)
+// const mapStateToProps = createStructuredSelector({
+//   subtotal: selectCartSubtotal,
+// });
+export default CartDropdown;

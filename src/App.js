@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-// import { connect } from "react-redux";
-// import { createStructuredSelector } from "reselect";
 
 import { UserContext } from "./contexts/user.context";
 
@@ -19,55 +17,12 @@ import CollectionPage from "./pages/collection/collection.component";
 import AboutPage from "./pages/about/about.component";
 import Layout from "./layout/layout.component";
 
-// import { selectCartHidden } from "./redux/cart/cart.selectors";
-
 import "./App.css";
 
 const App = () => {
   const { currentUser } = useContext(UserContext);
 
-  // unsubscribeFromAuth = null;
-
-  // componentDidMount() {
-  //   const { setCurrentUser } = this.props;
-
-  //   this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-  //     if (userAuth) {
-  //       const userRef = await createUserProfileDocument(userAuth);
-  //       userRef.onSnapshot((snapshot) => {
-  //         setCurrentUser({
-  //           id: snapshot.id,
-  //           ...snapshot.data(),
-  //         });
-  //       });
-  //     } else {
-  //       setCurrentUser(userAuth);
-  //     }
-  //   });
-  // }
-  // componentWillUnmount() {
-  //   this.unsubscribeFromAuth();
-  // }
-  // render() {
-  const documentWidth = document.documentElement.clientWidth;
-  const windowWidth = window.innerWidth;
-  const scrollBarWidth = windowWidth - documentWidth;
-
   return (
-    // <div
-    // render={
-    //   this.props.hidden
-    //     ? document.body.classList.add("hide")
-    //     : document.body.classList.remove("hide")
-    // }
-    // style={{
-    //   height: "100%",
-    //   position: "relative",
-    //   display: "block",
-    //   paddingBottom: "50px",
-    //   paddingRight: this.props.hidden ? scrollBarWidth : 0,
-    // }}
-    // <>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
@@ -91,11 +46,5 @@ const App = () => {
       </Route>
     </Routes>
   );
-  // }
 };
-// const mapStateToProps = createStructuredSelector({
-//   hidden: selectCartHidden,
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default App;

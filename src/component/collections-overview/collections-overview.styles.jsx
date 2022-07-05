@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { breakpointsUp } from "../../globalStyles/breakpoints";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
   display: flex;
   flex-flow: row wrap;
   gap: 20px;

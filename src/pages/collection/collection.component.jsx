@@ -1,40 +1,28 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 
+import { ProductsContext } from "../../contexts/products.context";
+
 import CollectionItem from "../../component/collection-item/collection-item.component";
-import { selectCollection } from "../../redux/shop/shop.selectors";
 
 import "./collection.style.scss";
 
-const CollectionPage = ({ collection }) => {
-  const { items } = collection;
-  const params = useParams();
+const CollectionPage = () => {
+  const { collectionId } = useParams();
+  const collections = useContext(ProductsContext);
+
+  const collection = collections[collectionId].items;
+  const items = Object.keys(collection).map((key) => collection[key]);
 
   return (
     <div className="collection-page">
       <div className="items">
-        {Object.keys(items)
-          .map((key) => items[key])
-          .map((item) => (
-            <CollectionItem
-              key={item.id}
-              item={item}
-              className="collection-item"
-            />
-          ))}
-        {/* ((item) => ( */}
-        {/* //if all of a sudden your code start doing nonsense remove Object.keys(items)
-          .map((key) => items[key]) and replace with just items and also do that in collections previw component
-           and in your store data change the items Object of each category into an array. */}
-        {/* )) */}
+        {items.map((item, index) => (
+          <CollectionItem key={index} item={item} />
+        ))}
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  collection: selectCollection(ownProps.params.collectionId)(state),
-});
-
-export default connect(mapStateToProps)(CollectionPage);
+export default CollectionPage;

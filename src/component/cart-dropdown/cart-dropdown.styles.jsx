@@ -2,50 +2,37 @@ import styled from "styled-components";
 
 import { H2, MediumText } from "../../globalStyles/text.styles";
 
-export const DropdownWrapper = styled.div.attrs((props) => ({
-  className: props.className,
-}))`
-  &.overlayActive {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 3;
-  }
-`;
-export const Dropdown = styled.div`
+export const OverlayWrapper = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
   height: 100vh;
-  width: 31.25rem;
-  background-color: #edece9;
+  background-color: rgba(0, 0, 0, 0.6);
+`;
+
+export const Wrapper = styled.aside`
   position: fixed;
   top: 0;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3vh;
-  padding-top: 10vh;
-  padding-bottom: 10vh;
-  padding-right: 1vw;
-  transition: 0.5s ease-out;
-
-  @media (min-width: 551px) {
-    right: 0;
-  }
-  @media (max-width: 550px) {
-    width: 100vw;
-  }
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #edece9;
+  display: grid;
+  place-items: center;
+  padding: 1.2em;
+  max-width: 31.25rem;
+  transform: ${(props) =>
+    (props.active && "translateX(0%)") || "translateX(100%)"};
 `;
-export const CartItemsWrapper = styled.div`
+export const CartItemsWrapper = styled.ol`
+  list-style-type: none;
   overflow: auto;
-  height: 80vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 4vh;
-  padding: 3rem 1.5rem 2.5rem;
+  padding: 3rem 0.5rem 2.5rem;
 
   &::-webkit-scrollbar {
     width: 5px;
@@ -61,10 +48,10 @@ export const CartItemsWrapper = styled.div`
   }
 `;
 export const SubTotalWrapper = styled.div`
-  padding: 1vh 2vw;
+  align-self: start;
+  padding: 0 2vw;
   width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
 `;
 export const EmptyCart = styled.div`
@@ -75,7 +62,6 @@ export const EmptyCart = styled.div`
   align-items: center;
   height: 500px;
   width: 100%;
-  ${"" /* padding: 2vh 2vw 0 2vw; */}
 `;
 export const Logo = styled.img`
   height: 200px;

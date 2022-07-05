@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+import { CartContext } from "../../contexts/cart.context";
 
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
@@ -22,6 +23,7 @@ const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
 
   const { currentUser } = useContext(UserContext);
+  const { isOpen } = useContext(CartContext);
 
   useEffect(() => {
     menuActive && (document.body.style.overflow = "hidden");
@@ -72,11 +74,7 @@ const Header = () => {
       <CartIconWrapper>
         <CartIcon />
       </CartIconWrapper>
-      <CartDropdown
-        myStyle={{
-          transform: "translateX(100%)",
-        }}
-      />
+      {isOpen && <CartDropdown />}
     </Wrapper>
   );
 };

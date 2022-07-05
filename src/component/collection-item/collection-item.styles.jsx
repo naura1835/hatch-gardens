@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { breakpointsUp } from "../../globalStyles/breakpoints";
 import { CaptionText, MediumText } from "../../globalStyles/text.styles";
 
-export const Wrapper = styled.section`
+export const ItemWrapper = styled.section`
   position: relative;
   width: 10rem;
   height: 18rem;
@@ -34,11 +34,10 @@ export const ImageWrapper = styled.div`
     height: 100%;
     width: 100%;
     background-color: rgba(137, 141, 136, 0.35);
-    z-index: 2;
     display: none;
   }
 
-  ${Wrapper}:hover &::after {
+  ${ItemWrapper}:hover &::after {
     display: block;
   }
 `;
@@ -86,7 +85,7 @@ export const AddToCartBtn = styled.button`
     color: #25251f;
   }
 
-  ${Wrapper}:hover & {
+  ${ItemWrapper}:hover & {
     transform: translateY(0px);
   }
 `;

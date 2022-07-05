@@ -1,38 +1,27 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React, { useContext } from "react";
 import { Icon } from "@iconify/react";
 import bxCart from "@iconify/icons-bx/bx-cart";
 
-import "./cart-icon.style.scss";
-import { toggleCartHidden } from "../../redux/cart/cart.actions";
-import {
-  selectCartItemsCount,
-  selectCartHidden,
-} from "../../redux/cart/cart.selectors";
+import { CartContext } from "../../contexts/cart.context";
 
-const CartIcon = ({ toggleCartHidden, hidden, itemCount }) => {
+import { Circle, CloseBtn, ItemCount, Wrapper } from "./cart-icon.styles";
+
+const CartIcon = () => {
+  const { isOpen, setIsOpen, itemsCount } = useContext(CartContext);
   return (
-    <div className="icon" onClick={toggleCartHidden}>
-      {hidden ? (
-        <div className="close-btn"></div>
+    <Wrapper onClick={() => setIsOpen(!isOpen)}>
+      {isOpen ? (
+        <CloseBtn></CloseBtn>
       ) : (
         <>
           <Icon icon={bxCart} className="cart-icon" />
-          <div className="circle">
-            <span className="item-count">{itemCount}</span>
-          </div>
+          <Circle>
+            <ItemCount>{itemsCount}</ItemCount>
+          </Circle>
         </>
       )}
-    </div>
+    </Wrapper>
   );
 };
-const mapStateToProps = createStructuredSelector({
-  hidden: selectCartHidden,
-  itemCount: selectCartItemsCount,
-});
-const mapDispatchToProps = (dispatch) => ({
-  toggleCartHidden: () => dispatch(toggleCartHidden()),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
+export default CartIcon;

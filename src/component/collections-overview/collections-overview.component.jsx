@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { ProductsContext } from "../../contexts/products.context";
 
 import CollectionItem from "../collection-item/collection-item.component";
-import CollectionPreview from "../collection-preview/collection-preview.component";
 
 import { Wrapper } from "./collections-overview.styles";
 
@@ -14,14 +13,14 @@ const CollectionsOverview = () => {
   const productsOverview = products.reduce((previous, { items }) => {
     const val = Object.keys(items)
       .map((key) => items[key])
-      .filter((item, id) => id < 3);
+      .filter((item, id) => id < 6);
     return previous.concat(val);
   }, []);
 
   return (
-    <Wrapper>
-      {productsOverview.map((item, index) => (
-        <CollectionItem key={index} item={item} />
+    <Wrapper title="plant collection">
+      {productsOverview.map((item) => (
+        <CollectionItem key={item.id} item={item} />
       ))}
     </Wrapper>
   );

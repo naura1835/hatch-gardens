@@ -12,6 +12,7 @@ import App from "./App";
 import { store, persistor } from "./redux/store";
 import { UserProvider } from "./contexts/user.context";
 import { ProductsProvider } from "./contexts/products.context";
+import { CartProvider } from "./contexts/cart.context";
 
 // const client = Client.buildClient({
 //   storefrontAccessToken: "c711b549ea37a11dee5560bfd95ddbda",
@@ -24,7 +25,9 @@ ReactDOM.render(
       <UserProvider>
         <ProductsProvider>
           <PersistGate persistor={persistor}>
-            <App />
+            <CartProvider>
+              <App />
+            </CartProvider>
           </PersistGate>
         </ProductsProvider>
       </UserProvider>

@@ -1,36 +1,39 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useContext } from "react";
 
-import { clearItemFromCart } from "../../redux/cart/cart.actions";
-import "./cart-item.style.scss";
+import { ReactComponent as Trash } from "../../assets/codicon_trash.svg";
+import { CartContext } from "../../contexts/cart.context";
 
-const CartItem = ({ item, clearItem }) => {
+import {
+  ItemDetails,
+  ItemImage,
+  ItemImageWrapper,
+  ItemName,
+  ItemPrice,
+  TotalItemPrice,
+  Quantity,
+  Wrapper,
+  TotalAndDelete,
+} from "./cart-item.styles";
+
+const CartItem = ({ item }) => {
+  const { clearItemFromCart } = useContext(CartContext);
   const { imageUrl, name, price, quantity } = item;
+
   return (
-    <div className="cart-item">
-      <img src={imageUrl[0]} alt={`${name}`} />
-      <div className="item-details">
-        <div className="item-header">
-          <span className="item-name">{name}</span>
-          <span className="total-price">NGN {price * quantity}</span>
-        </div>
-        <span className="price">NGN {price}</span>
-        <div className="item-header">
-          <>
-            {/* <button className="increment">+</button> */}
-            <span className="quantity">{`Qty: ${quantity}`}</span>
-          </>
-          <div className="remove-item">
-            <button className="remove-item-btn" onClick={() => clearItem(item)}>
-              Remove
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Wrapper>
+      <ItemImageWrapper>
+        <ItemImage src={imageUrl[0]} alt={`${name}`} />
+        <Quantity>{quantity}</Quantity>
+      </ItemImageWrapper>
+      <ItemDetails>
+        <ItemName>{name}</ItemName>
+        <ItemPrice>NGN {price}</ItemPrice>
+        <TotalAndDelete>
+          <TotalItemPrice>Total: NGN{price * quantity}</TotalItemPrice>
+          <Trash onClick={() => clearItemFromCart(item)} />
+        </TotalAndDelete>
+      </ItemDetails>
+    </Wrapper>
   );
 };
-const mapDispatchToProps = (dispatch) => ({
-  clearItem: (item) => dispatch(clearItemFromCart(item)),
-});
-export default connect(null, mapDispatchToProps)(CartItem);
+export default CartItem;

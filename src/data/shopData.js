@@ -365,24 +365,24 @@ export const shopData = {
           temperature: "",
         },
       },
-      19: {
-        id: 19,
-        name: "pot22",
-        description: "",
-        imageUrl: [
-          "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
-          "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
-          "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
-          "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
-        ],
-        price: 4000,
-        treatment: {
-          sunglight: "",
-          water: "",
-          fertilizer: "",
-          temperature: "",
-        },
-      },
+      // 19: {
+      //   id: 19,
+      //   name: "pot22",
+      //   description: "",
+      //   imageUrl: [
+      //     "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
+      //     "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
+      //     "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
+      //     "https://images.pexels.com/photos/4350808/pexels-photo-4350808.jpeg?cs=srgb&dl=pexels-tiia-pakk-4350808.jpg&fm=jpg",
+      //   ],
+      //   price: 4000,
+      //   treatment: {
+      //     sunglight: "",
+      //     water: "",
+      //     fertilizer: "",
+      //     temperature: "",
+      //   },
+      // },
     },
   },
 };
