@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-// import { connect } from "react-redux";
 
-import { CartContext } from "../../contexts/cart.context";
-// import { createStructuredSelector } from "reselect";
+import { CartContext } from "../../contexts/cart/cart.context";
 
 import CartItem from "../cart-item/cart-item.component";
 import CustomButton from "../custom-buttom/custom-button.component";
-// import { selectCartSubtotal } from "../../redux/cart/cart.selectors";
 
 import {
   Wrapper,

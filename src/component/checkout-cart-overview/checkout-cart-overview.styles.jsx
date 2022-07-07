@@ -4,7 +4,6 @@ import { MediumText } from "../../globalStyles/text.styles";
 export const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  flex-diretion: row;
   justify-content: space-between;
 `;
 export const PlantName = styled(MediumText)`

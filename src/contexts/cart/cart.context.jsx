@@ -17,10 +17,8 @@ const updateItemCount = (items) => {
   return items.reduce((total, item) => (total = total + item.quantity), 0);
 };
 
-const removeItemFromCart = (items, product) => {
-  return items.map((item, index) => {
-    if (item.id == product.id) items.splice(index, 1);
-  });
+const removeItemFromCart = (items, itemToBeRemoved) => {
+  return items.filter((item) => item.id !== itemToBeRemoved.id);
 };
 
 const calculateSubTotal = (items) => {
@@ -74,6 +72,9 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     setItemsCount(updateItemCount(cartItems));
+  }, [cartItems]);
+
+  useEffect(() => {
     setCartSubtotal(calculateSubTotal(cartItems));
   }, [cartItems]);
 

@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React, { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import { ProductsContext } from "../../contexts/products.context";
 
 import Details from "../../component/details/details.component";
 import ProductImages from "../../component/product-images/product-images.component";
-import { selectCollectionsForPreview } from "../../redux/shop/shop.selectors";
 
 import {
   ProductWrapper,
@@ -12,16 +12,24 @@ import {
   DetailsWrapper,
 } from "./product-detail.styles";
 
-const Product = ({ match, products }) => {
+const Product = () => {
+  const params = useParams();
+  const products = useContext(ProductsContext);
+
+  console.log(products);
+
+  console.log();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   });
   return (
     <>
-      {products.map((product) =>
+      <h1>Anneyong</h1>
+      {/* {products.map((product) =>
         Object.keys(product.items)
           .map((key) => product.items[key])
-          .filter((item) => item.name === match.params.itemId)
+          .filter((item) => item.name === params.id)
           .map((item) => {
             return (
               <ProductWrapper key={item.id}>
@@ -34,13 +42,9 @@ const Product = ({ match, products }) => {
               </ProductWrapper>
             );
           })
-      )}
+      )} */}
     </>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  products: selectCollectionsForPreview,
-});
-
-export default connect(mapStateToProps)(Product);
+export default Product;

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { ReactComponent as Trash } from "../../assets/codicon_trash.svg";
-import { CartContext } from "../../contexts/cart.context";
+import { CartContext } from "../../contexts/cart/cart.context";
 
 import {
   ItemDetails,

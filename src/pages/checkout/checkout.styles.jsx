@@ -19,51 +19,51 @@ export const Wrapper = styled.div`
     flex-direction: column;
   }
 `;
-export const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  row-gap: 48px;
-`;
-export const FormSubGroup = styled.div`
-  display: grid;
-  grid-template-areas:
-    "title title"
-    "form form";
-  grid-template-rows: 28px auto;
-  grid-template-columns: repeat(2, 300px);
-  column-gap: 40px;
-  row-gap: 20px;
-  @media (max-width: 700px) {
-    display: flex;
-    flex-direction: column;
-  }
-`;
-export const FormInputGroup = styled.div`
-  display: flex;
-  flex-direction: row;
-  column-gap: 25px;
-  width: 300px;
+// export const FormGroup = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   row-gap: 48px;
+// `;
+// export const FormSubGroup = styled.div`
+//   display: grid;
+//   grid-template-areas:
+//     "title title"
+//     "form form";
+//   grid-template-rows: 28px auto;
+//   grid-template-columns: repeat(2, 300px);
+//   column-gap: 40px;
+//   row-gap: 20px;
+//   @media (max-width: 700px) {
+//     display: flex;
+//     flex-direction: column;
+//   }
+// `;
+// export const FormInputGroup = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   column-gap: 25px;
+//   width: 300px;
 
-  * {
-    width: 138px;
-  }
+//   * {
+//     width: 138px;
+//   }
 
-  @media (max-width: 700px) {
-    flex-direction: column;
-    row-gap: 25px;
-    column-gap: 0;
-    width: 100%;
+//   @media (max-width: 700px) {
+//     flex-direction: column;
+//     row-gap: 25px;
+//     column-gap: 0;
+//     width: 100%;
 
-    * {
-      width: 100%;
-    }
-  }
-`;
-export const Title = styled(H3)`
-  grid-area: title;
-  font-size: 17px;
-`;
+//     * {
+//       width: 100%;
+//     }
+//   }
+// `;
+// export const Title = styled(H3)`
+//   grid-area: title;
+//   font-size: 17px;
+// `;
 export const CartOverviewWrapper = styled.div`
   align-self: end;
   display: flex;
@@ -79,13 +79,11 @@ export const CartItemsWrapper = styled.div`
   border-bottom: 1px solid #000;
   width: 100%;
 
-  @media (max-width: 1200px){
+  @media (max-width: 1200px) {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-}
   }
-  
 `;
 export const TotalOverviewWrapper = styled.div`
   display: grid;

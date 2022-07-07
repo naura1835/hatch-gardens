@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Icon } from "@iconify/react";
 import bxCart from "@iconify/icons-bx/bx-cart";
 
-import { CartContext } from "../../contexts/cart.context";
+import { CartContext } from "../../contexts/cart/cart.context";
 
 import { Circle, CloseBtn, ItemCount, Wrapper } from "./cart-icon.styles";
 

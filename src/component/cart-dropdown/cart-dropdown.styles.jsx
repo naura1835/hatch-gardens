@@ -29,6 +29,7 @@ export const CartItemsWrapper = styled.ol`
   list-style-type: none;
   overflow: auto;
   width: 100%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   gap: 4vh;
