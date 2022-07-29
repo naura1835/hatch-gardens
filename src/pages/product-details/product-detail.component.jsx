@@ -18,14 +18,11 @@ const Product = () => {
 
   console.log(products);
 
-  console.log();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   });
   return (
     <>
-      <h1>Anneyong</h1>
       {/* {products.map((product) =>
         Object.keys(product.items)
           .map((key) => product.items[key])

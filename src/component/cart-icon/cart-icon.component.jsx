@@ -7,9 +7,9 @@ import { CartContext } from "../../contexts/cart/cart.context";
 import { Circle, CloseBtn, ItemCount, Wrapper } from "./cart-icon.styles";
 
 const CartIcon = () => {
-  const { isOpen, setIsOpen, itemsCount } = useContext(CartContext);
+  const { isOpen, showCart, itemsCount } = useContext(CartContext);
   return (
-    <Wrapper onClick={() => setIsOpen(!isOpen)}>
+    <Wrapper onClick={() => showCart(!isOpen)}>
       {isOpen ? (
         <CloseBtn></CloseBtn>
       ) : (

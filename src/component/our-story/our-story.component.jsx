@@ -22,32 +22,32 @@ const OurStory = () => {
   let about = useRef(null);
   let button = useRef(null);
 
-  useEffect(() => {
-    ScrollTrigger.matchMedia({
-      "(min-width: 601px)": function () {
-        gsap.to(about, {
-          scrollTrigger: {
-            trigger: about.children[0],
-            toggleActions: "play none none reverse",
-          },
-          duration: 0.8,
-          y: -90,
-          yoyo: true,
-          force3D: true,
-        });
-        gsap.to(button, {
-          scrollTrigger: {
-            trigger: about.children[0],
-            toggleActions: "play none none reverse",
-          },
-          duration: 0.8,
-          y: -90,
-          yoyo: true,
-          force3D: true,
-        });
-      },
-    });
-  });
+  // useEffect(() => {
+  //   ScrollTrigger.matchMedia({
+  //     "(min-width: 601px)": function () {
+  //       gsap.to(about, {
+  //         scrollTrigger: {
+  //           trigger: about.children[0],
+  //           toggleActions: "play none none reverse",
+  //         },
+  //         duration: 0.8,
+  //         y: -90,
+  //         yoyo: true,
+  //         force3D: true,
+  //       });
+  //       gsap.to(button, {
+  //         scrollTrigger: {
+  //           trigger: about.children[0],
+  //           toggleActions: "play none none reverse",
+  //         },
+  //         duration: 0.8,
+  //         y: -90,
+  //         yoyo: true,
+  //         force3D: true,
+  //       });
+  //     },
+  //   });
+  // });
   return (
     <Wrapper>
       <InnerWrapper>

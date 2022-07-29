@@ -60,13 +60,11 @@ export const Wrapper = styled(Container).attrs((props) => ({
   }
 `;
 
-export const Logo = styled.div`
+export const LogoWrapper = styled.div`
   grid-area: logo;
   justify-self: center;
   height: 50px;
   width: 50px;
-  background-image: url("/assets/Group 23.svg");
-  background-size: cover;
 `;
 
 export const MenuWrapper = styled.nav.attrs((props) => ({

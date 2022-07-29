@@ -5,11 +5,18 @@ import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { CartContext } from "../../contexts/cart/cart.context";
 
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import HamburgerMenu from "../hamburger-menu/hamburger-menu.component";
 
-import { Wrapper, Logo, MenuWrapper, CartIconWrapper } from "./header.styles";
+import {
+  Wrapper,
+  LogoWrapper,
+  MenuWrapper,
+  CartIconWrapper,
+} from "./header.styles";
 
 const menuData = [
   { name: "About", url: "/about" },
@@ -33,9 +40,11 @@ const Header = () => {
 
   return (
     <Wrapper className={menuActive ? "active" : ""}>
-      <Logo>
-        <Link className="logo-container" to="/" />
-      </Logo>
+      <LogoWrapper>
+        <Link to="/">
+          <Logo height="50px" width="50px" />
+        </Link>
+      </LogoWrapper>
       <HamburgerMenu
         className="menu"
         handleMenu={() => {

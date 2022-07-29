@@ -1,4 +1,6 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useReducer } from "react";
+
+import cartReducer, { CART_ACTIONS_TYPE, INITIAL_STATE } from "./cart.reducer";
 
 const addCartItem = (cartItems, productToAdd) => {
   const cartItemExist = cartItems.find((item) => item.id == productToAdd.id);
@@ -31,38 +33,43 @@ const calculateSubTotal = (items) => {
 const defaultValue = {
   isOpen: false,
   setIsOpen: () => {},
-  cartItems: [],
-  addItemToCart: () => {},
-  itemsCount: 0,
-  clearItemFromCart: () => {},
-  cartSubtotal: 0,
-  setCartSubtotal: () => {},
 };
 
 export const CartContext = createContext(defaultValue);
 
 export const CartProvider = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
-  const [itemsCount, setItemsCount] = useState(0);
-  const [cartSubtotal, setCartSubtotal] = useState(0);
+  const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE);
+
+  const { isOpen, cartItems, itemsCount, cartSubtotal } = state;
+
+  const showCart = (bool) => {
+    dispatch({
+      type: CART_ACTIONS_TYPE.SET_IS_OPEN,
+      payload: bool,
+    });
+  };
+  const updateCartReducer = (newCartItems) => {
+    let count = updateItemCount(newCartItems);
+    let subtotal = calculateSubTotal(newCartItems);
+
+    dispatch({
+      type: CART_ACTIONS_TYPE.SET_CART_ITEMS,
+      payload: {
+        cartItems: newCartItems,
+        itemsCount: count,
+        cartSubtotal: subtotal,
+      },
+    });
+  };
 
   const addItemToCart = (product) => {
-    setCartItems(addCartItem(cartItems, product));
+    const newCartItems = addCartItem(cartItems, product);
+    updateCartReducer(newCartItems);
   };
 
   const clearItemFromCart = (product) => {
-    setCartItems(removeItemFromCart(cartItems, product));
-  };
-
-  const value = {
-    isOpen,
-    setIsOpen,
-    cartItems,
-    addItemToCart,
-    itemsCount,
-    clearItemFromCart,
-    cartSubtotal,
+    const newCartItems = removeItemFromCart(cartItems, product);
+    updateCartReducer(newCartItems);
   };
 
   useEffect(() => {
@@ -70,13 +77,15 @@ export const CartProvider = ({ children }) => {
     else document.body.style.overflow = "";
   }, [isOpen]);
 
-  useEffect(() => {
-    setItemsCount(updateItemCount(cartItems));
-  }, [cartItems]);
-
-  useEffect(() => {
-    setCartSubtotal(calculateSubTotal(cartItems));
-  }, [cartItems]);
+  const value = {
+    isOpen,
+    showCart,
+    cartItems,
+    addItemToCart,
+    itemsCount,
+    clearItemFromCart,
+    cartSubtotal,
+  };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

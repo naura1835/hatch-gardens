@@ -8,6 +8,7 @@ import { Wrapper } from "./collections-overview.styles";
 
 const CollectionsOverview = () => {
   const collections = useContext(ProductsContext);
+
   const products = Object.keys(collections).map((key) => collections[key]); //turn the onject into an array
 
   const productsOverview = products.reduce((previous, { items }) => {
