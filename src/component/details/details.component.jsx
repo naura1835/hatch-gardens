@@ -22,7 +22,7 @@ const Details = ({ item }) => {
   return (
     <DetailsWrapper>
       <PriceNameRow>
-        <SubTitle>${price}.00</SubTitle>
+        <SubTitle>NGN{price}.00</SubTitle>
         <Title>{name}</Title>
       </PriceNameRow>
       <DescriptionWrapper>

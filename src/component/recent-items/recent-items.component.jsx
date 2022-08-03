@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+
+import { ProductsContext } from "../../contexts/products.context";
 
 import CollectionItem from "../collection-item/collection-item.component";
 import { selectRecentForPreview } from "../../redux/shop/shop.selectors";
@@ -8,6 +10,13 @@ import { selectRecentForPreview } from "../../redux/shop/shop.selectors";
 import { Wrapper, Title, ItemList, MainText } from "./recent-items.styles";
 
 const RecentItems = ({ recent }) => {
+  const { products } = useContext(ProductsContext);
+
+  const recentProducts = Object.keys(products)
+    .map((key) => products[key].items)
+    .filter((item, id) => id < 2);
+
+  console.log(recentProducts);
   const arr = [];
   recent.forEach((element) => {
     for (let index = 0; index < 2; index++) {

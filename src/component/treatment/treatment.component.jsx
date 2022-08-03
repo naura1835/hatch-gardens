@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 
-// import "./treatment.style.scss";
 import {
   TreatmentGroup,
   TreatmentWrapper,
@@ -11,24 +10,24 @@ import {
 } from "./treatment.styles";
 
 const Treatment = ({ treatment }) => {
-  const treatmentData = [
+  const [treatmentData] = useState([
     {
       img: "/assets/icons/treatment/wb_sunny.svg",
-      caption: treatment.sunglight,
+      caption: treatment && treatment.sunglight,
     },
     {
       img: "/assets/icons/treatment/water-drop.svg",
-      caption: treatment.water,
+      caption: treatment && treatment.water,
     },
     {
       img: "/assets/icons/treatment/fluent_temperature-20-regular.svg",
-      caption: treatment.temperature,
+      caption: treatment && treatment.temperature,
     },
     {
       img: "/assets/icons/treatment/whh_flowerpot.svg",
-      caption: treatment.fertilizer,
+      caption: treatment && treatment.fertilizer,
     },
-  ];
+  ]);
   return (
     <TreatmentGroup>
       {treatmentData.map((item, index) => (

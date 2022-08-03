@@ -37,23 +37,24 @@ const ProductImages = ({ image }) => {
   return (
     <Wrapper>
       <Image
-        src={image[activeImage]}
+        src={image && image[activeImage]}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       />
       <ImageGroup>
-        {image.map((img, index) => {
-          const currentImg = activeImage === index ? "active" : "";
-          return (
-            <ImageItem
-              key={index}
-              src={img}
-              className={`${currentImg}`}
-              onClick={() => handleTab(index)}
-            />
-          );
-        })}
+        {image &&
+          image.map((img, index) => {
+            const currentImg = activeImage === index ? "active" : "";
+            return (
+              <ImageItem
+                key={index}
+                src={img}
+                className={`${currentImg}`}
+                onClick={() => handleTab(index)}
+              />
+            );
+          })}
       </ImageGroup>
     </Wrapper>
   );

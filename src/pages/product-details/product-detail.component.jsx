@@ -13,33 +13,26 @@ import {
 } from "./product-detail.styles";
 
 const Product = () => {
-  const params = useParams();
-  const products = useContext(ProductsContext);
+  const { itemId } = useParams();
+  const { getDetails, productDetails } = useContext(ProductsContext);
 
-  console.log(products);
+  useEffect(() => {
+    getDetails(itemId);
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   return (
     <>
-      {/* {products.map((product) =>
-        Object.keys(product.items)
-          .map((key) => product.items[key])
-          .filter((item) => item.name === params.id)
-          .map((item) => {
-            return (
-              <ProductWrapper key={item.id}>
-                <ImageGrid>
-                  <ProductImages image={item.imageUrl} />
-                </ImageGrid>
-                <DetailsWrapper>
-                  <Details item={item} />
-                </DetailsWrapper>
-              </ProductWrapper>
-            );
-          })
-      )} */}
+      <ProductWrapper key={productDetails.id}>
+        <ImageGrid>
+          <ProductImages image={productDetails.imageUrl} />
+        </ImageGrid>
+        <DetailsWrapper>
+          <Details item={productDetails} />
+        </DetailsWrapper>
+      </ProductWrapper>
     </>
   );
 };

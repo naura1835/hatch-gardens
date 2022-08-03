@@ -12,8 +12,9 @@ export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
     const unsubscribe = onAuthStateChangedListener((user) => {
-      setCurrentUser(user);
+      if (isMounted) setCurrentUser(user);
     });
     return unsubscribe;
   }, []);

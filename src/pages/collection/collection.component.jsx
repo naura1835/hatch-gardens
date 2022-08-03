@@ -1,27 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { ProductsContext } from "../../contexts/products.context";
 
 import CollectionItem from "../../component/collection-item/collection-item.component";
 
-import "./collection.style.scss";
+import { Items, Wrapper } from "./collection.styles";
 
 const CollectionPage = () => {
   const { collectionId } = useParams();
-  const collections = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
+  const [collection, setCollection] = useState([]);
 
-  const collection = collections[collectionId].items;
-  const items = Object.keys(collection).map((key) => collection[key]);
+  useEffect(() => {
+    const getCollection = async (collectionObj) => {
+      const items = await collectionObj?.items;
+
+      setCollection(items);
+    };
+
+    getCollection(products[collectionId]);
+  }, [products, collectionId]);
 
   return (
-    <div className="collection-page">
-      <div className="items">
-        {items.map((item, index) => (
-          <CollectionItem key={index} item={item} />
-        ))}
-      </div>
-    </div>
+    <Wrapper aria-label={collectionId}>
+      <Items>
+        {collection &&
+          collection.map((item, index) => (
+            <CollectionItem key={index} item={item} />
+          ))}
+      </Items>
+    </Wrapper>
   );
 };
 

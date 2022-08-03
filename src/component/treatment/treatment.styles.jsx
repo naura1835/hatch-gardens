@@ -19,10 +19,6 @@ export const TreatmentWrapper = styled.div`
   display: grid;
   grid-template-rows: 70px auto;
   gap: 1vh;
-
-  @media (max-width: ) {
-    width: 4rem;
-  }
 `;
 export const TreatmentOption = styled.div`
   ${"" /* width: 5vw; */}
