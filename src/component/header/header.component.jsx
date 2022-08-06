@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { CartContext } from "../../contexts/cart/cart.context";
 
@@ -17,6 +16,7 @@ import {
   MenuWrapper,
   CartIconWrapper,
 } from "./header.styles";
+import { useSelector } from "react-redux";
 
 const menuData = [
   { name: "About", url: "/about" },
@@ -29,7 +29,7 @@ const menuData = [
 const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
 
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector((state) => state.user.currentUser);
   const { isOpen } = useContext(CartContext);
 
   useEffect(() => {

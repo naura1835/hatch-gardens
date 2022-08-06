@@ -17,7 +17,6 @@ const cartReducer = (state, action) => {
     case CART_ACTIONS_TYPE.SET_IS_OPEN:
       return { ...state, isOpen: payload };
     case CART_ACTIONS_TYPE.SET_CART_ITEMS:
-      console.log({ ...state, ...payload });
       return { ...state, ...payload };
     default:
       throw new Error(`No case for type ${type} found in cart reducer`);

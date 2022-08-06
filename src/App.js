@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { UserContext } from "./contexts/user.context";
+import { onAuthStateChangedListener } from "./utils/firebase/firebase.utils";
+import { setCurrentUser } from "./store/user/user.actions";
 
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
@@ -20,8 +22,15 @@ import Layout from "./layout/layout.component";
 import "./App.css";
 
 const App = () => {
-  const { currentUser } = useContext(UserContext);
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.user.currentUser);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      dispatch(setCurrentUser(user));
+    });
+    return unsubscribe;
+  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
