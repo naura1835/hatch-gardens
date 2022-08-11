@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { CartContext } from "../../contexts/cart/cart.context";
+import { addItemToCart } from "../../store/cart/cart.actions";
+import { cartItemsSelector } from "../../store/cart/cart.selector";
 
 import {
   AddToCartBtn,
@@ -17,11 +18,12 @@ import {
 
 const CollectionItem = ({ item }) => {
   const navigateTo = useNavigate();
-  const { addItemToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const cartItems = useSelector(cartItemsSelector);
   const { name, price, imageUrl, id } = item;
 
   const addProductToCart = () => {
-    addItemToCart(item);
+    dispatch(addItemToCart(cartItems, item));
   };
 
   return (

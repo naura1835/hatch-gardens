@@ -1,15 +1,22 @@
-import React, { useContext } from "react";
 import { Icon } from "@iconify/react";
 import bxCart from "@iconify/icons-bx/bx-cart";
+import { useDispatch, useSelector } from "react-redux";
 
-import { CartContext } from "../../contexts/cart/cart.context";
+import { setIsOpen } from "../../store/cart/cart.actions";
+import {
+  cartCountSelector,
+  isCartOpenSelector,
+} from "../../store/cart/cart.selector";
 
 import { Circle, CloseBtn, ItemCount, Wrapper } from "./cart-icon.styles";
 
 const CartIcon = () => {
-  const { isOpen, showCart, itemsCount } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const isOpen = useSelector(isCartOpenSelector);
+  const itemsCount = useSelector(cartCountSelector);
+
   return (
-    <Wrapper onClick={() => showCart(!isOpen)}>
+    <Wrapper onClick={() => dispatch(setIsOpen(!isOpen))}>
       {isOpen ? (
         <CloseBtn></CloseBtn>
       ) : (

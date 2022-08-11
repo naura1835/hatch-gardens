@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { CartContext } from "../../contexts/cart/cart.context";
+import { addItemToCart } from "../../store/cart/cart.actions";
+import { cartItemsSelector } from "../../store/cart/cart.selector";
 
 import CustomButton from "../custom-buttom/custom-button.component";
 import Treatment from "../treatment/treatment.component";
@@ -16,8 +17,13 @@ import {
 } from "./details.styles";
 
 const Details = ({ item }) => {
-  const { addItemToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const cartItems = useSelector(cartItemsSelector);
   const { name, price, description, treatment } = item;
+
+  const addProductToCart = () => {
+    dispatch(addItemToCart(cartItems, item));
+  };
 
   return (
     <DetailsWrapper>
@@ -39,7 +45,7 @@ const Details = ({ item }) => {
             ? { width: "100%", alignSelf: "center" }
             : { width: "300px" }
         }
-        onClick={() => addItemToCart(item)}
+        onClick={addProductToCart}
       >
         Add to cart
       </CustomButton>

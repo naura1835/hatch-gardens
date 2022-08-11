@@ -1,8 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
-import { CartContext } from "../../contexts/cart/cart.context";
+import { isCartOpenSelector } from "../../store/cart/cart.selector";
 
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 
@@ -16,7 +17,6 @@ import {
   MenuWrapper,
   CartIconWrapper,
 } from "./header.styles";
-import { useSelector } from "react-redux";
 
 const menuData = [
   { name: "About", url: "/about" },
@@ -30,7 +30,7 @@ const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
 
   const currentUser = useSelector((state) => state.user.currentUser);
-  const { isOpen } = useContext(CartContext);
+  const isOpen = useSelector(isCartOpenSelector);
 
   useEffect(() => {
     menuActive && (document.body.style.overflow = "hidden");

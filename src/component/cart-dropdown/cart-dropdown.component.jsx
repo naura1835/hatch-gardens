@@ -1,7 +1,12 @@
-import React, { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { CartContext } from "../../contexts/cart/cart.context";
+import { setIsOpen } from "../../store/cart/cart.actions";
+import {
+  cartItemsSelector,
+  cartSubtotalSelector,
+  isCartOpenSelector,
+} from "../../store/cart/cart.selector";
 
 import CartItem from "../cart-item/cart-item.component";
 import CustomButton from "../custom-buttom/custom-button.component";
@@ -20,14 +25,16 @@ import {
 } from "./cart-dropdown.styles";
 
 const CartDropdown = () => {
-  const { isOpen, setIsOpen, cartItems, cartSubtotal } =
-    useContext(CartContext);
+  const dispatch = useDispatch();
+  const isOpen = useSelector(isCartOpenSelector);
+  const cartItems = useSelector(cartItemsSelector);
+  const cartSubtotal = useSelector(cartSubtotalSelector);
 
   const navigate = useNavigate();
 
   return (
     <>
-      <OverlayWrapper onClick={() => setIsOpen(!isOpen)} />
+      <OverlayWrapper onClick={() => dispatch(setIsOpen(!isOpen))} />
       <Wrapper active={isOpen}>
         {cartItems.length ? (
           <>
@@ -44,7 +51,7 @@ const CartDropdown = () => {
             </SubTotalWrapper>
             <CustomButton
               onClick={() => {
-                setIsOpen(!isOpen);
+                dispatch(setIsOpen(!isOpen));
                 navigate("/checkout");
               }}
             >

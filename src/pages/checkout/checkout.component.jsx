@@ -1,8 +1,10 @@
-import React, { useContext, useEffect, useRef } from "react";
 import { PaystackConsumer } from "react-paystack";
+import { useSelector } from "react-redux";
 
-import { CartContext } from "../../contexts/cart/cart.context";
-
+import {
+  cartItemsSelector,
+  cartSubtotalSelector,
+} from "../../store/cart/cart.selector";
 import useForm from "../../custom-hooks/useFrom";
 import validation from "../../custom-hooks/validateInfo";
 import {
@@ -24,7 +26,8 @@ import {
 } from "./checkout.styles";
 
 const CheckoutPage = () => {
-  const { cartItems, cartSubtotal } = useContext(CartContext);
+  const cartItems = useSelector(cartItemsSelector);
+  const cartSubtotal = useSelector(cartSubtotalSelector);
   const { handleChange, handleValidation, data, errors, valid } =
     useForm(validation);
 
