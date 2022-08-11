@@ -1,13 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-import { ProductsContext } from "../../contexts/products.context";
+import { productsMapSelector } from "../../store/products/products.selector";
 
 import CollectionItem from "../collection-item/collection-item.component";
 
 import { Wrapper } from "./collections-overview.styles";
 
 const CollectionsOverview = () => {
-  const { products } = useContext(ProductsContext);
+  const products = useSelector(productsMapSelector);
+
   const [collection, setCollection] = useState([]);
 
   useEffect(() => {

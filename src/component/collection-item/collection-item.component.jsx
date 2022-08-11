@@ -27,7 +27,11 @@ const CollectionItem = ({ item }) => {
   return (
     <>
       <ItemWrapper>
-        <ProductWrapper onClick={() => navigateTo(`/products/${name}`)}>
+        <ProductWrapper
+          onClick={() => {
+            navigateTo(`/products/${name}`);
+          }}
+        >
           <ImageWrapper>
             <Image src={imageUrl[0]} className="image" alt="" />
           </ImageWrapper>

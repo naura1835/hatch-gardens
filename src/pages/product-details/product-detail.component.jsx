@@ -1,7 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { ProductsContext } from "../../contexts/products.context";
+import { productDetailsSelector } from "../../store/products/products.selector";
+import { setProductName } from "../../store/products/products.actions";
 
 import Details from "../../component/details/details.component";
 import ProductImages from "../../component/product-images/product-images.component";
@@ -14,25 +16,28 @@ import {
 
 const Product = () => {
   const { itemId } = useParams();
-  const { getDetails, productDetails } = useContext(ProductsContext);
-
-  useEffect(() => {
-    getDetails(itemId);
-  });
+  const dispatch = useDispatch();
+  const details = useSelector(productDetailsSelector);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    dispatch(setProductName(itemId));
+  }, []);
   return (
     <>
-      <ProductWrapper key={productDetails.id}>
-        <ImageGrid>
-          <ProductImages image={productDetails.imageUrl} />
-        </ImageGrid>
-        <DetailsWrapper>
-          <Details item={productDetails} />
-        </DetailsWrapper>
-      </ProductWrapper>
+      {details && (
+        <ProductWrapper>
+          <ImageGrid>
+            <ProductImages image={details.imageUrl} />
+          </ImageGrid>
+          <DetailsWrapper>
+            <Details item={details} />
+          </DetailsWrapper>
+        </ProductWrapper>
+      )}
     </>
   );
 };

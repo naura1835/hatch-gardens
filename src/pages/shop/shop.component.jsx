@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 
 import Tabbar from "../../component/tabbar/tabbar.component";
@@ -12,11 +11,6 @@ const ShopPage = () => {
         <Tabbar />
         <Outlet />
       </>
-      {/* <Route
-        exact
-        path={`${match.path}/:collectionId`}
-        component={CollectionPage}
-      /> */}
     </Wrapper>
   );
 };

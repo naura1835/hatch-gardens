@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 
-import { ProductsContext } from "../../contexts/products.context";
+import { productsSelector } from "../../store/products/products.selector";
 
 import CollectionItem from "../collection-item/collection-item.component";
 
 import { Wrapper, Title, ItemList, MainText } from "./recent-items.styles";
 
 const RecentItems = () => {
-  const { products } = useContext(ProductsContext);
+  const products = useSelector(productsSelector);
 
   const recentProducts = Object.keys(products).map(
     (key) => products[key].items

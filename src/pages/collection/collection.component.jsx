@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import { ProductsContext } from "../../contexts/products.context";
+import { productsMapSelector } from "../../store/products/products.selector";
 
 import CollectionItem from "../../component/collection-item/collection-item.component";
 
@@ -9,7 +10,7 @@ import { Items, Wrapper } from "./collection.styles";
 
 const CollectionPage = () => {
   const { collectionId } = useParams();
-  const { products } = useContext(ProductsContext);
+  const products = useSelector(productsMapSelector);
   const [collection, setCollection] = useState([]);
 
   useEffect(() => {

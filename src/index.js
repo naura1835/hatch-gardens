@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 // import { PersistGate } from "redux-persist/integration/react";
 
-import { ProductsProvider } from "./contexts/products.context";
 import { CartProvider } from "./contexts/cart/cart.context";
 import { store } from "./store/store";
 
@@ -15,13 +14,11 @@ import App from "./App";
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <ProductsProvider>
-        {/* <PersistGate persistor={persistor}> */}
-        <CartProvider>
-          <App />
-        </CartProvider>
-        {/* </PersistGate> */}
-      </ProductsProvider>
+      {/* <PersistGate persistor={persistor}> */}
+      <CartProvider>
+        <App />
+      </CartProvider>
+      {/* </PersistGate> */}
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")
