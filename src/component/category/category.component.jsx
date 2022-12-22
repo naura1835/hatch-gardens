@@ -3,15 +3,15 @@ import React from "react";
 import CategoryCard from "../category-card/category-card.component";
 import { categoryData } from "../../data/categoryListData";
 
-import "./category.style.scss";
+import { CategoryList } from "./category.styles";
 
 function Category() {
   return (
-    <div className="category-list">
+    <CategoryList>
       {categoryData.map(({ id, ...otherCategoryProps }) => (
         <CategoryCard key={id} {...otherCategoryProps} />
       ))}
-    </div>
+    </CategoryList>
   );
 }
 

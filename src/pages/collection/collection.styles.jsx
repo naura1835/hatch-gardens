@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { breakpointsUp } from "../../globalStyles/breakpoints";
-import { Container } from "../../globalStyles/global.styles";
 
 export const Wrapper = styled.section`
   display: flex;

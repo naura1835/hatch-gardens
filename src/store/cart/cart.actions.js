@@ -1,11 +1,11 @@
 import { CART_ACTIONS_TYPE } from "./cart.types";
 
 const addCartItem = (cartItems, productToAdd) => {
-  const cartItemExist = cartItems.find((item) => item.id == productToAdd.id);
+  const cartItemExist = cartItems.find((item) => item.id === productToAdd.id);
 
   if (cartItemExist) {
     return cartItems.map((item) =>
-      item.id == productToAdd.id
+      item.id === productToAdd.id
         ? { ...item, quantity: item.quantity + 1 }
         : item
     );

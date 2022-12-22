@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
   padding-bottom: 10vh;
 `;
+
 export const BlogGroup = styled.div`
   padding: 0 4vw;
   display: grid;
@@ -16,4 +17,5 @@ export const BlogGroup = styled.div`
   gap: 20px;
   row-gap: 50px;
 `;
+
 export const Title = styled(H2)``;

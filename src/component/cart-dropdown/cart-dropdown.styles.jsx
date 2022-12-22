@@ -25,6 +25,7 @@ export const Wrapper = styled.aside`
   transform: ${(props) =>
     (props.active && "translateX(0%)") || "translateX(100%)"};
 `;
+
 export const CartItemsWrapper = styled.ol`
   list-style-type: none;
   overflow: auto;
@@ -48,6 +49,7 @@ export const CartItemsWrapper = styled.ol`
     background: #bfbfbf;
   }
 `;
+
 export const SubTotalWrapper = styled.div`
   align-self: start;
   padding: 0 2vw;
@@ -55,6 +57,7 @@ export const SubTotalWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 export const EmptyCart = styled.div`
   justify-self: center;
   display: flex;
@@ -64,10 +67,12 @@ export const EmptyCart = styled.div`
   height: 500px;
   width: 100%;
 `;
+
 export const Logo = styled.img`
   height: 200px;
   width: 144px;
 `;
+
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -77,12 +82,15 @@ export const Content = styled.div`
   width: 100%;
   padding: 0 4vw;
 `;
+
 export const Title = styled(H2)`
   font-family: Arial, Helvetica, sans-serif;
   line-height: 46.3px;
   text-align: center;
 `;
+
 export const SubTitle = styled(MediumText)``;
+
 export const ContinueButton = styled.button`
   margin-top: 58px;
   width: auto;

@@ -10,6 +10,7 @@ export const Wrapper = styled.li`
   padding-bottom: 1vh;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 `;
+
 export const ItemImageWrapper = styled.div`
   position: relative;
   width: 20%;
@@ -21,6 +22,7 @@ export const ItemImage = styled.img`
   width: 100%;
   height: 100%;
 `;
+
 export const Quantity = styled.span`
   position: absolute;
   top: -10%;

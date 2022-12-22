@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { ReactComponent as Trash } from "../../assets/codicon_trash.svg";
-import { CartContext } from "../../contexts/cart/cart.context";
+import { clearItemFromCart } from "../../store/cart/cart.actions";
+import { cartItemsSelector } from "../../store/cart/cart.selector";
 
 import {
   ItemDetails,
@@ -16,8 +18,9 @@ import {
 } from "./cart-item.styles";
 
 const CartItem = ({ item }) => {
-  const { clearItemFromCart } = useContext(CartContext);
   const { imageUrl, name, price, quantity } = item;
+  const dispatch = useDispatch();
+  const cartItems = useSelector(cartItemsSelector);
 
   return (
     <Wrapper>
@@ -30,7 +33,7 @@ const CartItem = ({ item }) => {
         <ItemPrice>NGN {price}</ItemPrice>
         <TotalAndDelete>
           <TotalItemPrice>Total: NGN{price * quantity}</TotalItemPrice>
-          <Trash onClick={() => clearItemFromCart(item)} />
+          <Trash onClick={() => dispatch(clearItemFromCart(cartItems, item))} />
         </TotalAndDelete>
       </ItemDetails>
     </Wrapper>
