@@ -19,8 +19,7 @@ const HeroSection = () => {
         <Title>
           Home for
           <br />
-          {/* <TextAnimation />  */}
-          plants.
+          <TextAnimation /> plants.
         </Title>
         <Description>
           We provide you with assorted plants to spice up your environment
