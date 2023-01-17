@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addItemToCart } from "../../store/cart/cart.actions";
+import { cartItemsSelector } from "../../store/cart/cart.selector";
 
 import CustomButton from "../custom-buttom/custom-button.component";
 import Treatment from "../treatment/treatment.component";
-
-import { addItem } from "../../redux/cart/cart.actions";
 
 import {
   DetailsWrapper,
@@ -16,13 +16,19 @@ import {
   CareTipWrapper,
 } from "./details.styles";
 
-const Details = ({ item, addItem }) => {
+const Details = ({ item }) => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector(cartItemsSelector);
   const { name, price, description, treatment } = item;
+
+  const addProductToCart = () => {
+    dispatch(addItemToCart(cartItems, item));
+  };
 
   return (
     <DetailsWrapper>
       <PriceNameRow>
-        <SubTitle>${price}.00</SubTitle>
+        <SubTitle>NGN{price}.00</SubTitle>
         <Title>{name}</Title>
       </PriceNameRow>
       <DescriptionWrapper>
@@ -39,15 +45,12 @@ const Details = ({ item, addItem }) => {
             ? { width: "100%", alignSelf: "center" }
             : { width: "300px" }
         }
-        onClick={() => addItem(item)}
+        onClick={addProductToCart}
       >
         Add to cart
       </CustomButton>
     </DetailsWrapper>
   );
 };
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(addItem(item)),
-});
 
-export default connect(null, mapDispatchToProps)(Details);
+export default Details;

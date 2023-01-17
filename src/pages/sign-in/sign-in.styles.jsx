@@ -1,70 +1,55 @@
 import styled from "styled-components";
 
-import { H3 } from "../../globalStyles/text.styles";
+import { breakpointsUp } from "../../globalStyles/breakpoints";
+import { Container } from "../../globalStyles/global.styles";
+import { H3, MediumText } from "../../globalStyles/text.styles";
 
-export const Wrapper = styled.div`
-  margin: 5vh 8vw 0;
-  width: 84vw;
-  height: 80vh;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  column-gap: 14px;
+export const Wrapper = styled(Container)`
+  max-width: 1000px;
+  margin: 0 auto;
 
-  & > * {
-    width: 100%;
-  }
   & > svg {
-    align-self: center;
+    display: none;
   }
 
-  @media (max-width: 880px) {
+  @media ${breakpointsUp["tablet-landscape-up"]} {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-self: flex-start;
+    column-gap: 40px;
 
     & > svg {
-      width: 40%;
-      align-self: flex-end;
-    }
-  }
-
-  @media (max-width: 636px) {
-    flex-direction: column-reverse;
-
-    & > svg {
-      display: none;
+      display: block;
+      max-width: 500px;
     }
   }
 `;
 
 export const SignInWrapper = styled.div`
-  align-self: start;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-self: flex-start;
-  width: fit-content;
+  width: 100%;
+  max-width: 500px;
 
-  @media (max-width: 636px) {
-    width: 100%;
+  @media ${breakpointsUp["tablet-landscape-up"]} {
+    align-self: center;
+    flex: 1;
   }
 `;
 export const Title = styled(H3)`
   font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 10px;
 `;
+export const SubTitle = styled(MediumText)``;
 
 export const ButtonGroup = styled.div`
   display: flex;
-  flex-direction: row;
   column-gap: 20px;
+  flex-direction: column;
+  row-gap: 20px;
 
-  @media (max-width: 480px) {
-    flex-direction: column;
-    row-gap: 20px;
+  & > button {
+    width: 100%;
+  }
 
-    & > button {
-      width: 100%;
-    }
+  @media ${breakpointsUp["large-phones"]} {
+    flex-direction: row;
   }
 `;

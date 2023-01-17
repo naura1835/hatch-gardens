@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import TextAnimation from "../text-animation/text-animation.component";
 
@@ -11,7 +11,8 @@ import {
   CTAButton,
 } from "./hero-section.styles";
 
-const HeroSection = ({ history }) => {
+const HeroSection = () => {
+  const navigateTo = useNavigate();
   return (
     <Wrapper>
       <ContentWrapper>
@@ -21,13 +22,12 @@ const HeroSection = ({ history }) => {
           <TextAnimation /> plants.
         </Title>
         <Description>
-          my name is berry allen and im the fastest man alive, when i was a
-          child...
+          We provide you with assorted plants to spice up your environment
         </Description>
-        <CTAButton onClick={() => history.push("/shop")}>Shop Now</CTAButton>
+        <CTAButton onClick={() => navigateTo("/shop")}>Shop Now</CTAButton>
       </ContentWrapper>
     </Wrapper>
   );
 };
 
-export default withRouter(HeroSection);
+export default HeroSection;

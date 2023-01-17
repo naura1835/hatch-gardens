@@ -8,11 +8,12 @@ import {
   ViewMore,
 } from "./category-card.styles";
 
-function CategoryCard({ title, imageUrl, value, linkUrl, history, match }) {
+function CategoryCard({ title, imageUrl, value }) {
+  //, linkUrl, history, match
   return (
     <CategoryCardWrapper
       style={{ backgroundImage: `url(${imageUrl})` }}
-      onClick={() => history.push(`${match.url}${linkUrl}`)}
+      // onClick={() => history.push(`${match.url}${linkUrl}`)}
       className={`${value}`}
     >
       <CategoryContent>
@@ -22,4 +23,4 @@ function CategoryCard({ title, imageUrl, value, linkUrl, history, match }) {
     </CategoryCardWrapper>
   );
 }
-export default withRouter(CategoryCard);
+export default CategoryCard; //withRouter(

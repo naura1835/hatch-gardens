@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import { breakpointsUp } from "../../globalStyles/breakpoints";
 
 export const Hamburger = styled.div`
-  display: none;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  gap: 6px;
 
-  @media (max-width: 550px) {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    gap: 6px;
+  @media ${breakpointsUp["tablet-portrait-up"]} {
+    display: none;
   }
 `;
 export const Line = styled.span`

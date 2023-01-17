@@ -17,36 +17,37 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-const OurStory = ({ history }) => {
+const OurStory = () => {
+  //{ history }
   let about = useRef(null);
   let button = useRef(null);
 
-  useEffect(() => {
-    ScrollTrigger.matchMedia({
-      "(min-width: 601px)": function () {
-        gsap.to(about, {
-          scrollTrigger: {
-            trigger: about.children[0],
-            toggleActions: "play none none reverse",
-          },
-          duration: 0.8,
-          y: -90,
-          yoyo: true,
-          force3D: true,
-        });
-        gsap.to(button, {
-          scrollTrigger: {
-            trigger: about.children[0],
-            toggleActions: "play none none reverse",
-          },
-          duration: 0.8,
-          y: -90,
-          yoyo: true,
-          force3D: true,
-        });
-      },
-    });
-  });
+  // useEffect(() => {
+  //   ScrollTrigger.matchMedia({
+  //     "(min-width: 601px)": function () {
+  //       gsap.to(about, {
+  //         scrollTrigger: {
+  //           trigger: about.children[0],
+  //           toggleActions: "play none none reverse",
+  //         },
+  //         duration: 0.8,
+  //         y: -90,
+  //         yoyo: true,
+  //         force3D: true,
+  //       });
+  //       gsap.to(button, {
+  //         scrollTrigger: {
+  //           trigger: about.children[0],
+  //           toggleActions: "play none none reverse",
+  //         },
+  //         duration: 0.8,
+  //         y: -90,
+  //         yoyo: true,
+  //         force3D: true,
+  //       });
+  //     },
+  //   });
+  // });
   return (
     <Wrapper>
       <InnerWrapper>
@@ -71,11 +72,11 @@ const OurStory = ({ history }) => {
           button = el;
         }}
       >
-        <FlatButton onClick={() => history.push(`/about`)}>
-          Read Our Story
-        </FlatButton>
+        {/* <FlatButton onClick={() => history.push(`/about`)}> */}
+        Read Our Story
+        {/* </FlatButton> */}
       </ButtonWrapper>
     </Wrapper>
   );
 };
-export default withRouter(OurStory);
+export default OurStory; //withRouter(

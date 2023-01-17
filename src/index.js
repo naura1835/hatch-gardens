@@ -4,17 +4,11 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-// import Client from "shopify-buy";
+
+import { store, persistor } from "./store/store";
 
 import "./index.css";
 import App from "./App";
-
-import { store, persistor } from "./redux/store";
-
-// const client = Client.buildClient({
-//   storefrontAccessToken: "c711b549ea37a11dee5560bfd95ddbda",
-//   domain: "plant-oasis-store.myshopify.com",
-// });
 
 ReactDOM.render(
   <Provider store={store}>

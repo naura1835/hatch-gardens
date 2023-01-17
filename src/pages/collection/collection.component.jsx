@@ -1,38 +1,38 @@
-import React from "react";
-import { connect } from "react-redux";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import { productsMapSelector } from "../../store/products/products.selector";
 
 import CollectionItem from "../../component/collection-item/collection-item.component";
-import { selectCollection } from "../../redux/shop/shop.selectors";
 
-import "./collection.style.scss";
+import { Items, Wrapper } from "./collection.styles";
 
-const CollectionPage = ({ collection }) => {
-  const { items } = collection;
+const CollectionPage = () => {
+  const { collectionId } = useParams();
+  const products = useSelector(productsMapSelector);
+  const [collection, setCollection] = useState([]);
+
+  useEffect(() => {
+    const getCollection = async (collectionObj) => {
+      const items = await collectionObj?.items;
+
+      setCollection(items);
+    };
+
+    getCollection(products[collectionId]);
+  }, [products, collectionId]);
 
   return (
-    <div className="collection-page">
-      <div className="items">
-        {Object.keys(items)
-          .map((key) => items[key])
-          .map((item) => (
-            <CollectionItem
-              key={item.id}
-              item={item}
-              className="collection-item"
-            />
+    <Wrapper aria-label={collectionId}>
+      <Items>
+        {collection &&
+          collection.map((item, index) => (
+            <CollectionItem key={index} item={item} />
           ))}
-        {/* ((item) => ( */}
-        {/* //if all of a sudden your code start doing nonsense remove Object.keys(items)
-          .map((key) => items[key]) and replace with just items and also do that in collections previw component
-           and in your store data change the items Object of each category into an array. */}
-        {/* )) */}
-      </div>
-    </div>
+      </Items>
+    </Wrapper>
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  collection: selectCollection(ownProps.match.params.collectionId)(state),
-});
-
-export default connect(mapStateToProps)(CollectionPage);
+export default CollectionPage;

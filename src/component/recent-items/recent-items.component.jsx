@@ -1,19 +1,26 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import { useSelector } from "react-redux";
+
+import { productsSelector } from "../../store/products/products.selector";
 
 import CollectionItem from "../collection-item/collection-item.component";
-import { selectRecentForPreview } from "../../redux/shop/shop.selectors";
 
 import { Wrapper, Title, ItemList, MainText } from "./recent-items.styles";
 
-const RecentItems = ({ recent }) => {
+const RecentItems = () => {
+  const products = useSelector(productsSelector);
+
+  const recentProducts = Object.keys(products).map(
+    (key) => products[key].items
+  );
+
   const arr = [];
-  recent.forEach((element) => {
-    for (let index = 0; index < 2; index++) {
-      arr.push(element[index]);
+
+  recentProducts.map((products) => {
+    for (let i = 0; i < 2; i++) {
+      arr.push(products[i]);
     }
   });
+
   return (
     <Wrapper>
       <Title>Spice up your indoor space.</Title>
@@ -31,7 +38,4 @@ const RecentItems = ({ recent }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  recent: selectRecentForPreview,
-});
-export default connect(mapStateToProps)(RecentItems);
+export default RecentItems;

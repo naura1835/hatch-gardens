@@ -1,9 +1,12 @@
-import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React, { useEffect } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import "./App.css";
+import { onAuthStateChangedListener } from "./utils/firebase/firebase.utils";
+import { getCategoriesAndDocument } from "./utils/firebase/firebase.utils";
+
+import { setCurrentUser } from "./store/user/user.actions";
+import { setProducts } from "./store/products/products.actions";
 
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
@@ -14,97 +17,55 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 import BlogPage from "./pages/blog/blog.component";
 import BlogDetails from "./component/blog-details/blog-details.component";
 import FaqsPage from "./pages/faqs/faqs.component";
-
-import Header from "./component/header/header.component";
-import Footer from "./component/footer/footer.component";
-
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import { setCurrentUser } from "./redux/user/user.actions";
-import { selectCurrentUser } from "./redux/user/user.selectors";
-import { selectCartHidden } from "./redux/cart/cart.selectors";
+import CollectionsOverview from "./component/collections-overview/collections-overview.component";
+import CollectionPage from "./pages/collection/collection.component";
 import AboutPage from "./pages/about/about.component";
+import Layout from "./layout/layout.component";
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
+import "./App.css";
 
-  componentDidMount() {
-    const { setCurrentUser } = this.props;
+const App = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.user.currentUser);
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
-        });
-      } else {
-        setCurrentUser(userAuth);
-      }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      dispatch(setCurrentUser(user));
     });
-  }
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-  render() {
-    const documentWidth = document.documentElement.clientWidth;
-    const windowWidth = window.innerWidth;
-    const scrollBarWidth = windowWidth - documentWidth;
+    return unsubscribe;
+  }, [dispatch]);
 
-    return (
-      <div
-        render={
-          this.props.hidden
-            ? document.body.classList.add("hide")
-            : document.body.classList.remove("hide")
-        }
-        style={{
-          height: "100%",
-          position: "relative",
-          display: "block",
-          paddingBottom: "50px",
-          paddingRight: this.props.hidden ? scrollBarWidth : 0,
-        }}
-      >
-        <Header />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route path={`/blog/:blogTitle`} component={BlogDetails} />
-          <Route path="/blog" component={BlogPage} />
-          <Route path={`/products/:itemId`} component={Product} />
-          <Route exact path="/checkout" component={CheckoutPage} />
-          <Route
-            exact
-            path="/signin"
-            render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <SignIn />
-            }
-          />
-          <Route
-            exact
-            path="/register"
-            render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <Register />
-            }
-          />
+  useEffect(() => {
+    const getCategoryMap = async () => {
+      const categoriesMap = await getCategoriesAndDocument();
 
-          <Route exact path="/faqs" component={FaqsPage} />
-        </Switch>
-        <Footer />
-      </div>
-    );
-  }
-}
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  hidden: selectCartHidden,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+      dispatch(setProducts(categoriesMap));
+    };
+    getCategoryMap();
+  }, [dispatch]);
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="shop" element={<ShopPage />}>
+          <Route index element={<CollectionsOverview />} />
+          <Route path=":collectionId" element={<CollectionPage />} />
+        </Route>
+        <Route path="blog" element={<BlogPage />}>
+          <Route path={`:blogTitle`} element={<BlogDetails />} />
+        </Route>
+        <Route path="products/:itemId" element={<Product />} />
+        <Route path="checkout" element={<CheckoutPage />} />
+        <Route path="faqs" element={<FaqsPage />} />
+        <Route
+          path="signin"
+          element={currentUser ? <Navigate to="/" /> : <SignIn />} // if user is already signed in navigate back to home
+        />
+        <Route path="register" element={<Register />} />
+        {/* this.props.currentUser ? <Navigate to="/" /> :  */}
+      </Route>
+    </Routes>
+  );
+};
+export default App;

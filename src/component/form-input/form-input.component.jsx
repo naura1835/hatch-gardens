@@ -2,10 +2,16 @@ import React from "react";
 
 import "./form-input.style.scss";
 
-const FormInput = ({ handleChange, label, ...otherProps }) => {
+const FormInput = React.forwardRef((props, ref) => {
+  const { handleChange, label, ...otherProps } = props;
   return (
     <div className="input-wrapper">
-      <input className="form-input" onChange={handleChange} {...otherProps} />
+      <input
+        ref={ref}
+        className="form-input"
+        onChange={handleChange}
+        {...otherProps}
+      />
       {label ? (
         <label
           className={`${
@@ -17,5 +23,5 @@ const FormInput = ({ handleChange, label, ...otherProps }) => {
       ) : null}
     </div>
   );
-};
+});
 export default FormInput;

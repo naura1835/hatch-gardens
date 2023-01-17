@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { productDetailsSelector } from "../../store/products/products.selector";
+import { setProductName } from "../../store/products/products.actions";
 
 import Details from "../../component/details/details.component";
 import ProductImages from "../../component/product-images/product-images.component";
-import { selectCollectionsForPreview } from "../../redux/shop/shop.selectors";
 
 import {
   ProductWrapper,
@@ -12,35 +14,32 @@ import {
   DetailsWrapper,
 } from "./product-detail.styles";
 
-const Product = ({ match, products }) => {
+const Product = () => {
+  const { itemId } = useParams();
+  const dispatch = useDispatch();
+  const details = useSelector(productDetailsSelector);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
+
+  useEffect(() => {
+    dispatch(setProductName(itemId));
+  }, []);
   return (
     <>
-      {products.map((product) =>
-        Object.keys(product.items)
-          .map((key) => product.items[key])
-          .filter((item) => item.name === match.params.itemId)
-          .map((item) => {
-            return (
-              <ProductWrapper key={item.id}>
-                <ImageGrid>
-                  <ProductImages image={item.imageUrl} />
-                </ImageGrid>
-                <DetailsWrapper>
-                  <Details item={item} />
-                </DetailsWrapper>
-              </ProductWrapper>
-            );
-          })
+      {details && (
+        <ProductWrapper>
+          <ImageGrid>
+            <ProductImages image={details.imageUrl} />
+          </ImageGrid>
+          <DetailsWrapper>
+            <Details item={details} />
+          </DetailsWrapper>
+        </ProductWrapper>
       )}
     </>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  products: selectCollectionsForPreview,
-});
-
-export default connect(mapStateToProps)(Product);
+export default Product;

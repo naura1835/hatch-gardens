@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { categoryData } from "../../data/categoryListData";
 
 import "./tabbar.style.scss";
 
-const Tabbar = function ({ history }) {
+const Tabbar = function () {
+  //{ history }
+  let history = useLocation();
   const [menu, setMenu] = useState([
     {
       title: "Shop All",
       id: 0,
-      linkUrl: "shop",
+      linkUrl: "",
     },
   ]);
   const [activeButton, setActiveButton] = useState(
-    history.location.pathname.replace("/", "")
+    history.pathname.replace("/", "")
   );
+  const navigate = useNavigate();
   useEffect(() => {
     setMenu((menu) => menu.concat(categoryData));
   }, []);
@@ -35,7 +38,8 @@ const Tabbar = function ({ history }) {
             name={title}
             onClick={function handle() {
               handleToggle(linkUrl);
-              history.push(`/${linkUrl}`);
+              // history.push(`/${linkUrl}`);
+              navigate(`${linkUrl}`);
             }}
           >
             {title}
@@ -45,4 +49,5 @@ const Tabbar = function ({ history }) {
     </div>
   );
 };
-export default withRouter(Tabbar);
+// export default withRouter(Tabbar);
+export default Tabbar;
