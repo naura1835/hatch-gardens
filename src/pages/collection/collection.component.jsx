@@ -26,10 +26,9 @@ const CollectionPage = () => {
   return (
     <Wrapper aria-label={collectionId}>
       <Items>
-        {collection &&
-          collection.map((item, index) => (
-            <CollectionItem key={index} item={item} />
-          ))}
+        {collection.map((item, index) => (
+          <CollectionItem key={index} item={item} />
+        ))}
       </Items>
     </Wrapper>
   );

@@ -25,24 +25,25 @@ const CollectionItem = ({ item }) => {
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector(cartItemsSelector);
-  const { name, price, imageUrl, id } = item;
+  const { name, price, imageUrl } = item;
   let itemRef = useRef(null);
 
   const addProductToCart = () => {
     dispatch(addItemToCart(cartItems, item));
   };
-  useEffect(() => {
-    gsap.from(itemRef, {
-      scrollTrigger: {
-        trigger: itemRef,
-      },
-      duration: 0.8,
-      // ease: Power4.easeInOut,
-      delay: 0.2,
-      y: 25,
-      autoAlpha: 0,
-    });
-  });
+  // useEffect(() => {
+  //   gsap.from(itemRef, {
+  //     scrollTrigger: {
+  //       trigger: itemRef,
+  //     },
+  //     duration: 0.8,
+  //     // ease: Power4.easeInOut,
+  //     delay: 0.2,
+  //     y: 25,
+  //     autoAlpha: 0,
+  //   });
+  // });
+  //the animation should be fixed tomorrow
 
   return (
     <ItemWrapper
