@@ -15,7 +15,7 @@ const RecentItems = () => {
 
   const arr = [];
 
-  recentProducts.map((products) => {
+  recentProducts.forEach((products) => {
     for (let i = 0; i < 2; i++) {
       arr.push(products[i]);
     }

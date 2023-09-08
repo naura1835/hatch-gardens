@@ -1,10 +1,9 @@
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { addItemToCart } from "../../store/cart/cart.actions";
-import { cartItemsSelector } from "../../store/cart/cart.selector";
+import { addItemToCart } from "../../store/cart/cart.reducer";
 
 import {
   AddToCartBtn,
@@ -24,11 +23,10 @@ gsap.registerPlugin(ScrollTrigger);
 const CollectionItem = forwardRef(({ item }, ref) => {
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
-  const cartItems = useSelector(cartItemsSelector);
   const { name, price, imageUrl } = item;
 
   const addProductToCart = () => {
-    dispatch(addItemToCart(cartItems, item));
+    dispatch(addItemToCart(item));
   };
 
   return (

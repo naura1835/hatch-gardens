@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import bxCart from "@iconify/icons-bx/bx-cart";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setIsOpen } from "../../store/cart/cart.actions";
+import { setIsOpen } from "../../store/cart/cart.reducer";
 import {
   cartCountSelector,
   isCartOpenSelector,

@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { onAuthStateChangedListener } from "./utils/firebase/firebase.utils";
 
-import { setCurrentUser } from "./store/user/user.actions";
-import { fetchProductsAsync } from "./store/products/products.actions";
+import { setCurrentUser } from "./store/user/user.reducer";
+import { fetchProductsAsync } from "./store/products/products.reducer";
 
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
@@ -29,7 +29,14 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
-      dispatch(setCurrentUser(user));
+      const valuePickedFromUser =
+        user &&
+        (({ accessToken, email }) => ({
+          accessToken,
+          email,
+        }))(user); //immediately invoked function expression
+
+      dispatch(setCurrentUser(valuePickedFromUser));
     });
     return unsubscribe;
   }, [dispatch]);

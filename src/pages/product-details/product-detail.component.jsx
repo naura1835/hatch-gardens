@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { productDetailsSelector } from "../../store/products/products.selector";
-import { setProductName } from "../../store/products/products.actions";
+import { setProductName } from "../../store/products/products.reducer";
 
 import Details from "../../component/details/details.component";
 import ProductImages from "../../component/product-images/product-images.component";

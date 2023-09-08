@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { addItemToCart } from "../../store/cart/cart.actions";
-import { cartItemsSelector } from "../../store/cart/cart.selector";
+import { addItemToCart } from "../../store/cart/cart.reducer";
 
 import CustomButton from "../custom-buttom/custom-button.component";
 import Treatment from "../treatment/treatment.component";
@@ -18,11 +17,10 @@ import {
 
 const Details = ({ item }) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector(cartItemsSelector);
   const { name, price, description, treatment } = item;
 
   const addProductToCart = () => {
-    dispatch(addItemToCart(cartItems, item));
+    dispatch(addItemToCart(item));
   };
 
   return (

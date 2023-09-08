@@ -12,11 +12,6 @@ export const productNameSelector = createSelector(
   (shop) => shop.productName
 );
 
-// export const isLoadingSelector = createSelector(
-//   [productsReducerSelector],
-//   (shop) => shop.isLoading
-// );
-
 export const productsMapSelector = createSelector(
   [productsSelector],
   (products) =>

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { setIsOpen } from "../../store/cart/cart.actions";
+import { setIsOpen } from "../../store/cart/cart.reducer";
 import {
   cartItemsSelector,
   cartSubtotalSelector,
