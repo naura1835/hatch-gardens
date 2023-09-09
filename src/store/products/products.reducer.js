@@ -47,25 +47,6 @@ const productSlice = createSlice({
   },
 });
 
-// export const productReducer = (state = PRODUCTS_INITIAL_STATE, action) => {
-//   const { type, payload } = action;
-
-//   switch (type) {
-//     case PRODUCTS_ACTION_TYPES.SET_PRODUCTS_START:
-//       return { ...state, isLoading: true };
-//     case PRODUCTS_ACTION_TYPES.SET_PRODUCTS_SUCCESS:
-//       return { ...state, isLoading: false, products: payload };
-//     case PRODUCTS_ACTION_TYPES.SET_PRODUCTS_FAILED:
-//       return { ...state, isLoading: false, error: payload };
-//     case PRODUCTS_ACTION_TYPES.SET_PRODUCT_NAME:
-//       return { ...state, productName: payload };
-//     // case PRODUCTS_ACTION_TYPES.SET_PRODUCT_DETAILS:
-//     //   return { ...state, productDetails: payload };
-//     default:
-//       return state;
-//   }
-// };
-
 export const { setProductName } = productSlice.actions;
 
 export const productReducer = productSlice.reducer;

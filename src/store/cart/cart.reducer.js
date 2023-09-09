@@ -2,9 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const addCartItem = (cartItems, productToAdd) => {
   const cartItemExist = cartItems.find((item) => item.id === productToAdd.id);
-  console.log("hello from inside addToCart");
-  console.log(cartItems);
-  console.log(productToAdd);
+
   if (cartItemExist) {
     return cartItems.map((item) =>
       item.id === productToAdd.id
