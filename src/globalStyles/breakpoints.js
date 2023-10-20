@@ -8,18 +8,6 @@ const breakpoints = {
   bigDesktopUp: "1800px",
 };
 
-// export const breakpointsUp = Object.keys(breakpoints).reduce(
-//   (accumulator, label) => {
-//     accumulator[label] = (...args) => css`
-//       @media(min-width: ${breakpoints[label]}) {
-//         ${css(...args)}
-//       }
-//     `;
-//     console.log(accumulator);
-//     return accumulator;
-//   },
-//   {}
-// );
 export const breakpointsUp = {
   "large-phones": `(min-width: ${breakpoints.largePhones})`,
   "tablet-portrait-up": `(min-width: ${breakpoints.tabletPortraitUp})`,
